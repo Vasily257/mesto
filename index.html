@@ -17,7 +17,10 @@
       <main class="index-page__content content">
         <section class="profile" aria-label="Описание профиля">
           <h1 class="visually-hidden">Социальная сеть «Место Россия»</h1>
-          <img src="profile__photo" alt="Фото профиля" />
+          <picture>
+            <source srcset="./images/header/photo.webp" type="image/webp" />
+            <img class="profile__photo" src="./images/header/photo.png" alt="Фото профиля" />
+          </picture>
           <div class="profile__info">
             <p class="profile__name">Жак-Ив Кусто</p>
             <p class="profile__activity">Исследователь океана</p>
