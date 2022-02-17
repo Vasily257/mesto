@@ -1,15 +1,14 @@
 .header {
   box-sizing: border-box;
   width: auto;
+  max-width: 880px;
   min-height: 56px;
-  margin: 0 auto;
 
   border-bottom: 1px solid #545454;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
   .header {
-    max-width: 880px;
     min-height: 74px;
   }
 }
