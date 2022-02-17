@@ -1,0 +1,47 @@
+.profile__add-button {
+  position: relative;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 50px;
+  margin-top: 36px;
+
+  border: 2px solid #ffffff;
+  border-radius: 2px;
+}
+
+.profile__add-button::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 16px;
+  height: 2px;
+
+  content: '';
+
+  background-color: #ffffff;
+}
+
+.profile__add-button::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 2px;
+  height: 16px;
+
+  content: '';
+
+  background-color: #ffffff;
+}
+
+@media screen and (min-width: 600px) {
+  .profile__add-button {
+    max-width: 150px;
+  }
+}
