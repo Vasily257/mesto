@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Место</title>
-    <link rel="stylesheet" href="./pages/index.css">
+    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
     <div class="index-page">
@@ -14,7 +14,17 @@
           src="./images/header/header__logo.svg"
           alt="Логотип сайта «Место»" />
       </header>
-      <main class="index-page__content content"></main>
+      <main class="index-page__content content">
+        <section class="profile" aria-label="Описание профиля">
+          <h1 class="visually-hidden">Социальная сеть «Место Россия»</h1>
+          <img src="profile__photo" alt="Фото профиля" />
+          <div class="profile__info">
+            <p class="profile__name">Жак-Ив Кусто</p>
+            <p class="profile__activity">Исследователь океана</p>
+          </div>
+          <button class="profile__button"></button>
+        </section>
+      </main>
       <footer class="index-page__footer footer"></footer>
     </div>
   </body>
