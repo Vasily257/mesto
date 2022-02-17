@@ -1,0 +1,15 @@
+.index-page__content {
+  margin: 40px 19px 0;
+}
+
+@media screen and (min-width: 600px) {
+  .index-page__content {
+    margin: 40px 10px 0;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .index-page__content {
+    margin: 42px auto 0;
+  }
+}

@@ -3,5 +3,7 @@
 @import url(../blocks/page/page.css);
 @import url(../blocks/index-page/index-page.css);
 @import url(../blocks/index-page/__header/index-page__header.css);
+@import url(../blocks/index-page/__/);
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
+@import url(../blocks/content/content.css);
