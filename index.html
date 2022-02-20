@@ -114,6 +114,31 @@
       <footer class="index-page__footer footer">
         <p class="footer__text">&copy; 2022 Mesto Russia</p>
       </footer>
+      <section class="popup">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form" action="" method="post">
+          <p class="popup__input-wrapper">
+            <label class="visually-hidden" for="form-name">Имя</label>
+            <input
+              class="popup__input"
+              id="form-name"
+              type="text"
+              name="name"
+              placeholder="Жак-Ив Кусто" />
+          </p>
+          <p class="popup__input-wrapper">
+            <label class="visually-hidden" for="form-activity">Вид деятельности</label>
+            <input
+              class="popup__input"
+              id="form-activity"
+              type="text"
+              name="activity"
+              placeholder="Исследователь океана" />
+          </p>
+          <button class="popup__save-button" type="submit">Сохранить</button>
+        </form>
+        <button class="popup__close-button" type="button" aria-label="Закрыть форму"></button>
+      </section>
     </div>
   </body>
 </html>
