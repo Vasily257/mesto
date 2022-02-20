@@ -1,0 +1,25 @@
+.popup__input {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 10px;
+
+  color: inherit;
+  border: none;
+  box-shadow: inset 0 -1px 0 0px rgba(0, 0, 0, 0.2);
+
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.popup__input:focus {
+  outline: none;
+  box-shadow: inset 0 -1px 0 0px rgba(0, 0, 0, 1);
+}
+
+.popup__input::placeholder {
+  color: inherit;
+
+  font-size: 14px;
+  line-height: 17px;
+}
