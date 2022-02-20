@@ -3,6 +3,7 @@
 
   align-self: center;
 
+  max-width: calc(100% - 60px);
   margin-top: 26px;
 }
 
