@@ -1,0 +1,11 @@
+.places__panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  margin: 0;
+  padding: 25px 0;
+  padding-left: 21px;
+
+  background-color: #ffffff;
+}
