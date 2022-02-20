@@ -1,26 +1,32 @@
 .profile__edit-button {
   position: absolute;
-  right: calc((18px + 10px) * -1);
   top: 8px;
+  right: calc((18px + 10px) * -1);
 
   width: 18px;
   height: 18px;
   padding: 0;
 
   cursor: pointer;
+  transition: opacity 0.5s;
 
+  opacity: 1;
   color: inherit;
   border: none;
   background-color: transparent;
-  /* background-image: url(../../../images/profile/edit-button.svg); */
 
   font: inherit;
+}
+.profile__edit-button:hover {
+  transition: opacity 0.1s;
+
+  opacity: 0.6;
 }
 
 @media screen and (min-width: 600px) {
   .profile__edit-button {
-    right: calc((24px + 18px) * -1);
     top: 16px;
+    right: calc((24px + 18px) * -1);
 
     width: 24px;
     height: 24px;

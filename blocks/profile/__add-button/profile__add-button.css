@@ -9,7 +9,9 @@
   margin-top: 32px;
 
   cursor: pointer;
+  transition: opacity 0.5s;
 
+  opacity: 1;
   color: inherit;
   border: 2px solid #ffffff;
   border-radius: 2px;
@@ -17,6 +19,14 @@
 
   font: inherit;
 }
+
+.profile__add-button:hover {
+  transition: opacity 0.1s;
+
+  opacity: 0.6;
+}
+
+/* Plus symbol made in CSS */
 
 .profile__add-button::after {
   position: absolute;
@@ -45,6 +55,8 @@
 
   background-color: #ffffff;
 }
+
+/* Media queries */
 
 @media screen and (min-width: 600px) {
   .profile__add-button {
