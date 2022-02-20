@@ -3,10 +3,12 @@
   width: auto;
   max-width: 880px;
   padding-top: 42px;
+  padding-bottom: 48px;
 }
 
 @media screen and (min-width: 600px) {
   .content {
     padding-top: 40px;
+    padding-bottom: 66px;
   }
 }
