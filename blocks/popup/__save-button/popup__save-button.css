@@ -3,9 +3,9 @@
 
   box-sizing: border-box;
   width: 100%;
-  height: 46px;
+  min-height: 46px;
   margin-top: 45px;
-  padding: 0;
+  padding: 14px;
 
   cursor: pointer;
   transition: opacity 0.5s;
@@ -28,7 +28,7 @@
 
 @media screen and (min-width: 600px) {
   .popup__save-button {
-    height: 50px;
+    min-height: 50px;
     margin-top: 47px;
 
     font-size: 18px;
