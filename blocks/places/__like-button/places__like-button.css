@@ -27,8 +27,3 @@
 
   opacity: 0.5;
 }
-
-.places__like-button:active {
-  opacity: 1;
-  background-image: url(../../../images/places/like-button-fill.svg);
-}
