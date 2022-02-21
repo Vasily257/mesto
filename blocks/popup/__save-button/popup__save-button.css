@@ -28,7 +28,10 @@
 
 .popup__save-button:focus {
   outline: none;
-  box-shadow: 0 0 2px 4px #75C0FD;
+}
+
+.popup__save-button:focus-visible {
+  box-shadow: 0 0 2px 4px #75c0fd;
 }
 
 @media screen and (min-width: 600px) {

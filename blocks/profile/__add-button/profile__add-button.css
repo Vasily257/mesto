@@ -28,6 +28,9 @@
 
 .profile__add-button:focus {
   outline: none;
+}
+
+.profile__add-button:focus-visible {
   box-shadow: 0 0 2px 4px #75c0fd;
 }
 

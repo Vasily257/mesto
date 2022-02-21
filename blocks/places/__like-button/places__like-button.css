@@ -19,7 +19,10 @@
 }
 .places__like-button:focus {
   outline: none;
-  box-shadow: 0 0 2px 2px #75C0FD;
+}
+
+.places__like-button:focus-visible {
+  box-shadow: 0 0 2px 2px #75c0fd;
 }
 
 .places__like-button:hover {
