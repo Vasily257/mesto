@@ -26,6 +26,11 @@
   opacity: 0.6;
 }
 
+.profile__add-button:focus {
+  outline: 2px solid gray;
+  outline-offset: 4px;
+}
+
 /* Plus symbol made in CSS */
 
 .profile__add-button::after {

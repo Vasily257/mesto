@@ -24,6 +24,11 @@
   opacity: 0.6;
 }
 
+.profile__edit-button:focus {
+  outline: 2px solid gray;
+  outline-offset: 2px;
+}
+
 @media screen and (min-width: 600px) {
   .profile__edit-button {
     top: 16px;
