@@ -1,9 +1,13 @@
 .places__title {
+  overflow: hidden;
+
   margin: 0;
   padding: 0;
 
-  color: #000000;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
+  color: #000000;
 
   font-size: 24px;
   font-weight: 900;
