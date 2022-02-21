@@ -17,6 +17,7 @@ function openPopup() {
   popup.classList.toggle('popup_opened');
   nameInput.value = nameDisplay.textContent;
   jobInput.value = jobDisplay.textContent;
+  nameInput.focus()
 }
 
 function formSubmitHandler(evt) {
