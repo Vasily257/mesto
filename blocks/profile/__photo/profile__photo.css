@@ -1,3 +1,4 @@
 .profile__photo {
   display: block;
+  border-radius: 50%;
 }
