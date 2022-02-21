@@ -26,6 +26,11 @@
   opacity: 0.8;
 }
 
+.popup__save-button:focus {
+  outline: none;
+  box-shadow: 0 0 2px 4px #75C0FD;
+}
+
 @media screen and (min-width: 600px) {
   .popup__save-button {
     min-height: 50px;

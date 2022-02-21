@@ -18,8 +18,8 @@
   font: inherit;
 }
 .places__like-button:focus {
-  outline: 2px solid gray;
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 2px 2px #75C0FD;
 }
 
 .places__like-button:hover {
