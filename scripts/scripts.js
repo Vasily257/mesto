@@ -21,9 +21,18 @@ function openPopup() {
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
-  nameDisplay.textContent = nameInput.value;
-  jobDisplay.textContent = jobInput.value;
-  popup.classList.toggle('popup_opened');
+  if (
+    !nameInput.value ||
+    !jobInput.value ||
+    nameInput.value.trim() === '' ||
+    jobInput.value.trim() === ''
+  ) {
+    alert('Пожалуйста, введите данные.');
+  } else {
+    nameDisplay.textContent = nameInput.value;
+    jobDisplay.textContent = jobInput.value;
+    popup.classList.toggle('popup_opened');
+  }
 }
 
 function closePopup() {
