@@ -1,16 +1,16 @@
-let content = document.querySelector('.content');
-let contentButtons = content.querySelectorAll('button:not([disabled])');
+const content = document.querySelector('.content');
+const contentButtons = content.querySelectorAll('button:not([disabled])');
 
-let nameDisplay = document.querySelector('.profile__name');
-let jobDisplay = document.querySelector('.profile__activity');
-let editButton = document.querySelector('.profile__edit-button');
+const nameDisplay = document.querySelector('.profile__name');
+const jobDisplay = document.querySelector('.profile__activity');
+const editButton = document.querySelector('.profile__edit-button');
 
-let popup = document.querySelector('.popup');
-let formElement = document.querySelector('.popup__form');
-let nameInput = document.querySelectorAll('.popup__input')[0];
-let jobInput = document.querySelectorAll('.popup__input')[1];
-let saveButton = document.querySelector('.popup__save-button');
-let closeButton = document.querySelector('.popup__close-button');
+const popup = document.querySelector('.popup');
+const formElement = document.querySelector('.popup__form');
+const nameInput = document.querySelectorAll('.popup__input')[0];
+const jobInput = document.querySelectorAll('.popup__input')[1];
+const saveButton = document.querySelector('.popup__save-button');
+const closeButton = document.querySelector('.popup__close-button');
 
 editButton.addEventListener('click', openPopup);
 formElement.addEventListener('submit', formSubmitHandler);
