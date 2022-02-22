@@ -1,3 +1,6 @@
+let content = document.querySelector('.content');
+let contentButtons = content.querySelectorAll('button:not([disabled])');
+
 let nameDisplay = document.querySelector('.profile__name');
 let jobDisplay = document.querySelector('.profile__activity');
 let editButton = document.querySelector('.profile__edit-button');
@@ -17,7 +20,8 @@ function openPopup() {
   popup.classList.toggle('popup_opened');
   nameInput.value = nameDisplay.textContent;
   jobInput.value = jobDisplay.textContent;
-  nameInput.focus()
+  nameInput.focus();
+  turnOffTabs();
 }
 
 function formSubmitHandler(evt) {
@@ -33,9 +37,23 @@ function formSubmitHandler(evt) {
     nameDisplay.textContent = nameInput.value;
     jobDisplay.textContent = jobInput.value;
     popup.classList.toggle('popup_opened');
+    turnOnTabs();
   }
 }
 
 function closePopup() {
   popup.classList.toggle('popup_opened');
+  turnOnTabs();
+}
+
+function turnOffTabs() {
+  for (let i = 0; i < contentButtons.length; i++) {
+    contentButtons[i].setAttribute('tabindex', -1);
+  }
+}
+
+function turnOnTabs() {
+  for (let i = 0; i < contentButtons.length; i++) {
+    contentButtons[i].setAttribute('tabindex', 1);
+  }
 }
