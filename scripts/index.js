@@ -36,8 +36,7 @@ function formSubmitHandler(evt) {
   } else {
     nameDisplay.textContent = nameInput.value;
     jobDisplay.textContent = jobInput.value;
-    popup.classList.toggle('popup_opened');
-    turnOnTabs();
+    closePopup();
   }
 }
 
