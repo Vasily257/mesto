@@ -1,10 +1,10 @@
 .profile__edit-button {
-  position: absolute;
-  top: 8px;
-  right: calc((18px + 10px) * -1);
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
 
   width: 18px;
   height: 18px;
+  margin-left: 10px;
   padding: 0;
 
   background-image: url(../../../images/profile/edit-button.svg);
@@ -12,10 +12,14 @@
 
 @media screen and (min-width: 600px) {
   .profile__edit-button {
-    top: 16px;
-    right: calc((24px + 18px) * -1);
+    align-self: start;
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
 
     width: 24px;
     height: 24px;
+    margin-top: 36px;
+    margin-right: 18px;
+    margin-left: 18px;
   }
 }
