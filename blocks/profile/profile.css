@@ -1,13 +1,13 @@
 .profile {
   display: grid;
-  grid-template-columns: 1fr min-content 1fr;
+  grid-template-columns: 1fr minmax(0, min-content) 1fr;
   grid-template-rows: repeat(4, min-content);
   align-items: baseline;
 }
 
 @media screen and (min-width: 600px) {
   .profile {
-    grid-template-columns: min-content minmax(100px, min-content) 1fr min-content;
+    grid-template-columns: min-content minmax(0, min-content) 1fr min-content;
     grid-template-rows: 1fr;
     align-items: center;
   }
