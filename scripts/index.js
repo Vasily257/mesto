@@ -7,8 +7,8 @@ const editButton = document.querySelector('.profile__edit-button');
 
 const popup = document.querySelector('.popup');
 const formElement = document.querySelector('.popup__form');
-const nameInput = document.querySelectorAll('.popup__input')[0];
-const jobInput = document.querySelectorAll('.popup__input')[1];
+const nameInput = document.querySelector('.popup__input_type_name');
+const jobInput = document.querySelector('.popup__input_type_activity');
 const saveButton = document.querySelector('.popup__save-button');
 const closeButton = document.querySelector('.popup__close-button');
 
