@@ -3,6 +3,18 @@
   width: auto;
   max-width: 880px;
   min-height: 56px;
+}
+
+header::before {
+  position: relative;
+  top: 55px;
+  left: -19px;
+
+  display: block;
+
+  width: calc(100% + 19px * 2);
+
+  content: '';
 
   border-bottom: 1px solid #545454;
 }
@@ -10,5 +22,11 @@
 @media screen and (min-width: 600px) {
   .header {
     min-height: 74px;
+
+    border-bottom: 1px solid #545454;
+  }
+
+  header::before {
+    display: none;
   }
 }
