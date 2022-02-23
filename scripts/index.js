@@ -21,7 +21,7 @@ function openPopup() {
   nameInput.value = nameDisplay.textContent;
   jobInput.value = jobDisplay.textContent;
   nameInput.focus();
-  turnOffTabs();
+  useTabs(-1); //disable use of tabs outside popup
 }
 
 function formSubmitHandler(evt) {
@@ -42,17 +42,11 @@ function formSubmitHandler(evt) {
 
 function closePopup() {
   popup.classList.toggle('popup_opened');
-  turnOnTabs();
+  useTabs(1); //enable use of tabs on site
 }
 
-function turnOffTabs() {
+function useTabs(index) {
   for (let i = 0; i < contentButtons.length; i++) {
-    contentButtons[i].setAttribute('tabindex', -1);
-  }
-}
-
-function turnOnTabs() {
-  for (let i = 0; i < contentButtons.length; i++) {
-    contentButtons[i].setAttribute('tabindex', 1);
+    contentButtons[i].setAttribute('tabindex', index);
   }
 }
