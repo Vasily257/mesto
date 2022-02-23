@@ -13,13 +13,12 @@
       </header>
       <main class="index-page__section content">
         <section class="profile" aria-label="Описание профиля">
-          <h1 class="visually-hidden">Социальная сеть «Место Россия»</h1>
           <picture>
             <source srcset="./images/profile/photo.webp" type="image/webp" />
             <img class="profile__photo" src="./images/profile/photo.jpg" alt="Фото профиля" />
           </picture>
           <div class="profile__info">
-            <p class="profile__name">Жак-Ив Кусто</p>
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
             <p class="profile__activity">Исследователь океана</p>
             <button
               class="profile__edit-button"
@@ -120,11 +119,19 @@
           <form class="popup__form" method="post">
             <p class="popup__field">
               <label class="visually-hidden" for="form-name">Имя</label>
-              <input class="popup__input popup__input_type_name" id="form-name" type="text" name="name" />
+              <input
+                class="popup__input popup__input_type_name"
+                id="form-name"
+                type="text"
+                name="name" />
             </p>
             <p class="popup__field">
               <label class="visually-hidden" for="form-activity">Вид деятельности</label>
-              <input class="popup__input popup__input_type_activity" id="form-activity" type="text" name="activity" />
+              <input
+                class="popup__input popup__input_type_activity"
+                id="form-activity"
+                type="text"
+                name="activity" />
             </p>
             <button class="popup__save-button" type="submit">Сохранить</button>
           </form>
