@@ -3,35 +3,12 @@
 
   align-self: center;
 
-  box-sizing: border-box;
   width: 100%;
   height: 50px;
   margin-top: 32px;
 
-  cursor: pointer;
-  transition: opacity 0.5s;
-
-  opacity: 1;
-  color: inherit;
   border: 2px solid #ffffff;
   border-radius: 2px;
-  background-color: transparent;
-
-  font: inherit;
-}
-
-.profile__add-button:hover {
-  transition: opacity 0.1s;
-
-  opacity: 0.6;
-}
-
-.profile__add-button:focus {
-  outline: none;
-}
-
-.profile__add-button:focus-visible {
-  box-shadow: 0 0 2px 4px #75c0fd;
 }
 
 /* Plus symbol made in CSS */

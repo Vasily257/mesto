@@ -7,29 +7,7 @@
   height: 18px;
   padding: 0;
 
-  cursor: pointer;
-  transition: opacity 0.5s;
-
-  opacity: 1;
-  color: inherit;
-  border: none;
-  background-color: transparent;
   background-image: url(../../../images/profile/edit-button.svg);
-
-  font: inherit;
-}
-.profile__edit-button:hover {
-  transition: opacity 0.1s;
-
-  opacity: 0.6;
-}
-
-.profile__edit-button:focus {
-  outline: none;
-}
-
-.profile__edit-button:focus-visible {
-  box-shadow: 0 0 2px 4px #75c0fd;
 }
 
 @media screen and (min-width: 600px) {

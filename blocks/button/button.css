@@ -1,0 +1,30 @@
+.button {
+  display: block;
+
+  box-sizing: border-box;
+
+  cursor: pointer;
+  transition: opacity 0.5s;
+
+  opacity: 1;
+  color: inherit;
+  border: none;
+  background-color: transparent;
+
+  font: inherit;
+}
+
+.button:hover {
+  transition: opacity 0.1s;
+
+  opacity: 0.6;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 3px solid #75c0fd;
+  outline-offset: 2px;
+}

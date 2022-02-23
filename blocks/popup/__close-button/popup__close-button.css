@@ -3,34 +3,11 @@
   top: -36px;
   right: 0;
 
-  display: block;
-
-  box-sizing: border-box;
   width: 20px;
   height: 20px;
   padding: 0;
 
-  cursor: pointer;
-  transition: opacity 0.5s;
-
-  opacity: 1;
-  border: none;
-  background-color: transparent;
   background-image: url(../../../images/popup/close-button.svg);
-}
-
-.popup__close-button:hover {
-  transition: opacity 0.1s;
-
-  opacity: 0.7;
-}
-
-.popup__close-button:focus {
-  outline: none;
-}
-
-.popup__close-button:focus-visible {
-  box-shadow: 0 0 2px 4px #75c0fd;
 }
 
 @media screen and (min-width: 600px) {
