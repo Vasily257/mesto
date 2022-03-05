@@ -1,7 +1,7 @@
 const content = document.querySelector('.content');
 const contentButtons = content.querySelectorAll('button:not([disabled])');
 
-const profile = document.querySelector('.profile')
+const profile = document.querySelector('.profile');
 const nameDisplay = profile.querySelector('.profile__name');
 const jobDisplay = profile.querySelector('.profile__activity');
 const editButton = profile.querySelector('.profile__edit-button');
@@ -14,8 +14,25 @@ const saveButton = popup.querySelector('.popup__save-button');
 const closeButton = popup.querySelector('.popup__close-button');
 
 editButton.addEventListener('click', openPopup);
+
+popup.addEventListener('click', function (event) {
+  switch (event.target) {
+    case event.currentTarget:
+      closePopup(); //close popup, if user click to transperent overlay of popup
+      break;
+    case closeButton:
+      closePopup();
+      break;
+  }
+});
+
+popup.addEventListener('keydown', function (event) {
+  if (event.keyCode === 27) {
+    closePopup();
+  }
+});
+
 formElement.addEventListener('submit', formSubmitHandler);
-closeButton.addEventListener('click', closePopup);
 
 function openPopup() {
   popup.classList.toggle('popup_opened');
