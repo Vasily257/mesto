@@ -21,7 +21,7 @@ function openPopup() {
   nameInput.value = nameDisplay.textContent;
   jobInput.value = jobDisplay.textContent;
   nameInput.focus();
-  useTabs(-1); //disable use of tabs outside popup
+  useTab(-1); //disable using a tab key outside popup
 }
 
 function formSubmitHandler(evt) {
@@ -42,10 +42,10 @@ function formSubmitHandler(evt) {
 
 function closePopup() {
   popup.classList.toggle('popup_opened');
-  useTabs(1); //enable use of tabs on site
+  useTab(1); //enable using a tab key
 }
 
-function useTabs(index) {
+function useTab(index) {
   for (let i = 0; i < contentButtons.length; i++) {
     contentButtons[i].setAttribute('tabindex', index);
   }
