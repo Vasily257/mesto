@@ -18,7 +18,7 @@ editButton.addEventListener('click', openPopup);
 popup.addEventListener('click', function (event) {
   switch (event.target) {
     case event.currentTarget:
-      closePopup(); //close popup, if user click to transperent overlay of popup
+      closePopup();
       break;
     case closeButton:
       closePopup();
@@ -39,17 +39,12 @@ function openPopup() {
   nameInput.value = nameDisplay.textContent;
   jobInput.value = jobDisplay.textContent;
   nameInput.focus();
-  useTab(-1); //disable using a tab key outside popup
+  useTab(-1); //enable the tab only in the popup
 }
 
-function formSubmitHandler(evt) {
-  evt.preventDefault();
-  if (
-    !nameInput.value ||
-    !jobInput.value ||
-    nameInput.value.trim() === '' ||
-    jobInput.value.trim() === ''
-  ) {
+function formSubmitHandler(event) {
+  event.preventDefault();
+  if (isEmptyInput(nameInput, jobInput)) {
     alert('Пожалуйста, введите данные.');
   } else {
     nameDisplay.textContent = nameInput.value;
@@ -58,9 +53,18 @@ function formSubmitHandler(evt) {
   }
 }
 
+function isEmptyInput(...arrayInput) {
+  arrayInput.every((input) => {
+    return !input.value || input.value.trim() === '';
+  });
+}
+
+
+
+
 function closePopup() {
   popup.classList.toggle('popup_opened');
-  useTab(1); //enable using a tab key
+  useTab(1); //enable tab key in the page
 }
 
 function useTab(index) {
