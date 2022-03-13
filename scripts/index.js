@@ -36,8 +36,9 @@ formElement.addEventListener('submit', formSubmitHandler);
 
 function openPopup() {
   togglePopup();
-  nameInput.value = nameDisplay.textContent;
-  jobInput.value = jobDisplay.textContent;
+  loadTextFromDisplay(nameInput, nameDisplay);
+  loadTextFromDisplay(jobInput, jobDisplay);
+
   nameInput.focus();
   useTab(-1); //enable the tab key only in the popup
 }
@@ -46,15 +47,23 @@ function togglePopup() {
   popup.classList.toggle('popup_opened');
 }
 
+function loadTextFromDisplay(input, display) {
+  input.value = display.textContent;
+}
+
 function formSubmitHandler(event) {
   event.preventDefault();
   if (isEmptyInput(nameInput, jobInput)) {
     alert('Пожалуйста, введите данные.');
   } else {
-    nameDisplay.textContent = nameInput.value;
-    jobDisplay.textContent = jobInput.value;
+    loadTextFromInput(nameDisplay, nameInput);
+    loadTextFromInput(jobDisplay, jobInput);
     closePopup();
   }
+}
+
+function loadTextFromInput(display, input) {
+  display.textContent = input.value;
 }
 
 function isEmptyInput(...arrayInput) {
