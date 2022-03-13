@@ -67,7 +67,7 @@ function loadTextFromInput(display, input) {
 }
 
 function isEmptyInput(...arrayInput) {
-  arrayInput.every((input) => {
+  return Array.from(arrayInput).some((input) => {
     return !input.value || input.value.trim() === '';
   });
 }
