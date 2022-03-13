@@ -35,11 +35,15 @@ popup.addEventListener('keydown', function (event) {
 formElement.addEventListener('submit', formSubmitHandler);
 
 function openPopup() {
-  popup.classList.toggle('popup_opened');
+  togglePopup();
   nameInput.value = nameDisplay.textContent;
   jobInput.value = jobDisplay.textContent;
   nameInput.focus();
-  useTab(-1); //enable the tab only in the popup
+  useTab(-1); //enable the tab key only in the popup
+}
+
+function togglePopup() {
+  popup.classList.toggle('popup_opened');
 }
 
 function formSubmitHandler(event) {
@@ -59,11 +63,8 @@ function isEmptyInput(...arrayInput) {
   });
 }
 
-
-
-
 function closePopup() {
-  popup.classList.toggle('popup_opened');
+  togglePopup();
   useTab(1); //enable tab key in the page
 }
 
