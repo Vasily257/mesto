@@ -51,6 +51,11 @@ function createCard(data) {
   return cardElement;
 }
 
+function renderCard(data, cardsContainer) {
+  const cardElement = createCard(data);
+  cardsContainer.prepend(cardElement);
+}
+
 editButton.addEventListener('click', openPopup);
 
 popup.addEventListener('click', function (event) {
