@@ -31,68 +31,7 @@
             aria-label="Добавить место"></button>
         </section>
         <section class="content__places places" aria-label="Посещенные места">
-          <ul class="places__list">
-            <li class="places__item">
-              <div class="places__image"></div>
-              <div class="places__panel">
-                <p class="places__title">Карачаевск</p>
-                <button
-                  class="button places__like-button"
-                  type="button"
-                  aria-label="Поставить отметку «Мне нравится»"></button>
-              </div>
-            </li>
-            <li class="places__item">
-              <div class="places__image"></div>
-              <div class="places__panel">
-                <p class="places__title">Гора Эльбрус</p>
-                <button
-                  class="button places__like-button"
-                  type="button"
-                  aria-label="Поставить отметку «Мне нравится»"></button>
-              </div>
-            </li>
-            <li class="places__item">
-              <div class="places__image"></div>
-              <div class="places__panel">
-                <p class="places__title">Домбай</p>
-                <button
-                  class="button places__like-button"
-                  type="button"
-                  aria-label="Поставить отметку «Мне нравится»"></button>
-              </div>
-            </li>
-            <li class="places__item">
-              <div class="places__image"></div>
-              <div class="places__panel">
-                <p class="places__title">Гора Эльбрус</p>
-                <button
-                  class="button places__like-button"
-                  type="button"
-                  aria-label="Поставить отметку «Мне нравится»"></button>
-              </div>
-            </li>
-            <li class="places__item">
-              <div class="places__image"></div>
-              <div class="places__panel">
-                <p class="places__title">Домбай</p>
-                <button
-                  class="button places__like-button"
-                  type="button"
-                  aria-label="Поставить отметку «Мне нравится»"></button>
-              </div>
-            </li>
-            <li class="places__item">
-              <div class="places__image"></div>
-              <div class="places__panel">
-                <p class="places__title">Карачаево-Черкесия</p>
-                <button
-                  class="button places__like-button"
-                  type="button"
-                  aria-label="Поставить отметку «Мне нравится»"></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="places__list"></ul>
         </section>
       </main>
       <footer class="index-page__section footer">
@@ -127,6 +66,19 @@
         </div>
       </section>
     </div>
+    <template class="places-template">
+      <li class="places__item">
+        <img class="places__image" src="Ссылка на фотографию" alt="Фотография места" />
+        <div class="places__panel">
+          <p class="places__title">Название места</p>
+          <button
+            class="button places__like-button"
+            type="button"
+            aria-label="Поставить отметку «Мне нравится»"></button>
+        </div>
+      </li>
+    </template>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>
