@@ -43,7 +43,7 @@ const initialCards = [
 function createCard(data) {
   const cardElement = document
     .querySelector('.places-template')
-    .content.firstElementChild.clobeNode(true);
+    .content.firstElementChild.cloneNode(true);
 
   cardElement.querySelector('.places__title').textContent = data.name;
   cardElement.querySelector('.places__image').href = data.link;
