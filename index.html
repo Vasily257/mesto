@@ -69,26 +69,28 @@
       </section>
       <section class="popup popup_type_add" aria-label="Всплывающее окно">
         <div class="popup__container">
-          <h2 class="popup__title">Редактировать профиль</h2>
+          <h2 class="popup__title">Новое место</h2>
           <form class="popup__form popup__form_type_add" method="post">
             <p class="popup__field">
-              <label class="visually-hidden" for="form-place-name">Имя</label>
+              <label class="visually-hidden" for="form-place-name">Название места</label>
               <input
                 class="popup__input popup__input_type_place-name"
                 id="form-place-name"
                 type="text"
-                name="place-name" />
+                name="place-name"
+                placeholder="Название" />
             </p>
             <p class="popup__field">
-              <label class="visually-hidden" for="form-link">Вид деятельности</label>
+              <label class="visually-hidden" for="form-link">Ссылка</label>
               <input
                 class="popup__input popup__input_type_link"
                 id="form-link"
                 type="text"
-                name="link" />
+                name="link"
+                placeholder="Ссылка на картинку" />
             </p>
             <button class="button popup__save-button popup__save-button_type_add" type="submit">
-              Сохранить
+              Создать
             </button>
           </form>
           <button

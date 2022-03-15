@@ -1,0 +1,9 @@
+.popup__input_type_place-name {
+  margin-top: 70px;
+}
+
+@media screen and (min-width: 600px) {
+  .popup__input_type_place-name {
+    margin-top: 44px;
+  }
+}

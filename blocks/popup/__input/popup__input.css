@@ -16,3 +16,7 @@
   outline: none;
   box-shadow: 0 0 2px 2px #75c0fd;
 }
+
+.popup__input::placeholder {
+  color: #c4c4c4;
+}
