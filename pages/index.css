@@ -20,6 +20,7 @@
 /* @import url(../blocks/places/places.css); */
 @import url(../blocks/places/__list/places__list.css);
 @import url(../blocks/places/__item/places__item.css);
+@import url(../blocks/places/__image-container/places__image-container.css);
 @import url(../blocks/places/__image/places__image.css);
 @import url(../blocks/places/__panel/places__panel.css);
 @import url(../blocks/places/__title/places__title.css);

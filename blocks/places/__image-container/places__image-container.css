@@ -1,0 +1,5 @@
+.places__image-container {
+  display: block;
+  position: relative;
+  padding-top: 100%;
+}
