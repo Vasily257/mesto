@@ -44,21 +44,7 @@ const initialCards = [
   },
 ];
 
-function createCard(data) {
-  const cardElement = document
-    .querySelector('.places-template')
-    .content.firstElementChild.cloneNode(true);
-
-  cardElement.querySelector('.places__title').textContent = data.name;
-  cardElement.querySelector('.places__image').src = data.link;
-
-  return cardElement;
-}
-
-function renderCard(data, cardsContainer) {
-  const cardElement = createCard(data);
-  cardsContainer.prepend(cardElement);
-}
+// Profile
 
 profile.addEventListener('click', (event) => {
   switch (event.target) {
@@ -70,6 +56,8 @@ profile.addEventListener('click', (event) => {
       break;
   }
 });
+
+// Popup
 
 popup.addEventListener('click', function (event) {
   switch (event.target) {
@@ -88,8 +76,6 @@ popup.addEventListener('keydown', function (event) {
   }
 });
 
-formElement.addEventListener('submit', formSubmitHandler);
-
 function openPopup() {
   togglePopup();
   loadTextFromDisplay(nameInput, nameDisplay);
@@ -107,6 +93,21 @@ function loadTextFromDisplay(input, display) {
   input.value = display.textContent;
 }
 
+function useTab(index) {
+  for (let i = 0; i < contentButtons.length; i++) {
+    contentButtons[i].setAttribute('tabindex', index);
+  }
+}
+
+function closePopup() {
+  togglePopup();
+  useTab(1); //enable tab key in the page
+}
+
+// Popup form
+
+formElement.addEventListener('submit', formSubmitHandler);
+
 function formSubmitHandler(event) {
   event.preventDefault();
   if (isEmptyInput(nameInput, jobInput)) {
@@ -118,23 +119,30 @@ function formSubmitHandler(event) {
   }
 }
 
-function loadTextFromInput(display, input) {
-  display.textContent = input.value;
-}
-
 function isEmptyInput(...arrayInput) {
   return arrayInput.some((input) => {
     return !input.value || input.value.trim() === '';
   });
 }
 
-function closePopup() {
-  togglePopup();
-  useTab(1); //enable tab key in the page
+function loadTextFromInput(display, input) {
+  display.textContent = input.value;
 }
 
-function useTab(index) {
-  for (let i = 0; i < contentButtons.length; i++) {
-    contentButtons[i].setAttribute('tabindex', index);
-  }
+// Cards (places)
+
+function createCard(data) {
+  const cardElement = document
+    .querySelector('.places-template')
+    .content.firstElementChild.cloneNode(true);
+
+  cardElement.querySelector('.places__title').textContent = data.name;
+  cardElement.querySelector('.places__image').src = data.link;
+
+  return cardElement;
+}
+
+function renderCard(data, cardsContainer) {
+  const cardElement = createCard(data);
+  cardsContainer.prepend(cardElement);
 }
