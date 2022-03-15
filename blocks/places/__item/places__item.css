@@ -1,3 +1,4 @@
 .places__item {
+  position: relative;
   min-height: 361px;
 }
