@@ -5,6 +5,10 @@ const profile = document.querySelector('.profile');
 const nameDisplay = profile.querySelector('.profile__name');
 const jobDisplay = profile.querySelector('.profile__activity');
 const editButton = profile.querySelector('.profile__edit-button');
+const addButton = profile.querySelector('.profile__add-button');
+
+const cards = document.querySelector('.places');
+const cardsContainer = cards.querySelector('.places__list');
 
 const popup = document.querySelector('.popup');
 const formElement = popup.querySelector('.popup__form');
@@ -56,7 +60,16 @@ function renderCard(data, cardsContainer) {
   cardsContainer.prepend(cardElement);
 }
 
-editButton.addEventListener('click', openPopup);
+profile.addEventListener('click', (event) => {
+  switch (event.target) {
+    case addButton:
+      renderCard();
+      break;
+    case editButton:
+      openPopup();
+      break;
+  }
+});
 
 popup.addEventListener('click', function (event) {
   switch (event.target) {
