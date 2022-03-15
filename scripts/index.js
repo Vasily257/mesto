@@ -142,7 +142,13 @@ function createCard(data) {
   return cardElement;
 }
 
-function renderCard(data, cardsContainer) {
+function renderCard(data) {
   const cardElement = createCard(data);
   cardsContainer.prepend(cardElement);
 }
+
+(function initialRenderCards() {
+  initialCards.reverse().forEach((item) => {
+    renderCard(item);
+  });
+})();
