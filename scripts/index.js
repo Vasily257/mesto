@@ -136,8 +136,23 @@ function createCard(data) {
     .querySelector('.places-template')
     .content.firstElementChild.cloneNode(true);
 
+  const likeButton = cardElement.querySelector('.places__like-button');
+  const deleteButton = cardElement.querySelector('.places__delete-button');
+
   cardElement.querySelector('.places__title').textContent = data.name;
   cardElement.querySelector('.places__image').src = data.link;
+  cardElement.querySelector('.places__image').alt = data.name;
+
+  cardElement.addEventListener('click', (event) => {
+    switch (event.target) {
+      case likeButton:
+        event.target.classList.toggle('places__like-button_active');
+        break;
+      case deleteButton:
+        event.target.parentElement.remove();
+        break;
+    }
+  });
 
   return cardElement;
 }
