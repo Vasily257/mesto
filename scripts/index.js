@@ -50,7 +50,7 @@ function createCard(data) {
     .content.firstElementChild.cloneNode(true);
 
   cardElement.querySelector('.places__title').textContent = data.name;
-  cardElement.querySelector('.places__image').href = data.link;
+  cardElement.querySelector('.places__image').src = data.link;
 
   return cardElement;
 }
