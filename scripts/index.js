@@ -127,7 +127,11 @@ function addFormSubmitHandler(event) {
   if (isEmptyInput(placeNameInput, linkInput)) {
     alert('Пожалуйста, введите данные.');
   } else {
-    renderCard(placeNameInput, linkInput);
+    const data = {
+      name: placeNameInput.value,
+      link: linkInput.value,
+    };
+    renderCard(data);
     closePopup(addPopup);
   }
 }
@@ -136,11 +140,17 @@ function addFormSubmitHandler(event) {
 
 function openPopup(popup) {
   togglePopup(popup);
-  loadTextFromDisplay(nameInput, nameDisplay);
-  loadTextFromDisplay(jobInput, jobDisplay);
-
-  nameInput.focus();
   useTab(-1); //enable the tab key only in the popup
+
+  switch (popup) {
+    case editPopup:
+      loadTextFromDisplay(nameInput, nameDisplay);
+      loadTextFromDisplay(jobInput, jobDisplay);
+      nameInput.focus();
+    case addPopup:
+      placeNameInput.value = '';
+      linkInput.value = '';
+  }
 }
 
 // Close popup
