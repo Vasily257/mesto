@@ -11,18 +11,18 @@ const cards = document.querySelector('.places');
 const cardsContainer = cards.querySelector('.places__list');
 
 const editPopup = document.querySelector('.popup_type_edit');
-const formElementOfAddPopup = editPopup.querySelector('.popup__form_type_edit');
+const formElementOfEditPopup = editPopup.querySelector('.popup__form_type_edit');
 const nameInput = editPopup.querySelector('.popup__input_type_name');
 const jobInput = editPopup.querySelector('.popup__input_type_activity');
-const saveButtonOfAddPopup = editPopup.querySelector('.popup__save-button_type_edit');
-const closeButtonOfAddPopup = editPopup.querySelector('.popup__close-button_type_edit');
+const saveButtonOfEditPopup = editPopup.querySelector('.popup__save-button_type_edit');
+const closeButtonOfEditPopup = editPopup.querySelector('.popup__close-button_type_edit');
 
 const addPopup = document.querySelector('.popup_type_add');
-const formElementOfEditPopup = addPopup.querySelector('.popup__form_type_add');
+const formElementOfAddPopup = addPopup.querySelector('.popup__form_type_add');
 const placeNameInput = addPopup.querySelector('.popup__input_type_place-name');
 const linkInput = addPopup.querySelector('.popup__input_type_link');
-const saveButtonOfEditPopup = addPopup.querySelector('.popup__save-button_type_add');
-const closeButtonOfEditPopup = addPopup.querySelector('.popup__close-button_type_add');
+const saveButtonOfAddPopup = addPopup.querySelector('.popup__save-button_type_add');
+const closeButtonOfAddPopup = addPopup.querySelector('.popup__close-button_type_add');
 
 const initialCards = [
   {
@@ -56,35 +56,86 @@ const initialCards = [
 profile.addEventListener('click', (event) => {
   switch (event.target) {
     case addButton:
-      renderCard();
+      openPopup(addPopup);
       break;
     case editButton:
-      openPopup();
+      openPopup(editPopup);
       break;
   }
 });
 
-// Popup
+// Popups
 
-popup.addEventListener('click', function (event) {
+// Close a popup with a click
+
+editPopup.addEventListener('click', function (event) {
   switch (event.target) {
+    case closeButtonOfEditPopup:
+      closePopup(editPopup);
+      break;
     case event.currentTarget:
-      closePopup();
-      break;
-    case closeButton:
-      closePopup();
+      closePopup(editPopup);
       break;
   }
 });
 
-popup.addEventListener('keydown', function (event) {
+addPopup.addEventListener('click', function (event) {
+  switch (event.target) {
+    case closeButtonOfAddPopup:
+      closePopup(addPopup);
+      break;
+    case event.currentTarget:
+      closePopup(addPopup);
+      break;
+  }
+});
+
+// Close the popup using the esc key
+
+editPopup.addEventListener('keydown', function (event) {
   if (event.keyCode === 27) {
-    closePopup();
+    closePopup(editPopup);
   }
 });
 
-function openPopup() {
-  togglePopup();
+addPopup.addEventListener('keydown', function (event) {
+  if (event.keyCode === 27) {
+    closePopup(addPopup);
+  }
+});
+
+// Accept the data of the popup form
+
+formElementOfEditPopup.addEventListener('submit', editFormSubmitHandler);
+formElementOfAddPopup.addEventListener('submit', addFormSubmitHandler);
+
+// Handle popup form data
+
+function editFormSubmitHandler(event) {
+  event.preventDefault();
+  if (isEmptyInput(nameInput, jobInput)) {
+    alert('Пожалуйста, введите данные.');
+  } else {
+    loadTextFromInput(nameDisplay, nameInput);
+    loadTextFromInput(jobDisplay, jobInput);
+    closePopup(editPopup);
+  }
+}
+
+function addFormSubmitHandler(event) {
+  event.preventDefault();
+  if (isEmptyInput(placeNameInput, linkInput)) {
+    alert('Пожалуйста, введите данные.');
+  } else {
+    renderCard(placeNameInput, linkInput);
+    closePopup(addPopup);
+  }
+}
+
+// Open popup
+
+function openPopup(popup) {
+  togglePopup(popup);
   loadTextFromDisplay(nameInput, nameDisplay);
   loadTextFromDisplay(jobInput, jobDisplay);
 
@@ -92,39 +143,32 @@ function openPopup() {
   useTab(-1); //enable the tab key only in the popup
 }
 
-function togglePopup() {
+// Close popup
+
+function closePopup(popup) {
+  togglePopup(popup);
+  useTab(1); //enable tab key in the page
+}
+
+// Toggle popup
+
+function togglePopup(popup) {
   popup.classList.toggle('popup_opened');
 }
+
+// Display text in the input
 
 function loadTextFromDisplay(input, display) {
   input.value = display.textContent;
 }
 
-function useTab(index) {
-  for (let i = 0; i < contentButtons.length; i++) {
-    contentButtons[i].setAttribute('tabindex', index);
-  }
+// Update text in the profile
+
+function loadTextFromInput(display, input) {
+  display.textContent = input.value;
 }
 
-function closePopup() {
-  togglePopup();
-  useTab(1); //enable tab key in the page
-}
-
-// Popup form
-
-formElement.addEventListener('submit', formSubmitHandler);
-
-function formSubmitHandler(event) {
-  event.preventDefault();
-  if (isEmptyInput(nameInput, jobInput)) {
-    alert('Пожалуйста, введите данные.');
-  } else {
-    loadTextFromInput(nameDisplay, nameInput);
-    loadTextFromInput(jobDisplay, jobInput);
-    closePopup();
-  }
-}
+// Check input
 
 function isEmptyInput(...arrayInput) {
   return arrayInput.some((input) => {
@@ -132,8 +176,12 @@ function isEmptyInput(...arrayInput) {
   });
 }
 
-function loadTextFromInput(display, input) {
-  display.textContent = input.value;
+// Manage tab key
+
+function useTab(index) {
+  for (let i = 0; i < contentButtons.length; i++) {
+    contentButtons[i].setAttribute('tabindex', index);
+  }
 }
 
 // Cards (places)
