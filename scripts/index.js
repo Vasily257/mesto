@@ -103,20 +103,12 @@ enlargePopup.addEventListener('click', function (event) {
 
 // Listeners for closing a popup using the esc key
 
-editPopup.addEventListener('keydown', function (event) {
-  if (event.keyCode === 27) {
+document.addEventListener('keydown', function (event) {
+  if (event.code === 'Escape' && editPopup.classList.contains('popup_opened')) {
     closePopup(editPopup);
-  }
-});
-
-addPopup.addEventListener('keydown', function (event) {
-  if (event.keyCode === 27) {
+  } else if (event.code === 'Escape' && addPopup.classList.contains('popup_opened')) {
     closePopup(addPopup);
-  }
-});
-
-enlargePopup.addEventListener('keydown', function (event) {
-  if (event.keyCode === 27) {
+  } else if (event.code === 'Escape' && enlargePopup.classList.contains('popup_opened')) {
     closePopup(enlargePopup);
   }
 });
