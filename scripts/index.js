@@ -223,6 +223,7 @@ function createCard(data) {
   const likeButton = cardElement.querySelector('.places__like-button');
   const deleteButton = cardElement.querySelector('.places__delete-button');
   const cardImage = cardElement.querySelector('.places__image');
+  const enlargeButton = cardElement.querySelector('.places__enlarge-button');
 
   cardTitle.textContent = data.name;
   cardImage.src = data.link;
@@ -236,7 +237,7 @@ function createCard(data) {
       case deleteButton:
         event.target.parentElement.remove();
         break;
-      case cardImage:
+      case enlargeButton:
         openPopup(enlargePopup);
         popupImageCaption.textContent = cardTitle.textContent;
         popupImage.src = cardImage.src;
