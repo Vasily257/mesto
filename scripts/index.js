@@ -1,5 +1,4 @@
 const content = document.querySelector('.content');
-const contentButtons = content.querySelectorAll('button:not([disabled])');
 
 const profile = document.querySelector('.profile');
 const nameDisplay = profile.querySelector('.profile__name');
@@ -94,12 +93,9 @@ document.addEventListener('click', function (event) {
 // Listeners for closing a popup using the esc key
 
 document.addEventListener('keydown', function (event) {
-  if (event.code === 'Escape' && editPopup.classList.contains('popup_opened')) {
-    closePopup(editPopup);
-  } else if (event.code === 'Escape' && addPopup.classList.contains('popup_opened')) {
-    closePopup(addPopup);
-  } else if (event.code === 'Escape' && enlargePopup.classList.contains('popup_opened')) {
-    closePopup(enlargePopup);
+  const openPopup = document.querySelector('.popup_opened');
+  if (event.code === 'Escape') {
+    closePopup(openPopup);
   }
 });
 
@@ -241,3 +237,7 @@ function renderCard(data) {
     renderCard(item);
   });
 })();
+
+// Buttons where the tab-index will change
+
+const contentButtons = content.querySelectorAll('button:not([disabled])');
