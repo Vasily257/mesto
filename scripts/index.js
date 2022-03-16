@@ -25,9 +25,9 @@ const saveButtonOfAddPopup = addPopup.querySelector('.popup__save-button_type_ad
 const closeButtonOfAddPopup = addPopup.querySelector('.popup__close-button_type_add');
 
 const enlargePopup = document.querySelector('.popup_type_enlarge');
-const placeImage = enlargePopup.querySelector('.popup__image');
-const placeImageContainer = enlargePopup.querySelector('.popup__image-container');
-const placeImageCaption = enlargePopup.querySelector('.popup__image-caption');
+const popupImage = enlargePopup.querySelector('.popup__image');
+const popupImageContainer = enlargePopup.querySelector('.popup__image-container');
+const popupImageCaption = enlargePopup.querySelector('.popup__image-caption');
 const closeButtonOfEnlargePopup = enlargePopup.querySelector('.popup__close-button_type_enlarge');
 
 const initialCards = [
@@ -92,6 +92,14 @@ addPopup.addEventListener('click', function (event) {
   }
 });
 
+enlargePopup.addEventListener('click', function (event) {
+  switch (event.target) {
+    case closeButtonOfEnlargePopup:
+    case event.currentTarget:
+      closePopup(enlargePopup);
+      break;
+  }
+});
 // Close the popup using the esc key
 
 editPopup.addEventListener('keydown', function (event) {
@@ -106,6 +114,11 @@ addPopup.addEventListener('keydown', function (event) {
   }
 });
 
+enlargePopup.addEventListener('keydown', function (event) {
+  if (event.keyCode === 27) {
+    closePopup(enlargePopup);
+  }
+});
 // Accept the data of the popup form
 
 formElementOfEditPopup.addEventListener('submit', editFormSubmitHandler);
@@ -204,12 +217,14 @@ function createCard(data) {
     .querySelector('.places-template')
     .content.firstElementChild.cloneNode(true);
 
+  const cardTitle = cardElement.querySelector('.places__title');
   const likeButton = cardElement.querySelector('.places__like-button');
   const deleteButton = cardElement.querySelector('.places__delete-button');
+  const cardImage = cardElement.querySelector('.places__image');
 
-  cardElement.querySelector('.places__title').textContent = data.name;
-  cardElement.querySelector('.places__image').src = data.link;
-  cardElement.querySelector('.places__image').alt = data.name;
+  cardTitle.textContent = data.name;
+  cardImage.src = data.link;
+  cardImage.alt = data.name;
 
   cardElement.addEventListener('click', (event) => {
     switch (event.target) {
@@ -218,6 +233,12 @@ function createCard(data) {
         break;
       case deleteButton:
         event.target.parentElement.remove();
+        break;
+      case cardImage:
+        openPopup(enlargePopup);
+        popupImage.src = cardImage.src;
+        popupImage.alt = cardImage.alt;
+        popupImageCaption.textContent = cardTitle.textContent;
         break;
     }
   });
