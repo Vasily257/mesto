@@ -24,6 +24,12 @@ const linkInput = addPopup.querySelector('.popup__input_type_link');
 const saveButtonOfAddPopup = addPopup.querySelector('.popup__save-button_type_add');
 const closeButtonOfAddPopup = addPopup.querySelector('.popup__close-button_type_add');
 
+const enlargePopup = document.querySelector('.popup_type_enlarge');
+const placeImage = enlargePopup.querySelector('.popup__image');
+const placeImageContainer = enlargePopup.querySelector('.popup__image-container');
+const placeImageCaption = enlargePopup.querySelector('.popup__image-caption');
+const closeButtonOfEnlargePopup = enlargePopup.querySelector('.popup__close-button_type_enlarge');
+
 const initialCards = [
   {
     name: 'Архыз',
