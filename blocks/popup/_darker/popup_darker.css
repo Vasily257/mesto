@@ -1,0 +1,3 @@
+.popup_darker-overlay::before {
+  opacity: 0.9;
+}
