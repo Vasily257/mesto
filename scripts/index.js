@@ -69,14 +69,20 @@ profile.addEventListener('click', (event) => {
 // Close a popup with a click
 
 editPopup.addEventListener('click', function (event) {
-  if (event.target === closeButtonOfEditPopup || event.currentTarget) {
-    closePopup(editPopup);
+  switch (event.target) {
+    case closeButtonOfEditPopup:
+    case event.currentTarget:
+      closePopup(editPopup);
+      break;
   }
 });
 
 addPopup.addEventListener('click', function (event) {
-  if (event.target === closeButtonOfAddPopup || event.currentTarget) {
-    closePopup(addPopup);
+  switch (event.target) {
+    case closeButtonOfAddPopup:
+    case event.currentTarget:
+      closePopup(addPopup);
+      break;
   }
 });
 
