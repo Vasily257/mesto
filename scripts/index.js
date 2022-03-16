@@ -152,6 +152,7 @@ function openPopup(popup) {
     case addPopup:
       placeNameInput.value = '';
       linkInput.value = '';
+      placeNameInput.focus();
   }
 }
 
