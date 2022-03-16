@@ -57,7 +57,9 @@ const initialCards = [
   },
 ];
 
-// Profile
+// Popups
+
+// Listeners for opening a popup with a click
 
 profile.addEventListener('click', (event) => {
   switch (event.target) {
@@ -70,9 +72,7 @@ profile.addEventListener('click', (event) => {
   }
 });
 
-// Popups
-
-// Close a popup with a click
+// Listeners for closing a popup with a click
 
 editPopup.addEventListener('click', function (event) {
   switch (event.target) {
@@ -100,7 +100,8 @@ enlargePopup.addEventListener('click', function (event) {
       break;
   }
 });
-// Close the popup using the esc key
+
+// Listeners for closing a popup using the esc key
 
 editPopup.addEventListener('keydown', function (event) {
   if (event.keyCode === 27) {
@@ -119,7 +120,8 @@ enlargePopup.addEventListener('keydown', function (event) {
     closePopup(enlargePopup);
   }
 });
-// Accept the data of the popup form
+
+// Listeners for accepting the data of the popup form
 
 formElementOfEditPopup.addEventListener('submit', editFormSubmitHandler);
 formElementOfAddPopup.addEventListener('submit', addFormSubmitHandler);
@@ -236,9 +238,9 @@ function createCard(data) {
         break;
       case cardImage:
         openPopup(enlargePopup);
+        popupImageCaption.textContent = cardTitle.textContent;
         popupImage.src = cardImage.src;
         popupImage.alt = cardImage.alt;
-        popupImageCaption.textContent = cardTitle.textContent;
         break;
     }
   });
