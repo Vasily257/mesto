@@ -74,28 +74,18 @@ profile.addEventListener('click', (event) => {
 
 // Listeners for closing a popup with a click
 
-editPopup.addEventListener('click', function (event) {
+document.addEventListener('click', function (event) {
   switch (event.target) {
     case closeButtonOfEditPopup:
-    case event.currentTarget:
+    case editPopup:
       closePopup(editPopup);
       break;
-  }
-});
-
-addPopup.addEventListener('click', function (event) {
-  switch (event.target) {
     case closeButtonOfAddPopup:
-    case event.currentTarget:
+    case addPopup:
       closePopup(addPopup);
       break;
-  }
-});
-
-enlargePopup.addEventListener('click', function (event) {
-  switch (event.target) {
     case closeButtonOfEnlargePopup:
-    case event.currentTarget:
+    case enlargePopup:
       closePopup(enlargePopup);
       break;
   }
