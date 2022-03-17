@@ -102,44 +102,33 @@ formElementOfAddPopup.addEventListener('submit', addFormSubmitHandler);
 
 function editFormSubmitHandler(event) {
   event.preventDefault();
-  if (isEmptyInput(nameInput, jobInput)) {
-    alert('Пожалуйста, введите данные.');
-  } else {
-    loadTextFromInput(nameDisplay, nameInput);
-    loadTextFromInput(jobDisplay, jobInput);
-    closePopup(popupForEditingProfile);
-  }
+  loadTextFromInput(nameDisplay, nameInput);
+  loadTextFromInput(jobDisplay, jobInput);
+  closePopup(popupForEditingProfile);
 }
 
 function addFormSubmitHandler(event) {
   event.preventDefault();
-  if (isEmptyInput(placeNameInput, linkInput)) {
-    alert('Пожалуйста, введите данные.');
-  } else {
-    const data = {
-      name: placeNameInput.value,
-      link: linkInput.value,
-    };
-    renderCard(data);
-    closePopup(popupForAddingCard);
-  }
+  const data = {
+    name: placeNameInput.value,
+    link: linkInput.value,
+  };
+  renderCard(data);
+  closePopup(popupForAddingCard);
 }
 
 // Open popup
 
 function openPopup(popup) {
   togglePopup(popup);
-  useTab(-1); //enable the tab key only in the popup
 
   switch (popup) {
     case popupForEditingProfile:
       loadTextFromDisplay(nameInput, nameDisplay);
       loadTextFromDisplay(jobInput, jobDisplay);
-      nameInput.focus();
     case popupForAddingCard:
       placeNameInput.value = '';
       linkInput.value = '';
-      placeNameInput.focus();
   }
 }
 
@@ -147,7 +136,6 @@ function openPopup(popup) {
 
 function closePopup(popup) {
   togglePopup(popup);
-  useTab(1); //enable tab key in the page
 }
 
 // Toggle popup
@@ -166,22 +154,6 @@ function loadTextFromDisplay(input, display) {
 
 function loadTextFromInput(display, input) {
   display.textContent = input.value;
-}
-
-// Check input
-
-function isEmptyInput(...arrayInput) {
-  return arrayInput.some((input) => {
-    return !input.value || input.value.trim() === '';
-  });
-}
-
-// Manage tab key
-
-function useTab(index) {
-  for (let i = 0; i < contentButtons.length; i++) {
-    contentButtons[i].setAttribute('tabindex', index);
-  }
 }
 
 // Cards (places)
@@ -231,9 +203,3 @@ function renderCard(data) {
     renderCard(item);
   });
 })();
-
-// Buttons where the tab-index will change
-
-const contentButtons = content.querySelectorAll('button:not([disabled])');
-
-// Буду очень рад советам из раздела «Можно лучше», чтобы понять, какие есть пути оптимизации кода))
