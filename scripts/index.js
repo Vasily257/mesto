@@ -3,31 +3,32 @@ const content = document.querySelector('.content');
 const profile = document.querySelector('.profile');
 const nameDisplay = profile.querySelector('.profile__name');
 const jobDisplay = profile.querySelector('.profile__activity');
-const editButton = profile.querySelector('.profile__edit-button');
-const addButton = profile.querySelector('.profile__add-button');
+const buttonForEditingProfile = profile.querySelector('.profile__edit-button');
+const buttonForAddingCard = profile.querySelector('.profile__add-button');
 
-const cards = document.querySelector('.places');
-const cardsContainer = cards.querySelector('.places__list');
+const cardsContainer = document.querySelector('.places__list');
 
-const editPopup = document.querySelector('.popup_type_edit');
-const formElementOfEditPopup = editPopup.querySelector('.popup__form_type_edit');
-const nameInput = editPopup.querySelector('.popup__input_type_name');
-const jobInput = editPopup.querySelector('.popup__input_type_activity');
-const saveButtonOfEditPopup = editPopup.querySelector('.popup__save-button_type_edit');
-const closeButtonOfEditPopup = editPopup.querySelector('.popup__close-button_type_edit');
+const popupForEditingProfile = document.querySelector('.popup_type_edit');
+const formElementOfEditPopup = popupForEditingProfile.querySelector('.popup__form_type_edit');
+const nameInput = popupForEditingProfile.querySelector('.popup__input_type_name');
+const jobInput = popupForEditingProfile.querySelector('.popup__input_type_activity');
+const buttonToCloseEditingPopup = popupForEditingProfile.querySelector(
+  '.popup__close-button_type_edit'
+);
 
-const addPopup = document.querySelector('.popup_type_add');
-const formElementOfAddPopup = addPopup.querySelector('.popup__form_type_add');
-const placeNameInput = addPopup.querySelector('.popup__input_type_place-name');
-const linkInput = addPopup.querySelector('.popup__input_type_link');
-const saveButtonOfAddPopup = addPopup.querySelector('.popup__save-button_type_add');
-const closeButtonOfAddPopup = addPopup.querySelector('.popup__close-button_type_add');
+const popupForAddingCard = document.querySelector('.popup_type_add');
+const formElementOfAddPopup = popupForAddingCard.querySelector('.popup__form_type_add');
+const placeNameInput = popupForAddingCard.querySelector('.popup__input_type_place-name');
+const linkInput = popupForAddingCard.querySelector('.popup__input_type_link');
+const buttonToCloseAddingPopup = popupForAddingCard.querySelector('.popup__close-button_type_add');
 
-const enlargePopup = document.querySelector('.popup_type_enlarge');
-const popupImage = enlargePopup.querySelector('.popup__image');
-const popupImageContainer = enlargePopup.querySelector('.popup__image-container');
-const popupImageCaption = enlargePopup.querySelector('.popup__image-caption');
-const closeButtonOfEnlargePopup = enlargePopup.querySelector('.popup__close-button_type_enlarge');
+const popupForEnlargingCard = document.querySelector('.popup_type_enlarge');
+const popupImage = popupForEnlargingCard.querySelector('.popup__image');
+const popupImageContainer = popupForEnlargingCard.querySelector('.popup__image-container');
+const popupImageCaption = popupForEnlargingCard.querySelector('.popup__image-caption');
+const buttonToCloseEnlargingPopup = popupForEnlargingCard.querySelector(
+  '.popup__close-button_type_enlarge'
+);
 
 const initialCards = [
   {
@@ -62,23 +63,23 @@ const initialCards = [
 
 document.addEventListener('click', function (event) {
   switch (event.target) {
-    case addButton:
-      openPopup(addPopup);
+    case buttonForAddingCard:
+      openPopup(popupForAddingCard);
       break;
-    case editButton:
-      openPopup(editPopup);
+    case buttonForEditingProfile:
+      openPopup(popupForEditingProfile);
       break;
-    case closeButtonOfEditPopup:
-    case editPopup:
-      closePopup(editPopup);
+    case buttonToCloseEditingPopup:
+    case popupForEditingProfile:
+      closePopup(popupForEditingProfile);
       break;
-    case closeButtonOfAddPopup:
-    case addPopup:
-      closePopup(addPopup);
+    case buttonToCloseAddingPopup:
+    case popupForAddingCard:
+      closePopup(popupForAddingCard);
       break;
-    case closeButtonOfEnlargePopup:
-    case enlargePopup:
-      closePopup(enlargePopup);
+    case buttonToCloseEnlargingPopup:
+    case popupForEnlargingCard:
+      closePopup(popupForEnlargingCard);
       break;
   }
 });
@@ -106,7 +107,7 @@ function editFormSubmitHandler(event) {
   } else {
     loadTextFromInput(nameDisplay, nameInput);
     loadTextFromInput(jobDisplay, jobInput);
-    closePopup(editPopup);
+    closePopup(popupForEditingProfile);
   }
 }
 
@@ -120,7 +121,7 @@ function addFormSubmitHandler(event) {
       link: linkInput.value,
     };
     renderCard(data);
-    closePopup(addPopup);
+    closePopup(popupForAddingCard);
   }
 }
 
@@ -131,11 +132,11 @@ function openPopup(popup) {
   useTab(-1); //enable the tab key only in the popup
 
   switch (popup) {
-    case editPopup:
+    case popupForEditingProfile:
       loadTextFromDisplay(nameInput, nameDisplay);
       loadTextFromDisplay(jobInput, jobDisplay);
       nameInput.focus();
-    case addPopup:
+    case popupForAddingCard:
       placeNameInput.value = '';
       linkInput.value = '';
       placeNameInput.focus();
@@ -191,10 +192,10 @@ function createCard(data) {
     .content.firstElementChild.cloneNode(true);
 
   const cardTitle = cardElement.querySelector('.places__title');
-  const likeButton = cardElement.querySelector('.places__like-button');
-  const deleteButton = cardElement.querySelector('.places__delete-button');
+  const buttonToLike = cardElement.querySelector('.places__like-button');
+  const buttonToDelete = cardElement.querySelector('.places__delete-button');
   const cardImage = cardElement.querySelector('.places__image');
-  const enlargeButton = cardElement.querySelector('.places__enlarge-button');
+  const buttonToEnlarge = cardElement.querySelector('.places__enlarge-button');
 
   cardTitle.textContent = data.name;
   cardImage.src = data.link;
@@ -202,14 +203,14 @@ function createCard(data) {
 
   cardElement.addEventListener('click', (event) => {
     switch (event.target) {
-      case likeButton:
+      case buttonToLike:
         event.target.classList.toggle('places__like-button_active');
         break;
-      case deleteButton:
+      case buttonToDelete:
         event.target.parentElement.remove();
         break;
-      case enlargeButton:
-        openPopup(enlargePopup);
+      case buttonToEnlarge:
+        openPopup(popupForEnlargingCard);
         popupImageCaption.textContent = cardTitle.textContent;
         popupImage.src = cardImage.src;
         popupImage.alt = cardImage.alt;
