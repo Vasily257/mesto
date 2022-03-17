@@ -58,9 +58,9 @@ const initialCards = [
 
 // Popups
 
-// Listeners for opening a popup with a click
+// Listeners for opening and closing popups
 
-profile.addEventListener('click', (event) => {
+document.addEventListener('click', function (event) {
   switch (event.target) {
     case addButton:
       openPopup(addPopup);
@@ -68,13 +68,6 @@ profile.addEventListener('click', (event) => {
     case editButton:
       openPopup(editPopup);
       break;
-  }
-});
-
-// Listeners for closing a popup with a click
-
-document.addEventListener('click', function (event) {
-  switch (event.target) {
     case closeButtonOfEditPopup:
     case editPopup:
       closePopup(editPopup);
