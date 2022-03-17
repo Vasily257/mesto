@@ -198,8 +198,6 @@ function renderCard(data) {
   cardsContainer.prepend(cardElement);
 }
 
-(function initialRenderCards() {
-  initialCards.reverse().forEach((item) => {
-    renderCard(item);
-  });
-})();
+initialCards.reverse().forEach((item) => {
+  renderCard(item);
+});
