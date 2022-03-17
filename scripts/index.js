@@ -234,3 +234,5 @@ function renderCard(data) {
 // Buttons where the tab-index will change
 
 const contentButtons = content.querySelectorAll('button:not([disabled])');
+
+// Буду очень рад советам из раздела «Можно лучше», чтобы понять, какие есть пути оптимизации кода))
