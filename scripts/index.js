@@ -120,7 +120,7 @@ function addFormSubmitHandler(event) {
 // Open popup
 
 function openPopup(popup) {
-  togglePopup(popup);
+  popup.classList.toggle('popup_opened');
 
   switch (popup) {
     case popupForEditingProfile:
@@ -135,12 +135,6 @@ function openPopup(popup) {
 // Close popup
 
 function closePopup(popup) {
-  togglePopup(popup);
-}
-
-// Toggle popup
-
-function togglePopup(popup) {
   popup.classList.toggle('popup_opened');
 }
 
