@@ -86,12 +86,12 @@ document.addEventListener('click', function (event) {
 
 // Listeners for closing a popup using the esc key
 
-document.addEventListener('keydown', function (event) {
-  const openPopup = document.querySelector('.popup_opened');
-  if (event.code === 'Escape') {
-    closePopup(openPopup);
-  }
-});
+// document.addEventListener('keydown', function (event) {
+//   const openPopup = document.querySelector('.popup_opened');
+//   if (event.code === 'Escape') {
+//     closePopup(openPopup);
+//   }
+// });
 
 // Listeners for accepting the data of the popup form
 
