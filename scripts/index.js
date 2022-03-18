@@ -109,8 +109,22 @@ popupForEnlargingCard.addEventListener('click', (event) => {
 
 // Listeners for accepting the data of the popup form
 
-formElementOfEditPopup.addEventListener('submit', editFormSubmitHandler);
-formElementOfAddPopup.addEventListener('submit', addFormSubmitHandler);
+formElementOfEditPopup.addEventListener('submit', (event) => {
+  event.preventDefault();
+  nameDisplay.textContent = nameInput.value;
+  jobDisplay.textContent = jobInput.value;
+  closePopup(popupForEditingProfile);
+});
+
+formElementOfAddPopup.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const data = {
+    name: placeNameInput.value,
+    link: linkInput.value,
+  };
+  renderCard(data);
+  closePopup(popupForAddingCard);
+});
 
 // Listeners for closing a popup using the esc key
 
@@ -120,25 +134,6 @@ formElementOfAddPopup.addEventListener('submit', addFormSubmitHandler);
 //     closePopup(openPopup);
 //   }
 // });
-
-// Handle popup form data
-
-function editFormSubmitHandler(event) {
-  event.preventDefault();
-  nameDisplay.textContent = nameInput.value;
-  jobDisplay.textContent = jobInput.value;
-  closePopup(popupForEditingProfile);
-}
-
-function addFormSubmitHandler(event) {
-  event.preventDefault();
-  const data = {
-    name: placeNameInput.value,
-    link: linkInput.value,
-  };
-  renderCard(data);
-  closePopup(popupForAddingCard);
-}
 
 // Open popup
 
