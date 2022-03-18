@@ -7,6 +7,7 @@ const buttonForEditingProfile = profile.querySelector('.profile__edit-button');
 const buttonForAddingCard = profile.querySelector('.profile__add-button');
 
 const cardsContainer = document.querySelector('.places__list');
+const popups = document.querySelectorAll('.popup');
 
 const popupForEditingProfile = document.querySelector('.popup_type_edit');
 const formElementOfEditPopup = popupForEditingProfile.querySelector('.popup__form_type_edit');
@@ -89,22 +90,12 @@ buttonToCloseEnlargingPopup.addEventListener('click', () => {
 
 // Listeners for closing a popups whith click to overlay
 
-popupForEditingProfile.addEventListener('click', (event) => {
-  if (event.target === event.currentTarget) {
-    closePopup(popupForEditingProfile);
-  }
-});
-
-popupForAddingCard.addEventListener('click', (event) => {
-  if (event.target === event.currentTarget) {
-    closePopup(popupForAddingCard);
-  }
-});
-
-popupForEnlargingCard.addEventListener('click', (event) => {
-  if (event.target === event.currentTarget) {
-    closePopup(popupForEnlargingCard);
-  }
+popups.forEach((popup) => {
+  popup.addEventListener('click', (event) => {
+    if (event.target === event.currentTarget) {
+      closePopup(popup);
+    }
+  });
 });
 
 // Listeners for accepting the data of the popup form
@@ -190,14 +181,3 @@ function renderCard(data) {
 initialCards.reverse().forEach((item) => {
   renderCard(item);
 });
-
-// Остался только вопрос с карточкой)
-// Кнопка растягивается так же, как и изображение карточки
-// При клике на изображение (кнопку) открывается попап с фото
-// Курсор меняется на pointer, так как к кнопке примиксован универсальный класс button с нужным свойством
-// Заморочился с кнопкой для того, чтобы сохранить доступность для этого элемента — иначе пришлось бы изображению задавать tabindex, прописывать role и так далее
-// Пример того, как у меня отображается добавленная карточка — http://joxi.ru/YmE4q0QTGxEdLr
-
-// Возможно, при первой проверке не прогрузился код или возникла другая проблема — например, у меня в GitHub были проблемы с деплоем страницы на Gitub Pages
-
-// Если проблема с карточкой останется, то буду разбирать её с наставником и старшим студентом)
