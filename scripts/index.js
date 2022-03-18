@@ -60,8 +60,7 @@ buttonForEditingProfile.addEventListener('click', () => {
 });
 
 buttonForAddingCard.addEventListener('click', () => {
-  placeNameInput.value = '';
-  linkInput.value = '';
+  formElementOfAddPopup.reset();
   openPopup(popupForAddingCard);
 });
 
@@ -140,7 +139,7 @@ function createCard(data) {
   });
 
   buttonToDelete.addEventListener('click', () => {
-    buttonToDelete.parentElement.remove();
+    buttonToDelete.closest('.places__item').remove();
   });
 
   buttonToEnlarge.addEventListener('click', () => {
