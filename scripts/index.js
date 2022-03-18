@@ -59,30 +59,68 @@ const initialCards = [
 
 // Popups
 
-// Listeners for opening and closing popups
+// Listeners for opening a popup whith click to button
 
-document.addEventListener('click', function (event) {
-  switch (event.target) {
-    case buttonForAddingCard:
-      openPopup(popupForAddingCard);
-      break;
-    case buttonForEditingProfile:
-      openPopup(popupForEditingProfile);
-      break;
-    case buttonToCloseEditingPopup:
-    case popupForEditingProfile:
-      closePopup(popupForEditingProfile);
-      break;
-    case buttonToCloseAddingPopup:
-    case popupForAddingCard:
-      closePopup(popupForAddingCard);
-      break;
-    case buttonToCloseEnlargingPopup:
-    case popupForEnlargingCard:
-      closePopup(popupForEnlargingCard);
-      break;
+buttonForEditingProfile.addEventListener('click', (event) => {
+  if (event.target === event.currentTarget) {
+    loadTextFromDisplay(nameInput, nameDisplay);
+    loadTextFromDisplay(jobInput, jobDisplay);
+    openPopup(popupForEditingProfile);
   }
 });
+
+buttonForAddingCard.addEventListener('click', (event) => {
+  if (event.target === event.currentTarget) {
+    placeNameInput.value = '';
+    linkInput.value = '';
+    openPopup(popupForAddingCard);
+  }
+});
+
+// Listeners for closing a popups whith click to button
+
+buttonToCloseEditingPopup.addEventListener('click', (event) => {
+  if (event.target === event.currentTarget) {
+    closePopup(popupForEditingProfile);
+  }
+});
+
+buttonToCloseAddingPopup.addEventListener('click', (event) => {
+  if (event.target === event.currentTarget) {
+    closePopup(popupForAddingCard);
+  }
+});
+
+buttonToCloseEnlargingPopup.addEventListener('click', (event) => {
+  if (event.target === event.currentTarget) {
+    closePopup(popupForEnlargingCard);
+  }
+});
+
+// Listeners for closing a popups whith click to overlay
+
+popupForEditingProfile.addEventListener('click', (event) => {
+  if (event.target === event.currentTarget) {
+    closePopup(popupForEditingProfile);
+  }
+});
+
+popupForAddingCard.addEventListener('click', (event) => {
+  if (event.target === event.currentTarget) {
+    closePopup(popupForAddingCard);
+  }
+});
+
+popupForEnlargingCard.addEventListener('click', (event) => {
+  if (event.target === event.currentTarget) {
+    closePopup(popupForEnlargingCard);
+  }
+});
+
+// Listeners for accepting the data of the popup form
+
+formElementOfEditPopup.addEventListener('submit', editFormSubmitHandler);
+formElementOfAddPopup.addEventListener('submit', addFormSubmitHandler);
 
 // Listeners for closing a popup using the esc key
 
@@ -92,11 +130,6 @@ document.addEventListener('click', function (event) {
 //     closePopup(openPopup);
 //   }
 // });
-
-// Listeners for accepting the data of the popup form
-
-formElementOfEditPopup.addEventListener('submit', editFormSubmitHandler);
-formElementOfAddPopup.addEventListener('submit', addFormSubmitHandler);
 
 // Handle popup form data
 
@@ -120,22 +153,13 @@ function addFormSubmitHandler(event) {
 // Open popup
 
 function openPopup(popup) {
-  popup.classList.toggle('popup_opened');
-
-  switch (popup) {
-    case popupForEditingProfile:
-      loadTextFromDisplay(nameInput, nameDisplay);
-      loadTextFromDisplay(jobInput, jobDisplay);
-    case popupForAddingCard:
-      placeNameInput.value = '';
-      linkInput.value = '';
-  }
+  popup.classList.add('popup_opened');
 }
 
 // Close popup
 
 function closePopup(popup) {
-  popup.classList.toggle('popup_opened');
+  popup.classList.remove('popup_opened');
 }
 
 // Display text in the input
@@ -167,20 +191,24 @@ function createCard(data) {
   cardImage.src = data.link;
   cardImage.alt = data.name;
 
-  cardElement.addEventListener('click', (event) => {
-    switch (event.target) {
-      case buttonToLike:
-        event.target.classList.toggle('places__like-button_active');
-        break;
-      case buttonToDelete:
-        event.target.parentElement.remove();
-        break;
-      case buttonToEnlarge:
-        openPopup(popupForEnlargingCard);
-        popupImageCaption.textContent = cardTitle.textContent;
-        popupImage.src = cardImage.src;
-        popupImage.alt = cardImage.alt;
-        break;
+  buttonToLike.addEventListener('click', (event) => {
+    if (event.target === event.currentTarget) {
+      event.target.classList.toggle('places__like-button_active');
+    }
+  });
+
+  buttonToDelete.addEventListener('click', (event) => {
+    if (event.target === event.currentTarget) {
+      event.target.parentElement.remove();
+    }
+  });
+
+  buttonToEnlarge.addEventListener('click', (event) => {
+    if (event.target === event.currentTarget) {
+      openPopup(popupForEnlargingCard);
+      popupImageCaption.textContent = cardTitle.textContent;
+      popupImage.src = cardImage.src;
+      popupImage.alt = cardImage.alt;
     }
   });
 
