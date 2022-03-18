@@ -1,5 +1,3 @@
-const content = document.querySelector('.content');
-
 const profile = document.querySelector('.profile');
 const nameDisplay = profile.querySelector('.profile__name');
 const jobDisplay = profile.querySelector('.profile__activity');
