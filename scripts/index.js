@@ -63,8 +63,8 @@ const initialCards = [
 
 buttonForEditingProfile.addEventListener('click', (event) => {
   if (event.target === event.currentTarget) {
-    loadTextFromDisplay(nameInput, nameDisplay);
-    loadTextFromDisplay(jobInput, jobDisplay);
+    nameInput.value = nameDisplay.textContent;
+    jobInput.value = jobDisplay.textContent;
     openPopup(popupForEditingProfile);
   }
 });
@@ -135,8 +135,8 @@ formElementOfAddPopup.addEventListener('submit', addFormSubmitHandler);
 
 function editFormSubmitHandler(event) {
   event.preventDefault();
-  loadTextFromInput(nameDisplay, nameInput);
-  loadTextFromInput(jobDisplay, jobInput);
+  nameDisplay.textContent = nameInput.value;
+  jobDisplay.textContent = jobInput.value;
   closePopup(popupForEditingProfile);
 }
 
@@ -160,18 +160,6 @@ function openPopup(popup) {
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-}
-
-// Display text in the input
-
-function loadTextFromDisplay(input, display) {
-  input.value = display.textContent;
-}
-
-// Update text in the profile
-
-function loadTextFromInput(display, input) {
-  display.textContent = input.value;
 }
 
 // Cards (places)
