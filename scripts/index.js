@@ -13,23 +13,16 @@ const popupForEditingProfile = document.querySelector('.popup_type_edit');
 const formElementOfEditPopup = popupForEditingProfile.querySelector('.popup__form_type_edit');
 const nameInput = popupForEditingProfile.querySelector('.popup__input_type_name');
 const jobInput = popupForEditingProfile.querySelector('.popup__input_type_activity');
-const buttonToCloseEditingPopup = popupForEditingProfile.querySelector(
-  '.popup__close-button_type_edit'
-);
 
 const popupForAddingCard = document.querySelector('.popup_type_add');
 const formElementOfAddPopup = popupForAddingCard.querySelector('.popup__form_type_add');
 const placeNameInput = popupForAddingCard.querySelector('.popup__input_type_place-name');
 const linkInput = popupForAddingCard.querySelector('.popup__input_type_link');
-const buttonToCloseAddingPopup = popupForAddingCard.querySelector('.popup__close-button_type_add');
 
 const popupForEnlargingCard = document.querySelector('.popup_type_enlarge');
 const popupImage = popupForEnlargingCard.querySelector('.popup__image');
 const popupImageContainer = popupForEnlargingCard.querySelector('.popup__image-container');
 const popupImageCaption = popupForEnlargingCard.querySelector('.popup__image-caption');
-const buttonToCloseEnlargingPopup = popupForEnlargingCard.querySelector(
-  '.popup__close-button_type_enlarge'
-);
 
 const initialCards = [
   {
@@ -74,25 +67,14 @@ buttonForAddingCard.addEventListener('click', () => {
   openPopup(popupForAddingCard);
 });
 
-// Listeners for closing a popups whith click to button
-
-buttonToCloseEditingPopup.addEventListener('click', () => {
-  closePopup(popupForEditingProfile);
-});
-
-buttonToCloseAddingPopup.addEventListener('click', () => {
-  closePopup(popupForAddingCard);
-});
-
-buttonToCloseEnlargingPopup.addEventListener('click', () => {
-  closePopup(popupForEnlargingCard);
-});
-
 // Listeners for closing a popups whith click to overlay
 
 popups.forEach((popup) => {
   popup.addEventListener('click', (event) => {
-    if (event.target === event.currentTarget) {
+    if (
+      event.target === event.currentTarget ||
+      event.target.classList.contains('popup__close-button')
+    ) {
       closePopup(popup);
     }
   });
