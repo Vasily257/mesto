@@ -146,10 +146,10 @@ function createCard(data) {
   });
 
   buttonToEnlarge.addEventListener('click', () => {
+    popupImageCaption.textContent = data.name;
+    popupImage.src = data.link;
+    popupImage.alt = data.name;
     openPopup(popupForEnlargingCard);
-    popupImageCaption.textContent = cardTitle.textContent;
-    popupImage.src = cardImage.src;
-    popupImage.alt = cardImage.alt;
   });
 
   return cardElement;
