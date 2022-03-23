@@ -106,15 +106,6 @@ function handleFormElementOfAddPopup(event) {
 
 formElementOfAddPopup.addEventListener('submit', handleFormElementOfAddPopup);
 
-// Listeners for closing a popup using the esc key
-
-// document.addEventListener('keydown', function (event) {
-//   const openPopup = document.querySelector('.popup_opened');
-//   if (event.code === 'Escape') {
-//     closePopup(openPopup);
-//   }
-// });
-
 // Open popup
 
 function openPopup(popup) {
