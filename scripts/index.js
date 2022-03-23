@@ -53,20 +53,20 @@ const popupImageCaption = popupForEnlargingCard.querySelector('.popup__image-cap
 
 // Listeners for opening a popup whith click to button
 
-function handlerButtonForEditingProfile() {
+function handleButtonForEditingProfile() {
   namePopup.value = nameProfile.textContent;
   jobPopup.value = jobProfile.textContent;
   openPopup(popupForEditingProfile);
 }
 
-buttonForEditingProfile.addEventListener('click', handlerButtonForEditingProfile);
+buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile);
 
-function handlerButtonForAddingCard() {
+function handleButtonForAddingCard() {
   formElementOfAddPopup.reset();
   openPopup(popupForAddingCard);
 }
 
-buttonForAddingCard.addEventListener('click', handlerButtonForAddingCard);
+buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
 
 // Listeners for closing a popups whith click to overlay
 
@@ -83,16 +83,16 @@ popups.forEach((popup) => {
 
 // Listeners for accepting the data of the popup form
 
-function handlerFormElementOfEditPopup(event) {
+function handleFormElementOfEditPopup(event) {
   event.preventDefault();
   nameProfile.textContent = namePopup.value;
   jobProfile.textContent = jobPopup.value;
   closePopup(popupForEditingProfile);
 }
 
-formElementOfEditPopup.addEventListener('submit', handlerFormElementOfEditPopup);
+formElementOfEditPopup.addEventListener('submit', handleFormElementOfEditPopup);
 
-function handlerFormElementOfAddPopup(event) {
+function handleFormElementOfAddPopup(event) {
   event.preventDefault();
   const data = {
     name: placeNamePopup.value,
@@ -102,7 +102,7 @@ function handlerFormElementOfAddPopup(event) {
   closePopup(popupForAddingCard);
 }
 
-formElementOfAddPopup.addEventListener('submit', handlerFormElementOfAddPopup);
+formElementOfAddPopup.addEventListener('submit', handleFormElementOfAddPopup);
 
 // Listeners for closing a popup using the esc key
 
@@ -142,26 +142,26 @@ function createCard(data) {
   cardImage.src = data.link;
   cardImage.alt = data.name;
 
-  function handlerButtonToLike() {
+  function handleButtonToLike() {
     buttonToLike.classList.toggle('places__like-button_active');
   }
 
-  buttonToLike.addEventListener('click', handlerButtonToLike);
+  buttonToLike.addEventListener('click', handleButtonToLike);
 
-  function handlerButtonToDelete() {
+  function handleButtonToDelete() {
     buttonToDelete.closest('.places__item').remove();
   }
 
-  buttonToDelete.addEventListener('click', handlerButtonToDelete);
+  buttonToDelete.addEventListener('click', handleButtonToDelete);
 
-  function handlerButtonToEnlarge() {
+  function handleButtonToEnlarge() {
     popupImageCaption.textContent = data.name;
     popupImage.src = data.link;
     popupImage.alt = data.name;
     openPopup(popupForEnlargingCard);
   }
 
-  buttonToEnlarge.addEventListener('click', handlerButtonToEnlarge);
+  buttonToEnlarge.addEventListener('click', handleButtonToEnlarge);
 
   return cardElement;
 }
