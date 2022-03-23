@@ -83,14 +83,16 @@ popups.forEach((popup) => {
 
 // Listeners for accepting the data of the popup form
 
-formElementOfEditPopup.addEventListener('submit', (event) => {
+function handlerFormElementOfEditPopup(event) {
   event.preventDefault();
   nameProfile.textContent = namePopup.value;
   jobProfile.textContent = jobPopup.value;
   closePopup(popupForEditingProfile);
-});
+}
 
-formElementOfAddPopup.addEventListener('submit', (event) => {
+formElementOfEditPopup.addEventListener('submit', handlerFormElementOfEditPopup);
+
+function handlerFormElementOfAddPopup(event) {
   event.preventDefault();
   const data = {
     name: placeNamePopup.value,
@@ -98,7 +100,9 @@ formElementOfAddPopup.addEventListener('submit', (event) => {
   };
   renderCard(data);
   closePopup(popupForAddingCard);
-});
+}
+
+formElementOfAddPopup.addEventListener('submit', handlerFormElementOfAddPopup);
 
 // Listeners for closing a popup using the esc key
 
