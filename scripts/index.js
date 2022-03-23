@@ -68,17 +68,19 @@ function handleButtonForAddingCard() {
 
 buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
 
-// Listeners for closing a popups whith click to overlay
+// Listeners for closing a popups whith click
+
+function handleClosePopup(event) {
+  if (
+    event.target === event.currentTarget ||
+    event.target.classList.contains('popup__close-button')
+  ) {
+    closePopup(event.target.closest('.popup'));
+  }
+}
 
 popups.forEach((popup) => {
-  popup.addEventListener('click', (event) => {
-    if (
-      event.target === event.currentTarget ||
-      event.target.classList.contains('popup__close-button')
-    ) {
-      closePopup(popup);
-    }
-  });
+  popup.addEventListener('click', handleClosePopup);
 });
 
 // Listeners for accepting the data of the popup form
