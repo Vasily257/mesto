@@ -53,16 +53,20 @@ const popupImageCaption = popupForEnlargingCard.querySelector('.popup__image-cap
 
 // Listeners for opening a popup whith click to button
 
-buttonForEditingProfile.addEventListener('click', () => {
+function handlerButtonForEditingProfile() {
   nameInput.value = nameDisplay.textContent;
   jobInput.value = jobDisplay.textContent;
   openPopup(popupForEditingProfile);
-});
+}
 
-buttonForAddingCard.addEventListener('click', () => {
+buttonForEditingProfile.addEventListener('click', handlerButtonForEditingProfile);
+
+function handlerButtonForAddingCard() {
   formElementOfAddPopup.reset();
   openPopup(popupForAddingCard);
-});
+}
+
+buttonForAddingCard.addEventListener('click', handlerButtonForAddingCard);
 
 // Listeners for closing a popups whith click to overlay
 
@@ -134,20 +138,26 @@ function createCard(data) {
   cardImage.src = data.link;
   cardImage.alt = data.name;
 
-  buttonToLike.addEventListener('click', () => {
+  function handlerButtonToLike() {
     buttonToLike.classList.toggle('places__like-button_active');
-  });
+  }
 
-  buttonToDelete.addEventListener('click', () => {
+  buttonToLike.addEventListener('click', handlerButtonToLike);
+
+  function handlerButtonToDelete() {
     buttonToDelete.closest('.places__item').remove();
-  });
+  }
 
-  buttonToEnlarge.addEventListener('click', () => {
+  buttonToDelete.addEventListener('click', handlerButtonToDelete);
+
+  function handlerButtonToEnlarge() {
     popupImageCaption.textContent = data.name;
     popupImage.src = data.link;
     popupImage.alt = data.name;
     openPopup(popupForEnlargingCard);
-  });
+  }
+
+  buttonToEnlarge.addEventListener('click', handlerButtonToEnlarge);
 
   return cardElement;
 }
