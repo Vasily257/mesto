@@ -26,8 +26,8 @@ const initialCards = [
 ];
 
 const profile = document.querySelector('.profile');
-const nameDisplay = profile.querySelector('.profile__name');
-const jobDisplay = profile.querySelector('.profile__activity');
+const nameProfile = profile.querySelector('.profile__name');
+const jobProfile = profile.querySelector('.profile__activity');
 const buttonForEditingProfile = profile.querySelector('.profile__edit-button');
 const buttonForAddingCard = profile.querySelector('.profile__add-button');
 
@@ -36,13 +36,13 @@ const popups = document.querySelectorAll('.popup');
 
 const popupForEditingProfile = document.querySelector('.popup_type_edit');
 const formElementOfEditPopup = popupForEditingProfile.querySelector('.popup__form_type_edit');
-const nameInput = popupForEditingProfile.querySelector('.popup__input_type_name');
-const jobInput = popupForEditingProfile.querySelector('.popup__input_type_activity');
+const namePopup = popupForEditingProfile.querySelector('.popup__input_type_name');
+const jobPopup = popupForEditingProfile.querySelector('.popup__input_type_activity');
 
 const popupForAddingCard = document.querySelector('.popup_type_add');
 const formElementOfAddPopup = popupForAddingCard.querySelector('.popup__form_type_add');
-const placeNameInput = popupForAddingCard.querySelector('.popup__input_type_place-name');
-const linkInput = popupForAddingCard.querySelector('.popup__input_type_link');
+const placeNamePopup = popupForAddingCard.querySelector('.popup__input_type_place-name');
+const linkPopup = popupForAddingCard.querySelector('.popup__input_type_link');
 
 const popupForEnlargingCard = document.querySelector('.popup_type_enlarge');
 const popupImage = popupForEnlargingCard.querySelector('.popup__image');
@@ -54,8 +54,8 @@ const popupImageCaption = popupForEnlargingCard.querySelector('.popup__image-cap
 // Listeners for opening a popup whith click to button
 
 function handlerButtonForEditingProfile() {
-  nameInput.value = nameDisplay.textContent;
-  jobInput.value = jobDisplay.textContent;
+  namePopup.value = nameProfile.textContent;
+  jobPopup.value = jobProfile.textContent;
   openPopup(popupForEditingProfile);
 }
 
@@ -85,16 +85,16 @@ popups.forEach((popup) => {
 
 formElementOfEditPopup.addEventListener('submit', (event) => {
   event.preventDefault();
-  nameDisplay.textContent = nameInput.value;
-  jobDisplay.textContent = jobInput.value;
+  nameProfile.textContent = namePopup.value;
+  jobProfile.textContent = jobPopup.value;
   closePopup(popupForEditingProfile);
 });
 
 formElementOfAddPopup.addEventListener('submit', (event) => {
   event.preventDefault();
   const data = {
-    name: placeNameInput.value,
-    link: linkInput.value,
+    name: placeNamePopup.value,
+    link: linkPopup.value,
   };
   renderCard(data);
   closePopup(popupForAddingCard);
