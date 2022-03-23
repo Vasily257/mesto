@@ -1,27 +1,3 @@
-const profile = document.querySelector('.profile');
-const nameDisplay = profile.querySelector('.profile__name');
-const jobDisplay = profile.querySelector('.profile__activity');
-const buttonForEditingProfile = profile.querySelector('.profile__edit-button');
-const buttonForAddingCard = profile.querySelector('.profile__add-button');
-
-const cardsContainer = document.querySelector('.places__list');
-const popups = document.querySelectorAll('.popup');
-
-const popupForEditingProfile = document.querySelector('.popup_type_edit');
-const formElementOfEditPopup = popupForEditingProfile.querySelector('.popup__form_type_edit');
-const nameInput = popupForEditingProfile.querySelector('.popup__input_type_name');
-const jobInput = popupForEditingProfile.querySelector('.popup__input_type_activity');
-
-const popupForAddingCard = document.querySelector('.popup_type_add');
-const formElementOfAddPopup = popupForAddingCard.querySelector('.popup__form_type_add');
-const placeNameInput = popupForAddingCard.querySelector('.popup__input_type_place-name');
-const linkInput = popupForAddingCard.querySelector('.popup__input_type_link');
-
-const popupForEnlargingCard = document.querySelector('.popup_type_enlarge');
-const popupImage = popupForEnlargingCard.querySelector('.popup__image');
-const popupImageContainer = popupForEnlargingCard.querySelector('.popup__image-container');
-const popupImageCaption = popupForEnlargingCard.querySelector('.popup__image-caption');
-
 const initialCards = [
   {
     name: 'Архыз',
@@ -48,6 +24,30 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
   },
 ];
+
+const profile = document.querySelector('.profile');
+const nameDisplay = profile.querySelector('.profile__name');
+const jobDisplay = profile.querySelector('.profile__activity');
+const buttonForEditingProfile = profile.querySelector('.profile__edit-button');
+const buttonForAddingCard = profile.querySelector('.profile__add-button');
+
+const cardsContainer = document.querySelector('.places__list');
+const popups = document.querySelectorAll('.popup');
+
+const popupForEditingProfile = document.querySelector('.popup_type_edit');
+const formElementOfEditPopup = popupForEditingProfile.querySelector('.popup__form_type_edit');
+const nameInput = popupForEditingProfile.querySelector('.popup__input_type_name');
+const jobInput = popupForEditingProfile.querySelector('.popup__input_type_activity');
+
+const popupForAddingCard = document.querySelector('.popup_type_add');
+const formElementOfAddPopup = popupForAddingCard.querySelector('.popup__form_type_add');
+const placeNameInput = popupForAddingCard.querySelector('.popup__input_type_place-name');
+const linkInput = popupForAddingCard.querySelector('.popup__input_type_link');
+
+const popupForEnlargingCard = document.querySelector('.popup_type_enlarge');
+const popupImage = popupForEnlargingCard.querySelector('.popup__image');
+const popupImageContainer = popupForEnlargingCard.querySelector('.popup__image-container');
+const popupImageCaption = popupForEnlargingCard.querySelector('.popup__image-caption');
 
 // Popups
 
