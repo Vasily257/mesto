@@ -51,6 +51,16 @@ const popupImageCaption = popupForEnlargingCard.querySelector('.popup__image-cap
 
 // Popups
 
+// Functions for opening and closing popups
+
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+}
+
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
+
 // Listeners for opening a popup whith click to button
 
 function handleButtonForEditingProfile() {
@@ -106,18 +116,6 @@ function handleFormElementOfAddPopup(event) {
 
 formElementOfAddPopup.addEventListener('submit', handleFormElementOfAddPopup);
 
-// Open popup
-
-function openPopup(popup) {
-  popup.classList.add('popup_opened');
-}
-
-// Close popup
-
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-}
-
 // Cards (places)
 
 function createCard(data) {
@@ -134,6 +132,8 @@ function createCard(data) {
   cardTitle.textContent = data.name;
   cardImage.src = data.link;
   cardImage.alt = data.name;
+
+  // Сards handlers and listeners
 
   function handleButtonToLike() {
     buttonToLike.classList.toggle('places__like-button_active');
@@ -159,10 +159,14 @@ function createCard(data) {
   return cardElement;
 }
 
+// Rendering of card
+
 function renderCard(data) {
   const cardElement = createCard(data);
   cardsContainer.prepend(cardElement);
 }
+
+// Initial rendering of cards
 
 initialCards.reverse().forEach((item) => {
   renderCard(item);
