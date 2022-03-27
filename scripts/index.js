@@ -35,14 +35,14 @@ const cardsContainer = document.querySelector('.places__list');
 const popups = document.querySelectorAll('.popup');
 
 const popupForEditingProfile = document.querySelector('.popup_type_edit');
-const formElementOfEditPopup = popupForEditingProfile.querySelector('.popup__form_type_edit');
-const namePopup = popupForEditingProfile.querySelector('.popup__input_type_name');
-const jobPopup = popupForEditingProfile.querySelector('.popup__input_type_activity');
+const formElementOfEditPopup = document.forms.edit;
+const namePopup = formElementOfEditPopup.name;
+const jobPopup = formElementOfEditPopup.activity;
 
 const popupForAddingCard = document.querySelector('.popup_type_add');
-const formElementOfAddPopup = popupForAddingCard.querySelector('.popup__form_type_add');
-const placeNamePopup = popupForAddingCard.querySelector('.popup__input_type_place-name');
-const linkPopup = popupForAddingCard.querySelector('.popup__input_type_link');
+const formElementOfAddPopup = document.forms.add;
+const placePopup = formElementOfAddPopup.place;
+const linkPopup = formElementOfAddPopup.link;
 
 const popupForEnlargingCard = document.querySelector('.popup_type_enlarge');
 const popupImage = popupForEnlargingCard.querySelector('.popup__image');
@@ -107,7 +107,7 @@ formElementOfEditPopup.addEventListener('submit', handleFormElementOfEditPopup);
 function handleFormElementOfAddPopup(event) {
   event.preventDefault();
   const data = {
-    name: placeNamePopup.value,
+    name: placePopup.value,
     link: linkPopup.value,
   };
   renderCard(data);
