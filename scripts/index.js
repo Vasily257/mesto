@@ -44,10 +44,10 @@ const formOfAddingPopup = document.forms.add;
 const placePopup = formOfAddingPopup.elements.place;
 const linkPopup = formOfAddingPopup.elements.link;
 
-const popupForEnlargingCard = document.querySelector('.popup_type_enlarge');
-const popupImage = popupForEnlargingCard.querySelector('.popup__image');
-const popupImageContainer = popupForEnlargingCard.querySelector('.popup__image-container');
-const popupImageCaption = popupForEnlargingCard.querySelector('.popup__image-caption');
+const popupEnlarging = document.querySelector('.popup_type_enlarge');
+const popupImage = popupEnlarging.querySelector('.popup__image');
+const popupImageContainer = popupEnlarging.querySelector('.popup__image-container');
+const popupImageCaption = popupEnlarging.querySelector('.popup__image-caption');
 
 // Popups
 
@@ -151,7 +151,7 @@ function createCard(data) {
     popupImageCaption.textContent = data.name;
     popupImage.src = data.link;
     popupImage.alt = data.name;
-    openPopup(popupForEnlargingCard);
+    openPopup(popupEnlarging);
   }
 
   buttonToEnlarge.addEventListener('click', handleButtonToEnlarge);
