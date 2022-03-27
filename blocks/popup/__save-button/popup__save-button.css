@@ -5,6 +5,9 @@
   padding: 14px;
 
   color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
   border-radius: 2px;
   background-color: #000000;
 

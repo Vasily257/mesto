@@ -2,10 +2,8 @@
   cursor: inherit;
 
   opacity: 0.2;
-  color: black;
-  border-width: 1px;
-  border-style: solid;
-  border-color: black;
+  color: #000000;
+  border-color: #000000;
   background-color: transparent;
 }
 
