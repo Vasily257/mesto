@@ -95,24 +95,25 @@ popups.forEach((popup) => {
   popup.addEventListener('click', handleClosePopup);
 });
 
-// Listeners for accepting the data of the popup form
+// Popup forms
 
-function setSubmitButtonState(form, isFormValid, button) {
+// Function for switching the save buttons
+
+function setSubmitButtonState(isFormValid, button) {
   if (isFormValid) {
     button.removeAttribute('disabled');
-    button.classList.remove('button_disabled');
+    button.classList.remove('popup__save-button_disabled');
   } else {
     button.setAttribute('disabled', true);
-    button.classList.add('button_disabled');
+    button.classList.add('popup__save-button_disabled');
   }
 }
 
+// Listeners for accepting the data of the popup form
+
 function handleInputOfFormOfEditingPopup(event) {
-  const isValid = (event) => {
-    if (namePopup.value.length > 0 && jobPopup.value.length) {
-      return true;
-    }
-  };
+  const isValid = namePopup.value.length > 0 && jobPopup.value.length > 0;
+  setSubmitButtonState(isValid, buttonSubmitPopupEditing);
 }
 
 function handleSubmitFormOfEditingPopup(event) {
@@ -126,11 +127,8 @@ formOfEditingPopup.addEventListener('input', handleInputOfFormOfEditingPopup);
 formOfEditingPopup.addEventListener('submit', handleSubmitFormOfEditingPopup);
 
 function handleInputOfFormOfAddingPopup(event) {
-  const isValid = (event) => {
-    if (placePopup.value.length > 0 && linkPopup.value.length > 0) {
-      return true;
-    }
-  };
+  const isValid = placePopup.value.length > 0 && linkPopup.value.length > 0;
+  setSubmitButtonState(isValid, buttonSubmitPopupAdding);
 }
 
 function handleSubmitFormOfAddingPopup(event) {
