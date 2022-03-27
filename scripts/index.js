@@ -95,16 +95,33 @@ popups.forEach((popup) => {
 
 // Listeners for accepting the data of the popup form
 
-function handleFormOfEditingPopup(event) {
+function handleInputOfFormOfEditingPopup(event) {
+  const isValid = (event) => {
+    if (namePopup.value.length > 0 && jobPopup.value.length) {
+      return true;
+    }
+  };
+}
+
+function handleSubmitFormOfEditingPopup(event) {
   event.preventDefault();
   nameProfile.textContent = namePopup.value;
   jobProfile.textContent = jobPopup.value;
   closePopup(popupEditing);
 }
 
-formOfEditingPopup.addEventListener('submit', handleFormOfEditingPopup);
+formOfEditingPopup.addEventListener('input', handleInputOfFormOfEditingPopup);
+formOfEditingPopup.addEventListener('submit', handleSubmitFormOfEditingPopup);
 
-function handleFormOfAddingPopup(event) {
+function handleInputOfFormOfAddingPopup(event) {
+  const isValid = (event) => {
+    if (placePopup.value.length > 0 && linkPopup.value.length > 0) {
+      return true;
+    }
+  };
+}
+
+function handleSubmitFormOfAddingPopup(event) {
   event.preventDefault();
   const data = {
     name: placePopup.value,
@@ -114,7 +131,8 @@ function handleFormOfAddingPopup(event) {
   closePopup(popupAdding);
 }
 
-formOfAddingPopup.addEventListener('submit', handleFormOfAddingPopup);
+formOfEditingPopup.addEventListener('input', handleInputOfFormOfAddingPopup);
+formOfAddingPopup.addEventListener('submit', handleSubmitFormOfAddingPopup);
 
 // Cards (places)
 
