@@ -141,7 +141,7 @@ function handleSubmitFormOfAddingPopup(event) {
   closePopup(popupAdding);
 }
 
-formOfEditingPopup.addEventListener('input', handleInputOfFormOfAddingPopup);
+formOfAddingPopup.addEventListener('input', handleInputOfFormOfAddingPopup);
 formOfAddingPopup.addEventListener('submit', handleSubmitFormOfAddingPopup);
 
 // Cards (places)
