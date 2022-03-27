@@ -97,6 +97,16 @@ popups.forEach((popup) => {
 
 // Listeners for accepting the data of the popup form
 
+function setSubmitButtonState(form, isFormValid, button) {
+  if (isFormValid) {
+    button.removeAttribute('disabled');
+    button.classList.remove('button_disabled');
+  } else {
+    button.setAttribute('disabled', true);
+    button.classList.add('button_disabled');
+  }
+}
+
 function handleInputOfFormOfEditingPopup(event) {
   const isValid = (event) => {
     if (namePopup.value.length > 0 && jobPopup.value.length) {
