@@ -137,6 +137,7 @@ function handleSubmitFormOfAddingPopup(event) {
     name: placePopup.value,
     link: linkPopup.value,
   };
+  setSubmitButtonState(false, buttonSubmitPopupAdding);
   renderCard(data);
   closePopup(popupAdding);
 }
