@@ -48,6 +48,8 @@
                 id="form-name"
                 type="text"
                 name="name"
+                minlength="2"
+                maxlength="40"
                 required />
             </p>
             <p class="popup__field">
@@ -57,6 +59,8 @@
                 id="form-activity"
                 type="text"
                 name="activity"
+                minlength="2"
+                maxlength="200"
                 required />
             </p>
             <button class="button popup__save-button" type="submit">Сохранить</button>
@@ -79,6 +83,8 @@
                 type="text"
                 name="place"
                 placeholder="Название"
+                minlength="2"
+                maxlength="30"
                 required />
             </p>
             <p class="popup__field">
@@ -86,7 +92,7 @@
               <input
                 class="popup__input popup__input_place_down"
                 id="form-link"
-                type="text"
+                type="url"
                 name="link"
                 placeholder="Ссылка на картинку"
                 required />
