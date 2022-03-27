@@ -38,13 +38,13 @@ const popupEditing = document.querySelector('.popup_type_edit');
 const formOfEditingPopup = document.forms.edit;
 const namePopup = formOfEditingPopup.elements.name;
 const jobPopup = formOfEditingPopup.elements.activity;
-const buttonSubmitPopupEditing = popupEditing.querySelector('.popup__save-button_type_edit');
+const buttonSubmitPopupEditing = popupEditing.querySelector('.popup__save-button');
 
 const popupAdding = document.querySelector('.popup_type_add');
 const formOfAddingPopup = document.forms.add;
 const placePopup = formOfAddingPopup.elements.place;
 const linkPopup = formOfAddingPopup.elements.link;
-const buttonSubmitPopupAdding = popupAdding.querySelector('.popup__save-button_type_add');
+const buttonSubmitPopupAdding = popupAdding.querySelector('.popup__save-button');
 
 const popupEnlarging = document.querySelector('.popup_type_enlarge');
 const popupImage = popupEnlarging.querySelector('.popup__image');
