@@ -74,6 +74,7 @@ function handleButtonForEditingProfile() {
 buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile);
 
 function handleButtonForAddingCard() {
+  formOfAddingPopup.reset();
   openPopup(popupAdding);
 }
 
@@ -137,7 +138,6 @@ function handleSubmitFormOfAddingPopup(event) {
     link: linkPopup.value,
   };
   renderCard(data);
-  formOfAddingPopup.reset();
   setSubmitButtonState(false, buttonSubmitPopupAdding);
   closePopup(popupAdding);
 }
