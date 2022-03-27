@@ -34,15 +34,15 @@ const buttonForAddingCard = profile.querySelector('.profile__add-button');
 const cardsContainer = document.querySelector('.places__list');
 const popups = document.querySelectorAll('.popup');
 
-const popupForEditingProfile = document.querySelector('.popup_type_edit');
-const formElementOfEditPopup = document.forms.edit;
-const namePopup = formElementOfEditPopup.name;
-const jobPopup = formElementOfEditPopup.activity;
+const popupEditing = document.querySelector('.popup_type_edit');
+const formOfEditingPopup = document.forms.edit;
+const namePopup = formOfEditingPopup.elements.name;
+const jobPopup = formOfEditingPopup.elements.activity;
 
-const popupForAddingCard = document.querySelector('.popup_type_add');
-const formElementOfAddPopup = document.forms.add;
-const placePopup = formElementOfAddPopup.place;
-const linkPopup = formElementOfAddPopup.link;
+const popupAdding = document.querySelector('.popup_type_add');
+const formOfAddingPopup = document.forms.add;
+const placePopup = formOfAddingPopup.elements.place;
+const linkPopup = formOfAddingPopup.elements.link;
 
 const popupForEnlargingCard = document.querySelector('.popup_type_enlarge');
 const popupImage = popupForEnlargingCard.querySelector('.popup__image');
@@ -66,14 +66,14 @@ function closePopup(popup) {
 function handleButtonForEditingProfile() {
   namePopup.value = nameProfile.textContent;
   jobPopup.value = jobProfile.textContent;
-  openPopup(popupForEditingProfile);
+  openPopup(popupEditing);
 }
 
 buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile);
 
 function handleButtonForAddingCard() {
-  formElementOfAddPopup.reset();
-  openPopup(popupForAddingCard);
+  formOfAddingPopup.reset();
+  openPopup(popupAdding);
 }
 
 buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
@@ -95,26 +95,26 @@ popups.forEach((popup) => {
 
 // Listeners for accepting the data of the popup form
 
-function handleFormElementOfEditPopup(event) {
+function handleFormOfEditingPopup(event) {
   event.preventDefault();
   nameProfile.textContent = namePopup.value;
   jobProfile.textContent = jobPopup.value;
-  closePopup(popupForEditingProfile);
+  closePopup(popupEditing);
 }
 
-formElementOfEditPopup.addEventListener('submit', handleFormElementOfEditPopup);
+formOfEditingPopup.addEventListener('submit', handleFormOfEditingPopup);
 
-function handleFormElementOfAddPopup(event) {
+function handleFormOfAddingPopup(event) {
   event.preventDefault();
   const data = {
     name: placePopup.value,
     link: linkPopup.value,
   };
   renderCard(data);
-  closePopup(popupForAddingCard);
+  closePopup(popupAdding);
 }
 
-formElementOfAddPopup.addEventListener('submit', handleFormElementOfAddPopup);
+formOfAddingPopup.addEventListener('submit', handleFormOfAddingPopup);
 
 // Cards (places)
 
