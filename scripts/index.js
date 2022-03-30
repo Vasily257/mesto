@@ -111,43 +111,39 @@ function setSubmitButtonState(isFormValid, button) {
 
 // Functions for showing and hiding errors
 
-const namePopupError = formOfEditingPopup.querySelector(`.${namePopup.id}-error`);
+function showInputError(inputElement, formElement, errorMessage) {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 
-function showInputError(input, errorMessage) {
-  input.classList.add('popup__input_type_error');
-  namePopupError.textContent = errorMessage;
-  namePopupError.classList.add('popup__input-error_active');
+  inputElement.classList.add('popup__input_type_error');
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('popup__input-error_active');
 }
 
-function hideInputError(input) {
-  input.classList.remove('popup__input_type_error');
-  namePopupError.classList.remove('popup__input-error_active');
-  namePopupError.textContent = '';
+function hideInputError(inputElement) {
+  inputElement.classList.remove('popup__input_type_error');
+  errorElement.classList.remove('popup__input-error_active');
+  errorElement.textContent = '';
 }
 
-function isValid() {
-  if (!namePopup.validity.valid) {
-    showInputError(namePopup, namePopup.validationMessage);
+function isValid(inputElement, formElement) {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
-    hideInputError(namePopup);
+    hideInputError(formElement, inputElement);
   }
 }
 
-popupEditing.addEventListener('submit', (event) => {
-  event.preventDefault();
-});
+function setEventListeners(formElement) {
+  const inputList = Array.from(formElement.querySelectorAll('.popup__inpit'));
+
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', () => {
+      isValid(formElement, inputElement);
+    });
+  });
+}
 
 namePopup.addEventListener('input', isValid);
-
-// Заготовка универсальной функции
-
-// function isValid(input) {
-//   if (!input.validity.valid) {
-//     showInputError(input);
-//   } else {
-//     hideInputError(input);
-//   }
-// }
 
 // Listeners for accepting the data of the popup form
 
