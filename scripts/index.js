@@ -159,39 +159,39 @@ enableValidation();
 
 // Listeners for accepting the data of the popup form
 
-function handleInputOfEditingForm(event) {
-  const isValid = namePopup.value.length > 0 && jobPopup.value.length > 0;
-  setSubmitButtonState(isValid, buttonSubmitPopupEditing);
-}
+// function handleInputOfEditingForm(event) {
+//   const isValid = namePopup.value.length > 0 && jobPopup.value.length > 0;
+//   setSubmitButtonState(isValid, buttonSubmitPopupEditing);
+// }
 
-function handleSubmitOfEditingForm(event) {
-  event.preventDefault();
-  nameProfile.textContent = namePopup.value;
-  jobProfile.textContent = jobPopup.value;
-  closePopup(popupEditing);
-}
+// function handleSubmitOfEditingForm(event) {
+//   event.preventDefault();
+//   nameProfile.textContent = namePopup.value;
+//   jobProfile.textContent = jobPopup.value;
+//   closePopup(popupEditing);
+// }
 
-formOfEditingPopup.addEventListener('input', handleInputOfEditingForm);
-formOfEditingPopup.addEventListener('submit', handleSubmitOfEditingForm);
+// formOfEditingPopup.addEventListener('input', handleInputOfEditingForm);
+// formOfEditingPopup.addEventListener('submit', handleSubmitOfEditingForm);
 
-function handleInputOfAddingForm(event) {
-  const isValid = placePopup.value.length > 0 && linkPopup.value.length > 0;
-  setSubmitButtonState(isValid, buttonSubmitPopupAdding);
-}
+// function handleInputOfAddingForm(event) {
+//   const isValid = placePopup.value.length > 0 && linkPopup.value.length > 0;
+//   setSubmitButtonState(isValid, buttonSubmitPopupAdding);
+// }
 
-function handleSubmitOfAddingForm(event) {
-  event.preventDefault();
-  const data = {
-    name: placePopup.value,
-    link: linkPopup.value,
-  };
-  renderCard(data);
-  setSubmitButtonState(false, buttonSubmitPopupAdding);
-  closePopup(popupAdding);
-}
+// function handleSubmitOfAddingForm(event) {
+//   event.preventDefault();
+//   const data = {
+//     name: placePopup.value,
+//     link: linkPopup.value,
+//   };
+//   renderCard(data);
+//   setSubmitButtonState(false, buttonSubmitPopupAdding);
+//   closePopup(popupAdding);
+// }
 
-formOfAddingPopup.addEventListener('input', handleInputOfAddingForm);
-formOfAddingPopup.addEventListener('submit', handleSubmitOfAddingForm);
+// formOfAddingPopup.addEventListener('input', handleInputOfAddingForm);
+// formOfAddingPopup.addEventListener('submit', handleSubmitOfAddingForm);
 
 // Cards (places)
 
