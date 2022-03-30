@@ -109,6 +109,40 @@ function setSubmitButtonState(isFormValid, button) {
   }
 }
 
+// Functions for showing and hiding errors
+
+function showInputError(input) {
+  input.classList.add('popup__input_type_error');
+}
+
+function hideInputError(input) {
+  input.classList.remove('popup__input_type_error');
+}
+
+function isValid() {
+  if (!namePopup.validity.valid) {
+    showInputError(namePopup);
+  } else {
+    hideInputError(namePopup);
+  }
+}
+
+popupEditing.addEventListener('submit', (event) => {
+  event.preventDefault();
+});
+
+namePopup.addEventListener('input', isValid);
+
+// Заготовка универсальной функции
+
+// function isValid(input) {
+//   if (!input.validity.valid) {
+//     showInputError(input);
+//   } else {
+//     hideInputError(input);
+//   }
+// }
+
 // Listeners for accepting the data of the popup form
 
 function handleInputOfEditingForm(event) {
