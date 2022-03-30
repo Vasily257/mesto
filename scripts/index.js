@@ -111,12 +111,16 @@ function setSubmitButtonState(isFormValid, button) {
 
 // Functions for showing and hiding errors
 
-function showInputError(input) {
+const namePopupError = formOfEditingPopup.querySelector(`.${namePopup.id}-error`);
+
+function showInputError(input, errorMessage) {
   input.classList.add('popup__input_type_error');
+  namePopupError.classList.add('popup__input-error_active');
 }
 
 function hideInputError(input) {
   input.classList.remove('popup__input_type_error');
+  namePopupError.classList.remove('popup__input-error_active');
 }
 
 function isValid() {
