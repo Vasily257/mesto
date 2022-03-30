@@ -119,7 +119,9 @@ function showInputError(inputElement, formElement, errorMessage) {
   errorElement.classList.add('popup__input-error_active');
 }
 
-function hideInputError(inputElement) {
+function hideInputError(inputElement, formElement) {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+
   inputElement.classList.remove('popup__input_type_error');
   errorElement.classList.remove('popup__input-error_active');
   errorElement.textContent = '';
@@ -127,18 +129,18 @@ function hideInputError(inputElement) {
 
 function isValid(inputElement, formElement) {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(inputElement, formElement, inputElement.validationMessage);
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(inputElement, formElement);
   }
 }
 
 function setEventListeners(formElement) {
-  const inputList = Array.from(formElement.querySelectorAll('.popup__inpit'));
+  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
-      isValid(formElement, inputElement);
+      isValid(inputElement, formElement);
     });
   });
 }
