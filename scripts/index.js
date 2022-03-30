@@ -143,7 +143,17 @@ function setEventListeners(formElement) {
   });
 }
 
-namePopup.addEventListener('input', isValid);
+function enableValidation() {
+  const formList = Array.from(document.querySelectorAll('.popup__form'));
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', (event) => {
+      event.preventDefault();
+    });
+    setEventListeners(formElement);
+  });
+}
+
+enableValidation();
 
 // Listeners for accepting the data of the popup form
 
