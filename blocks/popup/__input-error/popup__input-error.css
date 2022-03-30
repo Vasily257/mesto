@@ -1,7 +1,7 @@
 .popup__input-error {
   display: block;
   visibility: hidden;
-  flex-basis: 15px;
+  flex-basis: 30px;
 
   margin: 0;
   margin-top: 5px;
