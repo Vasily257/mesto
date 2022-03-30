@@ -6,7 +6,9 @@
 
   color: inherit;
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
 
   font-size: 14px;
   line-height: 17px;
@@ -19,12 +21,4 @@
 
 .popup__input::placeholder {
   color: #c4c4c4;
-}
-
-.popup__input:invalid {
-  border-bottom: 1px solid #ff0000;
-}
-
-.popup__input:valid {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
