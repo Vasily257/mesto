@@ -115,17 +115,19 @@ const namePopupError = formOfEditingPopup.querySelector(`.${namePopup.id}-error`
 
 function showInputError(input, errorMessage) {
   input.classList.add('popup__input_type_error');
+  namePopupError.textContent = errorMessage;
   namePopupError.classList.add('popup__input-error_active');
 }
 
 function hideInputError(input) {
   input.classList.remove('popup__input_type_error');
   namePopupError.classList.remove('popup__input-error_active');
+  namePopupError.textContent = '';
 }
 
 function isValid() {
   if (!namePopup.validity.valid) {
-    showInputError(namePopup);
+    showInputError(namePopup, namePopup.validationMessage);
   } else {
     hideInputError(namePopup);
   }
