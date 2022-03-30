@@ -111,27 +111,27 @@ function setSubmitButtonState(isFormValid, button) {
 
 // Listeners for accepting the data of the popup form
 
-function handleInputOfFormOfEditingPopup(event) {
+function handleInputOfEditingForm(event) {
   const isValid = namePopup.value.length > 0 && jobPopup.value.length > 0;
   setSubmitButtonState(isValid, buttonSubmitPopupEditing);
 }
 
-function handleSubmitFormOfEditingPopup(event) {
+function handleSubmitOfEditingForm(event) {
   event.preventDefault();
   nameProfile.textContent = namePopup.value;
   jobProfile.textContent = jobPopup.value;
   closePopup(popupEditing);
 }
 
-formOfEditingPopup.addEventListener('input', handleInputOfFormOfEditingPopup);
-formOfEditingPopup.addEventListener('submit', handleSubmitFormOfEditingPopup);
+formOfEditingPopup.addEventListener('input', handleInputOfEditingForm);
+formOfEditingPopup.addEventListener('submit', handleSubmitOfEditingForm);
 
-function handleInputOfFormOfAddingPopup(event) {
+function handleInputOfAddingForm(event) {
   const isValid = placePopup.value.length > 0 && linkPopup.value.length > 0;
   setSubmitButtonState(isValid, buttonSubmitPopupAdding);
 }
 
-function handleSubmitFormOfAddingPopup(event) {
+function handleSubmitOfAddingForm(event) {
   event.preventDefault();
   const data = {
     name: placePopup.value,
@@ -142,8 +142,8 @@ function handleSubmitFormOfAddingPopup(event) {
   closePopup(popupAdding);
 }
 
-formOfAddingPopup.addEventListener('input', handleInputOfFormOfAddingPopup);
-formOfAddingPopup.addEventListener('submit', handleSubmitFormOfAddingPopup);
+formOfAddingPopup.addEventListener('input', handleInputOfAddingForm);
+formOfAddingPopup.addEventListener('submit', handleSubmitOfAddingForm);
 
 // Cards (places)
 
