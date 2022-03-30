@@ -27,7 +27,7 @@ const initialCards = [
 
 const profile = document.querySelector('.profile');
 const nameProfile = profile.querySelector('.profile__name');
-const jobProfile = profile.querySelector('.profile__activity');
+const jobProfile = profile.querySelector('.profile__job');
 const buttonForEditingProfile = profile.querySelector('.profile__edit-button');
 const buttonForAddingCard = profile.querySelector('.profile__add-button');
 
@@ -37,7 +37,7 @@ const popups = document.querySelectorAll('.popup');
 const popupEditing = document.querySelector('.popup_type_edit');
 const formOfEditingPopup = document.forms.edit;
 const namePopup = formOfEditingPopup.elements.name;
-const jobPopup = formOfEditingPopup.elements.activity;
+const jobPopup = formOfEditingPopup.elements.job;
 const buttonSubmitPopupEditing = popupEditing.querySelector('.popup__save-button');
 
 const popupAdding = document.querySelector('.popup_type_add');

@@ -19,7 +19,7 @@
           </picture>
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <p class="profile__activity">Исследователь океана</p>
+            <p class="profile__job">Исследователь океана</p>
           </div>
           <button
             class="button profile__edit-button"
@@ -42,28 +42,32 @@
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="popup__form popup__form_type_edit" method="post" name="edit" novalidate>
             <p class="popup__field">
-              <label class="visually-hidden" for="form-name">Имя</label>
+              <label class="visually-hidden" for="name-input">Имя</label>
               <input
                 class="popup__input popup__input_place_up"
-                id="form-name"
+                id="name-input"
                 type="text"
                 name="name"
                 minlength="2"
                 maxlength="40"
                 required />
-              <span class="popup__input-error">Необходимо заполнить данное поле.</span>
+              <span class="name-input-error popup__input-error"
+                >Необходимо заполнить данное поле.</span
+              >
             </p>
             <p class="popup__field">
-              <label class="visually-hidden" for="form-activity">Вид деятельности</label>
+              <label class="visually-hidden" for="job-input">Вид деятельности</label>
               <input
                 class="popup__input popup__input_place_down"
-                id="form-activity"
+                id="job-input"
                 type="text"
-                name="activity"
+                name="job"
                 minlength="2"
                 maxlength="200"
                 required />
-              <span class="popup__input-error">Необходимо заполнить данное поле.</span>
+              <span class="job-input-error popup__input-error"
+                >Необходимо заполнить данное поле.</span
+              >
             </p>
             <button class="button popup__save-button" type="submit">Сохранить</button>
           </form>
@@ -78,28 +82,32 @@
           <h2 class="popup__title">Новое место</h2>
           <form class="popup__form popup__form_type_add" method="post" name="add" novalidate>
             <p class="popup__field">
-              <label class="visually-hidden" for="form-place">Название места</label>
+              <label class="visually-hidden" for="place-input">Название места</label>
               <input
                 class="popup__input popup__input_place_up"
-                id="form-place"
+                id="place-input"
                 type="text"
                 name="place"
                 placeholder="Название"
                 minlength="2"
                 maxlength="30"
                 required />
-              <span class="popup__input-error">Необходимо заполнить данное поле.</span>
+              <span class="place-input-error popup__input-error"
+                >Необходимо заполнить данное поле.</span
+              >
             </p>
             <p class="popup__field">
-              <label class="visually-hidden" for="form-link">Ссылка</label>
+              <label class="visually-hidden" for="link-input">Ссылка</label>
               <input
                 class="popup__input popup__input_place_down"
-                id="form-link"
+                id="link-input"
                 type="url"
                 name="link"
                 placeholder="Ссылка на картинку"
                 required />
-              <span class="popup__input-error">Необходимо заполнить данное поле.</span>
+              <span class="link-input-error popup__input-error"
+                >Необходимо заполнить данное поле.</span
+              >
             </p>
             <button
               class="button popup__save-button popup__save-button_disabled"
