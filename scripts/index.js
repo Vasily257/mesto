@@ -97,18 +97,6 @@ popups.forEach((popup) => {
 
 // Popup forms
 
-// Function for switching the save buttons
-
-function setSubmitButtonState(isFormValid, button) {
-  if (isFormValid) {
-    button.removeAttribute('disabled');
-    button.classList.remove('popup__save-button_disabled');
-  } else {
-    button.setAttribute('disabled', true);
-    button.classList.add('popup__save-button_disabled');
-  }
-}
-
 // Functions for showing and hiding errors
 
 function showInputError(inputElement, formElement, errorMessage) {
