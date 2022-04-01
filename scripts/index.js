@@ -61,6 +61,15 @@ function openPopup(popup) {
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  popup.querySelectorAll('.popup__input').forEach((inputElement) => {
+    inputElement.classList.remove('popup__input_type_error');
+    console.log(inputElement);
+  });
+
+  popup.querySelectorAll('.popup__error').forEach((errorElement) => {
+    errorElement.classList.remove('popup__error_active');
+    errorElement.textContent = '';
+  });
 }
 
 // Listeners for opening a popup whith click to button
