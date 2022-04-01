@@ -97,23 +97,9 @@ popups.forEach((popup) => {
 
 // Popup forms
 
-// Functions for showing and hiding errors
+// Validation of forms
 
-function showInputError(inputElement, formElement, errorMessage) {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-
-  inputElement.classList.add('popup__input_type_error');
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add('popup__input-error_active');
-}
-
-function hideInputError(inputElement, formElement) {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-
-  inputElement.classList.remove('popup__input_type_error');
-  errorElement.classList.remove('popup__input-error_active');
-  errorElement.textContent = '';
-}
+// Сhange the state of the sumbit button
 
 function hasInvalidInput(inputList) {
   return inputList.some((inputElement) => {
@@ -121,43 +107,71 @@ function hasInvalidInput(inputList) {
   });
 }
 
-function toggleButtonState(inputList, buttonElement) {
+function toggleButtonState(inputList, buttonElement, inactiveButtonClass) {
   if (hasInvalidInput(inputList)) {
     buttonElement.setAttribute('disabled', true);
-    buttonElement.classList.add('popup__save-button_disabled');
+    buttonElement.classList.add(inactiveButtonClass);
   } else {
     buttonElement.removeAttribute('disabled');
-    buttonElement.classList.remove('popup__save-button_disabled');
+    buttonElement.classList.remove(inactiveButtonClass);
   }
 }
 
-function isValid(inputElement, formElement) {
+// Showing and hiding errors
+
+function showInputError(inputElement, formElement, errorMessage, { inputErrorClass, errorClass }) {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+
+  inputElement.classList.add(inputErrorClass);
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add(errorClass);
+}
+
+function hideInputError(inputElement, formElement, { inputErrorClass, errorClass }) {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+
+  inputElement.classList.remove(inputErrorClass);
+  errorElement.classList.remove(errorClass);
+  errorElement.textContent = '';
+}
+
+// Сheck the validity of the inputs
+
+function isValid(inputElement, formElement, rest) {
   if (!inputElement.validity.valid) {
-    showInputError(inputElement, formElement, inputElement.validationMessage);
+    showInputError(inputElement, formElement, inputElement.validationMessage, rest);
   } else {
-    hideInputError(inputElement, formElement);
+    hideInputError(inputElement, formElement, rest);
   }
 }
 
-function setEventListeners(formElement) {
-  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
-  const buttonElement = formElement.querySelector('.popup__save-button');
+// Add an input listener for inputs
+
+function setEventListeners(
+  formElement,
+  { inputSelector, submitButtonSelector, inactiveButtonClass, ...rest }
+) {
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+  const buttonElement = formElement.querySelector(submitButtonSelector);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
-      isValid(inputElement, formElement);
-      toggleButtonState(inputList, buttonElement);
+      isValid(inputElement, formElement, rest);
+      toggleButtonState(inputList, buttonElement, inactiveButtonClass);
     });
   });
 }
 
-function enableValidation() {
-  const formList = Array.from(document.querySelectorAll('.popup__form'));
+// Add a submit listener for forms
+
+function enableValidation({ formSelector, ...rest }) {
+  const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', (event) => {
       event.preventDefault();
     });
-    setEventListeners(formElement);
+
+    setEventListeners(formElement, rest);
   });
 }
 
@@ -165,9 +179,9 @@ enableValidation({
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: '.popup__save-button_disabled',
-  inputErrorClass: '.popup__input_type_error',
-  errorClass: '.popup__input-error_active',
+  inactiveButtonClass: 'popup__save-button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active',
 });
 
 // Listeners for accepting the data of the popup form
