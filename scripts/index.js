@@ -58,12 +58,11 @@ const popupImageCaption = popupEnlarging.querySelector('.popup__image-caption');
 function resetPopupErrors(popup) {
   popup.querySelectorAll('.popup__input').forEach((inputElement) => {
     inputElement.classList.remove('popup__input_type_error');
-    console.log(inputElement);
+  });
 
-    popup.querySelectorAll('.popup__error').forEach((errorElement) => {
-      errorElement.classList.remove('popup__error_active');
-      errorElement.textContent = '';
-    });
+  popup.querySelectorAll('.popup__error').forEach((errorElement) => {
+    errorElement.classList.remove('popup__error_active');
+    errorElement.textContent = '';
   });
 }
 
