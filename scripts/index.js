@@ -53,6 +53,20 @@ const popupImageCaption = popupEnlarging.querySelector('.popup__image-caption');
 
 // Popups
 
+// Reset popup errors
+
+function resetPopupErrors(popup) {
+  popup.querySelectorAll('.popup__input').forEach((inputElement) => {
+    inputElement.classList.remove('popup__input_type_error');
+    console.log(inputElement);
+
+    popup.querySelectorAll('.popup__error').forEach((errorElement) => {
+      errorElement.classList.remove('popup__error_active');
+      errorElement.textContent = '';
+    });
+  });
+}
+
 // Functions for opening and closing popups
 
 function openPopup(popup) {
@@ -61,15 +75,7 @@ function openPopup(popup) {
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  popup.querySelectorAll('.popup__input').forEach((inputElement) => {
-    inputElement.classList.remove('popup__input_type_error');
-    console.log(inputElement);
-  });
-
-  popup.querySelectorAll('.popup__error').forEach((errorElement) => {
-    errorElement.classList.remove('popup__error_active');
-    errorElement.textContent = '';
-  });
+  resetPopupErrors(popup);
 }
 
 // Listeners for opening a popup whith click to button
