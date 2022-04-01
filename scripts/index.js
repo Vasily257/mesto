@@ -66,16 +66,33 @@ function resetPopupErrors(popup) {
   });
 }
 
-// Functions for opening and closing popups
-
-function openPopup(popup) {
-  document.addEventListener('keydown', handleClosePopupEscKey);
-  popup.classList.add('popup_opened');
-}
+// Functions for closing popups
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   resetPopupErrors(popup);
+}
+
+// Listener for closing a popups with esc key
+
+function closePopupOpened(popupOpened) {
+  document.removeEventListener('keydown', handleClosePopupEscKey);
+  closePopup(popupOpened);
+}
+
+function handleClosePopupEscKey(event) {
+  const popupOpened = document.querySelector('.popup_opened');
+
+  if (event.key === 'Escape') {
+    closePopupOpened(popupOpened);
+  }
+}
+
+// Functions for opening popups
+
+function openPopup(popup) {
+  document.addEventListener('keydown', handleClosePopupEscKey);
+  popup.classList.add('popup_opened');
 }
 
 // Listeners for opening a popup with click to button
@@ -113,17 +130,6 @@ function handleClosePopupClick(event) {
 popups.forEach((popup) => {
   popup.addEventListener('click', handleClosePopupClick);
 });
-
-// Listener for closing a popups with esc key
-
-function handleClosePopupEscKey(event) {
-  const popupOpened = document.querySelector('.popup_opened');
-
-  if (event.key === 'Escape') {
-    document.removeEventListener('keydown', handleClosePopupEscKey);
-    closePopup(popupOpened);
-  }
-}
 
 // Cards (places)
 
