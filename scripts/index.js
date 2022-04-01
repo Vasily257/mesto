@@ -162,15 +162,52 @@ function setEventListeners(
   });
 }
 
+// Form submission handlers
+
+function handleSubmitOfEditingForm() {
+  nameProfile.textContent = namePopup.value;
+  jobProfile.textContent = jobPopup.value;
+  toggleButtonState(
+    [namePopup, jobPopup],
+    buttonSubmitPopupEditing,
+    'popup__submit-button_disabled'
+  );
+  closePopup(popupEditing);
+}
+
+function handleSubmitOfAddingForm() {
+  const data = {
+    name: placePopup.value,
+    link: linkPopup.value,
+  };
+  renderCard(data);
+  toggleButtonState(
+    [placePopup, linkPopup],
+    buttonSubmitPopupAdding,
+    'popup__submit-button_disabled'
+  );
+  closePopup(popupAdding);
+}
+
+function handleSubmitForms(event) {
+  event.preventDefault();
+
+  switch (event.target) {
+    case formOfEditingPopup:
+      handleSubmitOfEditingForm();
+      break;
+    case formOfAddingPopup:
+      handleSubmitOfAddingForm();
+      break;
+  }
+}
+
 // Add a submit listener for forms
 
 function enableValidation({ formSelector, ...rest }) {
   const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach((formElement) => {
-    formElement.addEventListener('submit', (event) => {
-      event.preventDefault();
-    });
-
+    formElement.addEventListener('submit', handleSubmitForms);
     setEventListeners(formElement, rest);
   });
 }
@@ -183,42 +220,6 @@ enableValidation({
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_active',
 });
-
-// Listeners for accepting the data of the popup form
-
-// function handleInputOfEditingForm(event) {
-//   const isValid = namePopup.value.length > 0 && jobPopup.value.length > 0;
-//   setSubmitButtonState(isValid, buttonSubmitPopupEditing);
-// }
-
-// function handleSubmitOfEditingForm(event) {
-//   event.preventDefault();
-//   nameProfile.textContent = namePopup.value;
-//   jobProfile.textContent = jobPopup.value;
-//   closePopup(popupEditing);
-// }
-
-// formOfEditingPopup.addEventListener('input', handleInputOfEditingForm);
-// formOfEditingPopup.addEventListener('submit', handleSubmitOfEditingForm);
-
-// function handleInputOfAddingForm(event) {
-//   const isValid = placePopup.value.length > 0 && linkPopup.value.length > 0;
-//   setSubmitButtonState(isValid, buttonSubmitPopupAdding);
-// }
-
-// function handleSubmitOfAddingForm(event) {
-//   event.preventDefault();
-//   const data = {
-//     name: placePopup.value,
-//     link: linkPopup.value,
-//   };
-//   renderCard(data);
-//   setSubmitButtonState(false, buttonSubmitPopupAdding);
-//   closePopup(popupAdding);
-// }
-
-// formOfAddingPopup.addEventListener('input', handleInputOfAddingForm);
-// formOfAddingPopup.addEventListener('submit', handleSubmitOfAddingForm);
 
 // Cards (places)
 
