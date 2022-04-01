@@ -1,4 +1,4 @@
-.popup__save-button {
+.popup__submit-button {
   width: 100%;
   min-height: 46px;
   margin-top: 23px;
@@ -15,12 +15,12 @@
   line-height: calc(17 / 14);
 }
 
-.popup__save-button:hover {
+.popup__submit-button:hover {
   opacity: 0.8;
 }
 
 @media screen and (min-width: 600px) {
-  .popup__save-button {
+  .popup__submit-button {
     min-height: 50px;
     margin-top: 27px;
 

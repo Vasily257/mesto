@@ -38,13 +38,13 @@ const popupEditing = document.querySelector('.popup_type_edit');
 const formOfEditingPopup = document.forms.edit;
 const namePopup = formOfEditingPopup.elements.name;
 const jobPopup = formOfEditingPopup.elements.job;
-const buttonSubmitPopupEditing = popupEditing.querySelector('.popup__save-button');
+const buttonSubmitPopupEditing = popupEditing.querySelector('.popup__submit-button');
 
 const popupAdding = document.querySelector('.popup_type_add');
 const formOfAddingPopup = document.forms.add;
 const placePopup = formOfAddingPopup.elements.place;
 const linkPopup = formOfAddingPopup.elements.link;
-const buttonSubmitPopupAdding = popupAdding.querySelector('.popup__save-button');
+const buttonSubmitPopupAdding = popupAdding.querySelector('.popup__submit-button');
 
 const popupEnlarging = document.querySelector('.popup_type_enlarge');
 const popupImage = popupEnlarging.querySelector('.popup__image');
@@ -178,10 +178,10 @@ function enableValidation({ formSelector, ...rest }) {
 enableValidation({
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_disabled',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active',
+  errorClass: 'popup__error_active',
 });
 
 // Listeners for accepting the data of the popup form
