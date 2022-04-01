@@ -223,10 +223,14 @@ enableValidation({
 
 // Cards (places)
 
+// Creating of card
+
 function createCard(data) {
   const cardElement = document
     .querySelector('.places-template')
     .content.firstElementChild.cloneNode(true);
+
+  // Cards elements
 
   const cardTitle = cardElement.querySelector('.places__title');
   const buttonToLike = cardElement.querySelector('.places__like-button');
