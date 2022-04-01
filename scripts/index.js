@@ -69,6 +69,7 @@ function resetPopupErrors(popup) {
 // Functions for opening and closing popups
 
 function openPopup(popup) {
+  document.addEventListener('keydown', handleClosePopupEscKey);
   popup.classList.add('popup_opened');
 }
 
@@ -77,7 +78,7 @@ function closePopup(popup) {
   resetPopupErrors(popup);
 }
 
-// Listeners for opening a popup whith click to button
+// Listeners for opening a popup with click to button
 
 function handleButtonForEditingProfile() {
   namePopup.value = nameProfile.textContent;
@@ -98,9 +99,9 @@ function handleButtonForAddingCard() {
 
 buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
 
-// Listeners for closing a popups whith click
+// Listener for closing a popups with click
 
-function handleClosePopup(event) {
+function handleClosePopupClick(event) {
   if (
     event.target === event.currentTarget ||
     event.target.classList.contains('popup__close-button')
@@ -110,8 +111,19 @@ function handleClosePopup(event) {
 }
 
 popups.forEach((popup) => {
-  popup.addEventListener('click', handleClosePopup);
+  popup.addEventListener('click', handleClosePopupClick);
 });
+
+// Listener for closing a popups with esc key
+
+function handleClosePopupEscKey(event) {
+  const popupOpened = document.querySelector('.popup_opened');
+
+  if (event.key === 'Escape') {
+    document.removeEventListener('keydown', handleClosePopupEscKey);
+    closePopup(popupOpened);
+  }
+}
 
 // Popup forms
 
