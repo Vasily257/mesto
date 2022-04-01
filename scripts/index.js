@@ -89,6 +89,10 @@ buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile)
 
 function handleButtonForAddingCard() {
   formOfAddingPopup.reset();
+
+  buttonSubmitPopupAdding.classList.add('popup__submit-button_disabled');
+  buttonSubmitPopupAdding.setAttribute('disabled', true);
+
   openPopup(popupAdding);
 }
 
