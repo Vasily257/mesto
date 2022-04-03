@@ -46,7 +46,7 @@ function isValid(inputElement, formElement, rest) {
   }
 }
 
-// Add an input listener for inputs
+// Сonfigure the callback of the input listeners
 
 function setEventListeners(
   formElement,
@@ -63,45 +63,16 @@ function setEventListeners(
   });
 }
 
-// Form submission handlers
-
-function handleSubmitOfEditingForm() {
-  nameProfile.textContent = namePopup.value;
-  jobProfile.textContent = jobPopup.value;
-  closePopup(popupEditing);
-}
-
-function handleSubmitOfAddingForm() {
-  const data = {
-    name: placePopup.value,
-    link: linkPopup.value,
-  };
-  renderCard(data);
-  closePopup(popupAdding);
-}
-
-function handleSubmitForms(event) {
-  event.preventDefault();
-
-  switch (event.target) {
-    case formOfEditingPopup:
-      handleSubmitOfEditingForm();
-      break;
-    case formOfAddingPopup:
-      handleSubmitOfAddingForm();
-      break;
-  }
-}
-
-// Add a submit listener for forms
+// Add listeners to forms
 
 function enableValidation({ formSelector, ...rest }) {
   const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach((formElement) => {
-    formElement.addEventListener('submit', handleSubmitForms);
     setEventListeners(formElement, rest);
   });
 }
+
+// Start forms validation
 
 enableValidation({
   formSelector: '.popup__form',

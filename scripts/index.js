@@ -190,3 +190,39 @@ function renderCard(data) {
 initialCards.reverse().forEach((item) => {
   renderCard(item);
 });
+
+// Form submission handlers
+
+function handleSubmitOfEditingForm() {
+  nameProfile.textContent = namePopup.value;
+  jobProfile.textContent = jobPopup.value;
+  closePopup(popupEditing);
+}
+
+function handleSubmitOfAddingForm() {
+  const data = {
+    name: placePopup.value,
+    link: linkPopup.value,
+  };
+  renderCard(data);
+  closePopup(popupAdding);
+}
+
+function handleSubmitForms(event) {
+  event.preventDefault();
+
+  switch (event.target) {
+    case formOfEditingPopup:
+      handleSubmitOfEditingForm();
+      break;
+    case formOfAddingPopup:
+      handleSubmitOfAddingForm();
+      break;
+  }
+}
+
+// Add a submit listener for forms
+
+Array.from(document.forms).forEach((formElement) => {
+  formElement.addEventListener('submit', handleSubmitForms);
+});
