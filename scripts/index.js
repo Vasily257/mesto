@@ -53,24 +53,10 @@ const popupImageCaption = popupEnlarging.querySelector('.popup__image-caption');
 
 // Popups
 
-// Reset popup errors
-
-function resetPopupErrors(popup) {
-  popup.querySelectorAll('.popup__input').forEach((inputElement) => {
-    inputElement.classList.remove('popup__input_type_error');
-  });
-
-  popup.querySelectorAll('.popup__error').forEach((errorElement) => {
-    errorElement.classList.remove('popup__error_active');
-    errorElement.textContent = '';
-  });
-}
-
 // Functions for closing popups
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  resetPopupErrors(popup);
 }
 
 // Listener for closing a popups with esc key
@@ -95,11 +81,25 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
 
+// Reset popup errors
+
+function resetPopupErrors(popup) {
+  popup.querySelectorAll('.popup__input').forEach((inputElement) => {
+    inputElement.classList.remove('popup__input_type_error');
+  });
+
+  popup.querySelectorAll('.popup__error').forEach((errorElement) => {
+    errorElement.classList.remove('popup__error_active');
+    errorElement.textContent = '';
+  });
+}
+
 // Listeners for opening a popup with click to button
 
 function handleButtonForEditingProfile() {
   namePopup.value = nameProfile.textContent;
   jobPopup.value = jobProfile.textContent;
+  resetPopupErrors(popupEditing);
   openPopup(popupEditing);
 }
 
@@ -107,10 +107,9 @@ buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile)
 
 function handleButtonForAddingCard() {
   formOfAddingPopup.reset();
-
   buttonSubmitPopupAdding.classList.add('popup__submit-button_disabled');
   buttonSubmitPopupAdding.setAttribute('disabled', true);
-
+  resetPopupErrors(popupAdding);
   openPopup(popupAdding);
 }
 
