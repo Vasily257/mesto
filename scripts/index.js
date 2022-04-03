@@ -94,11 +94,24 @@ function resetPopupErrors(popup) {
   });
 }
 
+// Disable and enable submit button
+
+function disableButton(buttonElement, inactiveButtonClass) {
+  buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.setAttribute('disabled', true);
+}
+
+function enableButton(buttonElement, inactiveButtonClass) {
+  buttonElement.removeAttribute('disabled');
+  buttonElement.classList.remove(inactiveButtonClass);
+}
+
 // Listeners for opening a popup with click to button
 
 function handleButtonForEditingProfile() {
   namePopup.value = nameProfile.textContent;
   jobPopup.value = jobProfile.textContent;
+
   resetPopupErrors(popupEditing);
   openPopup(popupEditing);
 }
@@ -107,8 +120,8 @@ buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile)
 
 function handleButtonForAddingCard() {
   formOfAddingPopup.reset();
-  buttonSubmitPopupAdding.classList.add('popup__submit-button_disabled');
-  buttonSubmitPopupAdding.setAttribute('disabled', true);
+
+  disableButton(buttonSubmitPopupAdding, 'popup__submit-button_disabled');
   resetPopupErrors(popupAdding);
   openPopup(popupAdding);
 }
