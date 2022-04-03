@@ -168,9 +168,7 @@ function renderCard(data) {
 
 // Initial rendering of cards
 
-initialCards.reverse().forEach((item) => {
-  renderCard(item);
-});
+initialCards.reverse().forEach(renderCard);
 
 // Form submission handlers
 
