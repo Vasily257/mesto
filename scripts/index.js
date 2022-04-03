@@ -30,15 +30,11 @@ const popupImageCaption = popupEnlarging.querySelector('.popup__image-caption');
 // Functions for closing popups
 
 function closePopup(popup) {
+  document.removeEventListener('keydown', handleClosePopupEscKey);
   popup.classList.remove('popup_opened');
 }
 
-// Listener for closing a popups with esc key
-
-function closePopupOpened(popupOpened) {
-  document.removeEventListener('keydown', handleClosePopupEscKey);
-  closePopup(popupOpened);
-}
+// Handler for closing a popups with esc key
 
 function handleClosePopupEscKey(event) {
   if (event.key === 'Escape') {
