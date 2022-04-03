@@ -6,15 +6,16 @@ const buttonForAddingCard = profile.querySelector('.profile__add-button');
 
 const cardsContainer = document.querySelector('.places__list');
 const popups = document.querySelectorAll('.popup');
+const forms = document.forms;
 
 const popupEditing = document.querySelector('.popup_type_edit');
-const formOfEditingPopup = document.forms.edit;
+const formOfEditingPopup = forms.edit;
 const namePopup = formOfEditingPopup.elements.name;
 const jobPopup = formOfEditingPopup.elements.job;
 const buttonSubmitPopupEditing = popupEditing.querySelector('.popup__submit-button');
 
 const popupAdding = document.querySelector('.popup_type_add');
-const formOfAddingPopup = document.forms.add;
+const formOfAddingPopup = forms.add;
 const placePopup = formOfAddingPopup.elements.place;
 const linkPopup = formOfAddingPopup.elements.link;
 const buttonSubmitPopupAdding = popupAdding.querySelector('.popup__submit-button');
@@ -207,6 +208,6 @@ function handleSubmitForms(event) {
 
 // Add a submit listener for forms
 
-Array.from(document.forms).forEach((formElement) => {
+forms.forEach((formElement) => {
   formElement.addEventListener('submit', handleSubmitForms);
 });
