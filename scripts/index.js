@@ -40,9 +40,8 @@ function closePopupOpened(popupOpened) {
 }
 
 function handleClosePopupEscKey(event) {
-  const popupOpened = document.querySelector('.popup_opened');
-
   if (event.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
     closePopupOpened(popupOpened);
   }
 }
