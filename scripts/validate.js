@@ -68,11 +68,6 @@ function setEventListeners(
 function handleSubmitOfEditingForm() {
   nameProfile.textContent = namePopup.value;
   jobProfile.textContent = jobPopup.value;
-  toggleButtonState(
-    [namePopup, jobPopup],
-    buttonSubmitPopupEditing,
-    'popup__submit-button_disabled'
-  );
   closePopup(popupEditing);
 }
 
@@ -82,11 +77,6 @@ function handleSubmitOfAddingForm() {
     link: linkPopup.value,
   };
   renderCard(data);
-  toggleButtonState(
-    [placePopup, linkPopup],
-    buttonSubmitPopupAdding,
-    'popup__submit-button_disabled'
-  );
   closePopup(popupAdding);
 }
 
