@@ -208,6 +208,6 @@ function handleSubmitForms(event) {
 
 // Add a submit listener for forms
 
-forms.forEach((formElement) => {
+Array.from(forms).forEach((formElement) => {
   formElement.addEventListener('submit', handleSubmitForms);
 });
