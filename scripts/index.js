@@ -147,13 +147,15 @@ initialCards.reverse().forEach(renderCard);
 
 // Form submission handlers
 
-function handleSubmitOfEditingForm() {
+function handleSubmitOfEditingForm(event) {
+  event.preventDefault();
   nameProfile.textContent = namePopup.value;
   jobProfile.textContent = jobPopup.value;
   closePopup(popupEditing);
 }
 
-function handleSubmitOfAddingForm() {
+function handleSubmitOfAddingForm(event) {
+  event.preventDefault();
   const data = {
     name: placePopup.value,
     link: linkPopup.value,
@@ -162,21 +164,7 @@ function handleSubmitOfAddingForm() {
   closePopup(popupAdding);
 }
 
-function handleSubmitForms(event) {
-  event.preventDefault();
-
-  switch (event.target) {
-    case formOfEditingPopup:
-      handleSubmitOfEditingForm();
-      break;
-    case formOfAddingPopup:
-      handleSubmitOfAddingForm();
-      break;
-  }
-}
-
 // Add a submit listener for forms
 
-Array.from(forms).forEach((formElement) => {
-  formElement.addEventListener('submit', handleSubmitForms);
-});
+formOfEditingPopup.addEventListener('submit', handleSubmitOfEditingForm);
+formOfAddingPopup.addEventListener('submit', handleSubmitOfAddingForm);
