@@ -50,31 +50,6 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
 
-// Reset popup errors
-
-function resetPopupErrors(popup) {
-  popup.querySelectorAll('.popup__input').forEach((inputElement) => {
-    inputElement.classList.remove('popup__input_type_error');
-  });
-
-  popup.querySelectorAll('.popup__error').forEach((errorElement) => {
-    errorElement.classList.remove('popup__error_active');
-    errorElement.textContent = '';
-  });
-}
-
-// Disable and enable submit button
-
-function disableButton(buttonElement, inactiveButtonClass) {
-  buttonElement.classList.add(inactiveButtonClass);
-  buttonElement.setAttribute('disabled', true);
-}
-
-function enableButton(buttonElement, inactiveButtonClass) {
-  buttonElement.removeAttribute('disabled');
-  buttonElement.classList.remove(inactiveButtonClass);
-}
-
 // Listeners for opening a popup with click to button
 
 function handleButtonForEditingProfile() {
