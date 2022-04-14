@@ -107,6 +107,7 @@ class Card {
 
   generateCard() {
     this._element = this._getTemplate();
+    this._setEventListeners();
 
     const cardTitle = this._element.querySelector('.places__title');
     const cardImage = this._element.querySelector('.places__image');
@@ -116,6 +117,31 @@ class Card {
     cardImage.alt = this._alt;
 
     return this._element;
+  }
+
+  _setEventListeners() {
+    const buttonToLike = this._element.querySelector('.places__like-button');
+    const buttonToDelete = this._element.querySelector('.places__delete-button');
+    const buttonToEnlarge = this._element.querySelector('.places__enlarge-button');
+
+    buttonToLike.addEventListener('click', _handleButtonToLike);
+    buttonToDelete.addEventListener('click', _handleButtonToDelete);
+    buttonToEnlarge.addEventListener('click', _handleButtonToEnlarge);
+  }
+
+  _handleButtonToLike() {
+    buttonToLike.classList.toggle('places__like-button_active');
+  }
+
+  _handleButtonToDelete() {
+    buttonToDelete.closest('.places__item').remove();
+  }
+
+  _handleButtonToEnlarge() {
+    popupImageCaption.textContent = this._title;
+    popupImage.src = this._link;
+    popupImage.alt = this._alt;
+    openPopup(popupEnlarging);
   }
 }
 
