@@ -1,3 +1,5 @@
+import { initialCards } from './cards.js';
+
 const profile = document.querySelector('.profile');
 const nameProfile = profile.querySelector('.profile__name');
 const jobProfile = profile.querySelector('.profile__job');
