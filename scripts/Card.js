@@ -1,13 +1,14 @@
 export default class Card {
-  constructor(data) {
+  constructor(data, cardSelector) {
     this._title = data.name;
     this._link = data.link;
     this._alt = data.name;
+    this._cardSelector = cardSelector;
   }
 
   _getTemplate() {
     const cardElement = document
-      .querySelector('.places-template')
+      .querySelector(this._cardSelector)
       .content.querySelector('.places__item')
       .cloneNode(true);
 
@@ -29,29 +30,27 @@ export default class Card {
   }
 
   _setEventListeners() {
-    const buttonToLike = this._element.querySelector('.places__like-button');
-    const buttonToDelete = this._element.querySelector('.places__delete-button');
-    const buttonToEnlarge = this._element.querySelector('.places__enlarge-button');
-
-    buttonToLike.addEventListener('click', () => {
-      this._handleButtonToLike;
+    this._element.querySelector('.places__like-button').addEventListener('click', () => {
+      this._handleButtonToLike();
     });
 
-    buttonToDelete.addEventListener('click', () => {
-      this._handleButtonToDelete;
+    this._element.querySelector('.places__delete-button').addEventListener('click', () => {
+      this._handleButtonToDelete();
     });
 
-    buttonToEnlarge.addEventListener('click', () => {
+    this._element.querySelector('.places__enlarge-button').addEventListener('click', () => {
       this._handleButtonToEnlarge;
     });
   }
 
   _handleButtonToLike() {
-    buttonToLike.classList.toggle('places__like-button_active');
+    this._element
+      .querySelector('.places__like-button')
+      .classList.toggle('places__like-button_active');
   }
 
   _handleButtonToDelete() {
-    buttonToDelete.closest('.places__item').remove();
+    this._element.querySelector('.places__delete-button').closest('.places__item').remove();
   }
 
   _handleButtonToEnlarge() {

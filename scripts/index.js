@@ -94,7 +94,7 @@ popups.forEach((popup) => {
 // Cards (places)
 
 initialCards.forEach((card) => {
-  const newCard = new Card(card);
+  const newCard = new Card(card, '.places-template');
   const cardElement = newCard.generateCard();
 
   cardsContainer.prepend(cardElement);
