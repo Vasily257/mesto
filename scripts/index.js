@@ -89,6 +89,36 @@ popups.forEach((popup) => {
 
 // Cards (places)
 
+class Card {
+  constructor(data) {
+    this._title = data.name;
+    this._link = data.link;
+    this._alt = data.name;
+  }
+
+  _getTemplate() {
+    const cardElement = document
+      .querySelector('.places-template')
+      .content.querySelector('.places__item')
+      .cloneNode(true);
+
+    return cardElement;
+  }
+
+  generateCard() {
+    this._element = this._getTemplate();
+
+    const cardTitle = this._element.querySelector('.places__title');
+    const cardImage = this._element.querySelector('.places__image');
+
+    cardTitle.textContent = this._title;
+    cardImage.src = this._link;
+    cardImage.alt = this._alt;
+
+    return this._element;
+  }
+}
+
 // Creating of card
 
 function createCard(data) {
