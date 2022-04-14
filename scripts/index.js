@@ -134,6 +134,7 @@ class Card {
     buttonToDelete.addEventListener('click', () => {
       this._handleButtonToDelete;
     });
+
     buttonToEnlarge.addEventListener('click', () => {
       this._handleButtonToEnlarge;
     });
@@ -155,7 +156,7 @@ class Card {
   }
 }
 
-initialCards.reverse().forEach((card) => {
+initialCards.forEach((card) => {
   const newCard = new Card(card);
   const cardElement = newCard.generateCard();
 
