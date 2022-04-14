@@ -127,9 +127,16 @@ class Card {
     const buttonToDelete = this._element.querySelector('.places__delete-button');
     const buttonToEnlarge = this._element.querySelector('.places__enlarge-button');
 
-    buttonToLike.addEventListener('click', _handleButtonToLike);
-    buttonToDelete.addEventListener('click', _handleButtonToDelete);
-    buttonToEnlarge.addEventListener('click', _handleButtonToEnlarge);
+    buttonToLike.addEventListener('click', () => {
+      this._handleButtonToLike;
+    });
+
+    buttonToDelete.addEventListener('click', () => {
+      this._handleButtonToDelete;
+    });
+    buttonToEnlarge.addEventListener('click', () => {
+      this._handleButtonToEnlarge;
+    });
   }
 
   _handleButtonToLike() {
@@ -147,6 +154,13 @@ class Card {
     openPopup(popupEnlarging);
   }
 }
+
+initialCards.reverse().forEach((card) => {
+  const newCard = new Card(card);
+  const cardElement = newCard.generateCard();
+
+  cardsContainer.prepend(cardElement);
+});
 
 // Creating of card
 
