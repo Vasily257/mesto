@@ -38,9 +38,9 @@ export default class Card {
       this._handleButtonToDelete();
     });
 
-    this._element.querySelector('.places__enlarge-button').addEventListener('click', () => {
-      this._handleButtonToEnlarge;
-    });
+    // this._element.querySelector('.places__enlarge-button').addEventListener('click', () => {
+    //   this._handleButtonToEnlarge;
+    // });
   }
 
   _handleButtonToLike() {
@@ -53,10 +53,10 @@ export default class Card {
     this._element.querySelector('.places__delete-button').closest('.places__item').remove();
   }
 
-  _handleButtonToEnlarge() {
-    popupImageCaption.textContent = this._title;
-    popupImage.src = this._link;
-    popupImage.alt = this._alt;
-    openPopup(popupEnlarging);
-  }
+  // _handleButtonToEnlarge() {
+  //   popupImageCaption.textContent = this._title;
+  //   popupImage.src = this._link;
+  //   popupImage.alt = this._alt;
+  //   openPopup(popupEnlarging);
+  // }
 }
