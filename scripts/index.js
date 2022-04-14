@@ -58,6 +58,7 @@ function handleButtonForEditingProfile() {
   namePopup.value = nameProfile.textContent;
   jobPopup.value = jobProfile.textContent;
 
+  enableButton(buttonSubmitPopupEditing, 'popup__submit-button_disabled');
   resetPopupErrors(popupEditing);
   openPopup(popupEditing);
 }
