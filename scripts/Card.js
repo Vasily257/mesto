@@ -1,3 +1,5 @@
+import { openPopup } from './index.js';
+
 export default class Card {
   constructor(data, cardSelector) {
     this._title = data.name;
@@ -52,6 +54,10 @@ export default class Card {
   }
 
   _handleButtonToEnlarge() {
+    const popupEnlarging = document.querySelector('.popup_type_enlarge');
+    const popupImage = popupEnlarging.querySelector('.popup__image');
+    const popupImageCaption = popupEnlarging.querySelector('.popup__image-caption');
+
     popupImageCaption.textContent = this._title;
     popupImage.src = this._link;
     popupImage.alt = this._alt;

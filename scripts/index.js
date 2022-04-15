@@ -179,3 +179,5 @@ function handleSubmitOfAddingForm(event) {
 
 formOfEditingPopup.addEventListener('submit', handleSubmitOfEditingForm);
 formOfAddingPopup.addEventListener('submit', handleSubmitOfAddingForm);
+
+export { openPopup };
