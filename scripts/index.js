@@ -50,6 +50,9 @@ function openPopup(popup) {
 
 // Listeners for opening a popup with click to button
 
+buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile);
+buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
+
 function handleButtonForEditingProfile() {
   namePopup.value = nameProfile.textContent;
   jobPopup.value = jobProfile.textContent;
@@ -59,8 +62,6 @@ function handleButtonForEditingProfile() {
   openPopup(popupEditing);
 }
 
-buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile);
-
 function handleButtonForAddingCard() {
   formOfAddingPopup.reset();
 
@@ -68,8 +69,6 @@ function handleButtonForAddingCard() {
   resetPopupErrors(popupAdding);
   openPopup(popupAdding);
 }
-
-buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
 
 // Listener for closing a popups with click
 
