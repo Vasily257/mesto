@@ -23,11 +23,6 @@ const placePopup = formOfAddingPopup.elements.place;
 const linkPopup = formOfAddingPopup.elements.link;
 const buttonSubmitPopupAdding = popupAdding.querySelector('.popup__submit-button');
 
-const popupEnlarging = document.querySelector('.popup_type_enlarge');
-const popupImage = popupEnlarging.querySelector('.popup__image');
-const popupImageContainer = popupEnlarging.querySelector('.popup__image-container');
-const popupImageCaption = popupEnlarging.querySelector('.popup__image-caption');
-
 // Popups
 
 // Functions for closing popups
@@ -93,58 +88,6 @@ popups.forEach((popup) => {
 
 // Cards (places)
 
-initialCards.forEach((card) => {
-  const newCard = new Card(card, '.places-template');
-  const cardElement = newCard.generateCard();
-
-  cardsContainer.prepend(cardElement);
-});
-
-// Creating of card
-
-function createCard(data) {
-  const cardElement = document
-    .querySelector('.places-template')
-    .content.firstElementChild.cloneNode(true);
-
-  // Cards elements
-
-  const cardTitle = cardElement.querySelector('.places__title');
-  const buttonToLike = cardElement.querySelector('.places__like-button');
-  const buttonToDelete = cardElement.querySelector('.places__delete-button');
-  const cardImage = cardElement.querySelector('.places__image');
-  const buttonToEnlarge = cardElement.querySelector('.places__enlarge-button');
-
-  cardTitle.textContent = data.name;
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
-
-  // Сards handlers and listeners
-
-  function handleButtonToLike() {
-    buttonToLike.classList.toggle('places__like-button_active');
-  }
-
-  buttonToLike.addEventListener('click', handleButtonToLike);
-
-  function handleButtonToDelete() {
-    buttonToDelete.closest('.places__item').remove();
-  }
-
-  buttonToDelete.addEventListener('click', handleButtonToDelete);
-
-  function handleButtonToEnlarge() {
-    popupImageCaption.textContent = data.name;
-    popupImage.src = data.link;
-    popupImage.alt = data.name;
-    openPopup(popupEnlarging);
-  }
-
-  buttonToEnlarge.addEventListener('click', handleButtonToEnlarge);
-
-  return cardElement;
-}
-
 // Rendering of card
 
 function renderCard(data) {
@@ -158,7 +101,10 @@ function renderCard(data) {
 
 initialCards.reverse().forEach(renderCard);
 
-// Form submission handlers
+// Add a submit listener for forms
+
+formOfEditingPopup.addEventListener('submit', handleSubmitOfEditingForm);
+formOfAddingPopup.addEventListener('submit', handleSubmitOfAddingForm);
 
 function handleSubmitOfEditingForm(event) {
   event.preventDefault();
@@ -177,9 +123,6 @@ function handleSubmitOfAddingForm(event) {
   closePopup(popupAdding);
 }
 
-// Add a submit listener for forms
-
-formOfEditingPopup.addEventListener('submit', handleSubmitOfEditingForm);
-formOfAddingPopup.addEventListener('submit', handleSubmitOfAddingForm);
+// exports
 
 export { openPopup };

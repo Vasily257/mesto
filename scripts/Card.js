@@ -61,6 +61,7 @@ export default class Card {
     popupImageCaption.textContent = this._title;
     popupImage.src = this._link;
     popupImage.alt = this._alt;
+
     openPopup(popupEnlarging);
   }
 
