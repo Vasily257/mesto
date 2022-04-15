@@ -148,7 +148,9 @@ function createCard(data) {
 // Rendering of card
 
 function renderCard(data) {
-  const cardElement = createCard(data);
+  const newCard = new Card(data, '.places-template');
+  const cardElement = newCard.generateCard();
+
   cardsContainer.prepend(cardElement);
 }
 
