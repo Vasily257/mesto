@@ -123,6 +123,24 @@ function handleSubmitOfAddingForm(event) {
   closePopup(popupAdding);
 }
 
+// Start form validation
+
+const config = {
+  inputSelector: '.popup__input',
+  inputErrorClass: 'popup__input_type_error',
+  errorSelector: '.popup__error',
+  errorClass: 'popup__error_active',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
+};
+
+function startValidate() {
+  const formValidated = new FormValidator(config, '.popup__form');
+  formValidated.enableValidation();
+}
+
+Array.from(forms).forEach(startValidate);
+
 // exports
 
 export { openPopup };
