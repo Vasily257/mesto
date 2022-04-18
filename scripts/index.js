@@ -1,5 +1,6 @@
 import { initialCards } from './cards.js';
 import Card from './Card.js';
+import FormValidator from './FormValidator.js';
 
 const profile = document.querySelector('.profile');
 const nameProfile = profile.querySelector('.profile__name');
@@ -57,16 +58,16 @@ function handleButtonForEditingProfile() {
   namePopup.value = nameProfile.textContent;
   jobPopup.value = jobProfile.textContent;
 
-  enableButton(buttonSubmitPopupEditing, 'popup__submit-button_disabled');
-  resetPopupErrors(popupEditing);
+  // enableButton(buttonSubmitPopupEditing, 'popup__submit-button_disabled');
+  // resetPopupErrors(popupEditing);
   openPopup(popupEditing);
 }
 
 function handleButtonForAddingCard() {
   formOfAddingPopup.reset();
 
-  disableButton(buttonSubmitPopupAdding, 'popup__submit-button_disabled');
-  resetPopupErrors(popupAdding);
+  // disableButton(buttonSubmitPopupAdding, 'popup__submit-button_disabled');
+  // resetPopupErrors(popupAdding);
   openPopup(popupAdding);
 }
 
