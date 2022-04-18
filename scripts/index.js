@@ -134,12 +134,10 @@ const config = {
   inactiveButtonClass: 'popup__submit-button_disabled',
 };
 
-function startValidate() {
-  const formValidated = new FormValidator(config, '.popup__form');
-  formValidated.enableValidation();
-}
-
-Array.from(forms).forEach(startValidate);
+Array.from(forms).forEach((formElement) => {
+  const formValidate = new FormValidator(config, '.popup__form');
+  formValidate.enableValidation(formElement);
+});
 
 // exports
 

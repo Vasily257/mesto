@@ -9,8 +9,7 @@ export default class FormValidator {
     this._formSelector = formSelector;
   }
 
-  enableValidation() {
-    const formElement = document.querySelector(this._formSelector);
+  enableValidation(formElement) {
     this._setEventListeners(formElement);
   }
 
