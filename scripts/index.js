@@ -26,14 +26,7 @@ const buttonSubmitPopupAdding = popupAdding.querySelector('.popup__submit-button
 
 // Popups
 
-// Functions for closing popups
-
-function closePopup(popup) {
-  document.removeEventListener('keydown', handleClosePopupEscKey);
-  popup.classList.remove('popup_opened');
-}
-
-// Handler for closing a popups with esc key
+// Functions for closing and opening popups
 
 function handleClosePopupEscKey(event) {
   if (event.key === 'Escape') {
@@ -42,7 +35,10 @@ function handleClosePopupEscKey(event) {
   }
 }
 
-// Functions for opening popups
+function closePopup(popup) {
+  document.removeEventListener('keydown', handleClosePopupEscKey);
+  popup.classList.remove('popup_opened');
+}
 
 function openPopup(popup) {
   document.addEventListener('keydown', handleClosePopupEscKey);
@@ -50,9 +46,6 @@ function openPopup(popup) {
 }
 
 // Listeners for opening a popup with click to button
-
-buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile);
-buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
 
 function handleButtonForEditingProfile() {
   namePopup.value = nameProfile.textContent;
@@ -71,6 +64,9 @@ function handleButtonForAddingCard() {
   openPopup(popupAdding);
 }
 
+buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile);
+buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
+
 // Listener for closing a popups with click
 
 function handleClosePopupClick(event) {
@@ -88,8 +84,6 @@ popups.forEach((popup) => {
 
 // Cards (places)
 
-// Rendering of card
-
 function renderCard(data) {
   const newCard = new Card(data, '.places-template');
   const cardElement = newCard.generateCard();
@@ -97,14 +91,9 @@ function renderCard(data) {
   cardsContainer.prepend(cardElement);
 }
 
-// Initial rendering of cards
-
 initialCards.reverse().forEach(renderCard);
 
 // Add a submit listener for forms
-
-formOfEditingPopup.addEventListener('submit', handleSubmitOfEditingForm);
-formOfAddingPopup.addEventListener('submit', handleSubmitOfAddingForm);
 
 function handleSubmitOfEditingForm(event) {
   event.preventDefault();
@@ -122,6 +111,9 @@ function handleSubmitOfAddingForm(event) {
   renderCard(data);
   closePopup(popupAdding);
 }
+
+formOfEditingPopup.addEventListener('submit', handleSubmitOfEditingForm);
+formOfAddingPopup.addEventListener('submit', handleSubmitOfAddingForm);
 
 // Start form validation
 
