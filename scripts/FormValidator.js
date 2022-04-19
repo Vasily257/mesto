@@ -7,21 +7,20 @@ export default class FormValidator {
     this._submitButtonSelector = config.submitButtonSelector;
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._formSelector = formSelector;
+    this._formElement = document.querySelector(this._formSelector);
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+    this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
   }
 
   enableValidation() {
-    const formElement = document.querySelector(this._formSelector);
-    this._setEventListeners(formElement);
+    this._setEventListeners(this._formElement);
   }
 
   _setEventListeners(formElement) {
-    const inputList = Array.from(formElement.querySelectorAll(this._inputSelector));
-    const buttonElement = formElement.querySelector(this._submitButtonSelector);
-
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._isValid(inputElement, formElement);
-        this._toggleButtonState(inputList, buttonElement, this._inactiveButtonClass);
+        this._toggleButtonState(this._inputList, this._buttonElement, this._inactiveButtonClass);
       });
     });
   }
