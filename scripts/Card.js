@@ -11,7 +11,7 @@ export default class Card {
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
-      .content.querySelector('.places__item')
+      .content.querySelector('.place')
       .cloneNode(true);
 
     return cardElement;
@@ -21,8 +21,8 @@ export default class Card {
     this._element = this._getTemplate();
     this._setEventListeners();
 
-    const cardTitle = this._element.querySelector('.places__title');
-    const cardImage = this._element.querySelector('.places__image');
+    const cardTitle = this._element.querySelector('.place__title');
+    const cardImage = this._element.querySelector('.place__image');
 
     cardTitle.textContent = this._title;
     cardImage.src = this._link;
@@ -46,11 +46,11 @@ export default class Card {
   }
 
   _handleButtonToLike() {
-    this._getLikeButton().classList.toggle('places__like-button_active');
+    this._getLikeButton().classList.toggle('place__like-button_active');
   }
 
   _handleButtonToDelete() {
-    this._element.querySelector('.places__delete-button').closest('.places__item').remove();
+    this._element.querySelector('.place__delete-button').closest('.place__item').remove();
   }
 
   _handleButtonToEnlarge() {
@@ -67,7 +67,7 @@ export default class Card {
 
   _getLikeButton() {
     if (!this._likeButton) {
-      this._likeButton = this._element.querySelector('.places__like-button');
+      this._likeButton = this._element.querySelector('.place__like-button');
     }
 
     return this._likeButton;
@@ -75,7 +75,7 @@ export default class Card {
 
   _getDeleteButton() {
     if (!this._deleteButton) {
-      this._deleteButton = this._element.querySelector('.places__delete-button');
+      this._deleteButton = this._element.querySelector('.place__delete-button');
     }
 
     return this._deleteButton;
@@ -83,7 +83,7 @@ export default class Card {
 
   _getEnlargeButton() {
     if (!this._enlargeButton) {
-      this._enlargeButton = this._element.querySelector('.places__enlarge-button');
+      this._enlargeButton = this._element.querySelector('.place__enlarge-button');
     }
 
     return this._enlargeButton;

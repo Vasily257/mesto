@@ -1,4 +1,4 @@
-.places__delete-button {
+.place__delete-button {
   position: absolute;
   z-index: 1;
   top: 20px;
@@ -9,5 +9,5 @@
   margin: 0;
   padding: 0;
 
-  background-image: url(../../../images/places/delete-button.svg);
+  background-image: url(../../../images/place/delete-button.svg);
 }

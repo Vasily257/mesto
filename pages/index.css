@@ -19,15 +19,15 @@
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 /* @import url(../blocks/places/places.css); */
 @import url(../blocks/places/__list/places__list.css);
-@import url(../blocks/places/__item/places__item.css);
-@import url(../blocks/places/__delete-button/places__delete-button.css);
-@import url(../blocks/places/__image-container/places__image-container.css);
-@import url(../blocks/places/__image/places__image.css);
-@import url(../blocks/places/__enlarge-button/places__enlarge-button.css);
-@import url(../blocks/places/__panel/places__panel.css);
-@import url(../blocks/places/__title/places__title.css);
-@import url(../blocks/places/__like-button/places__like-button.css);
-@import url(../blocks/places/__like-button/_active/places__like-button_active.css);
+@import url(../blocks/place/place.css);
+@import url(../blocks/place/__delete-button/place__delete-button.css);
+@import url(../blocks/place/__image-container/place__image-container.css);
+@import url(../blocks/place/__image/place__image.css);
+@import url(../blocks/place/__enlarge-button/place__enlarge-button.css);
+@import url(../blocks/place/__panel/place__panel.css);
+@import url(../blocks/place/__title/place__title.css);
+@import url(../blocks/place/__like-button/place__like-button.css);
+@import url(../blocks/place/__like-button/_active/place__like-button_active.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__text/footer__text.css);
 @import url(../blocks/popup/popup.css);

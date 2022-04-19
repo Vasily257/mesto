@@ -1,4 +1,4 @@
-.places__like-button {
+.place__like-button {
   flex-shrink: 0;
 
   width: 22px;
@@ -6,10 +6,10 @@
   margin: 0 20px;
   padding: 0;
 
-  background-image: url(../../../images/places/like-button.svg);
+  background-image: url(../../../images/place/like-button.svg);
 }
 
-.places__like-button:hover {
+.place__like-button:hover {
   transition: opacity 0.1s;
 
   opacity: 0.5;
