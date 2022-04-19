@@ -9,8 +9,11 @@ export default class FormValidator {
     this._formSelector = formSelector;
   }
 
-  enableValidation(formElement) {
-    this._setEventListeners(formElement);
+  enableValidation() {
+    const formList = Array.from(document.querySelectorAll(this._formSelector));
+    formList.forEach((formElement) => {
+      this._setEventListeners(formElement);
+    });
   }
 
   _setEventListeners(formElement) {
