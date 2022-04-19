@@ -36,8 +36,8 @@ const config = {
   inactiveButtonClass: 'popup__submit-button_disabled',
 };
 
-const validatorEditForm = new FormValidator(config, '.popup_type_edit');
-const validatorAddForm = new FormValidator(config, '.popup_type_add');
+const validatorEditForm = new FormValidator(config, popupEditing);
+const validatorAddForm = new FormValidator(config, popupAdding);
 
 validatorEditForm.enableValidation();
 validatorAddForm.enableValidation();
