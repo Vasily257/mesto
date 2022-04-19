@@ -17,4 +17,10 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
 
-export { openPopup, closePopup };
+// Elements of enlarging popup
+
+const popupEnlarging = document.querySelector('.popup_type_enlarge');
+const popupImage = popupEnlarging.querySelector('.popup__image');
+const popupImageCaption = popupEnlarging.querySelector('.popup__image-caption');
+
+export { openPopup, closePopup, popupEnlarging, popupImage, popupImageCaption };
