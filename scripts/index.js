@@ -24,6 +24,20 @@ const placePopup = formOfAddingPopup.elements.place;
 const linkPopup = formOfAddingPopup.elements.link;
 const buttonSubmitPopupAdding = popupAdding.querySelector('.popup__submit-button');
 
+// Start form validation
+
+const config = {
+  inputSelector: '.popup__input',
+  inputErrorClass: 'popup__input_type_error',
+  errorSelector: '.popup__error',
+  errorClass: 'popup__error_active',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
+};
+
+const formValidate = new FormValidator(config, '.popup__form');
+formValidate.enableValidation();
+
 // Popups
 
 // Functions for closing and opening popups
@@ -51,16 +65,24 @@ function handleButtonForEditingProfile() {
   namePopup.value = nameProfile.textContent;
   jobPopup.value = jobProfile.textContent;
 
-  // enableButton(buttonSubmitPopupEditing, 'popup__submit-button_disabled');
-  // resetPopupErrors(popupEditing);
+  formValidate.initialEnableButton(
+    buttonSubmitPopupEditing,
+    'popup__submit-button_disabled',
+    popupEditing
+  );
+
   openPopup(popupEditing);
 }
 
 function handleButtonForAddingCard() {
   formOfAddingPopup.reset();
 
-  // disableButton(buttonSubmitPopupAdding, 'popup__submit-button_disabled');
-  // resetPopupErrors(popupAdding);
+  formValidate.initialDisableButton(
+    buttonSubmitPopupAdding,
+    'popup__submit-button_disabled',
+    popupAdding
+  );
+
   openPopup(popupAdding);
 }
 
@@ -114,20 +136,6 @@ function handleSubmitOfAddingForm(event) {
 
 formOfEditingPopup.addEventListener('submit', handleSubmitOfEditingForm);
 formOfAddingPopup.addEventListener('submit', handleSubmitOfAddingForm);
-
-// Start form validation
-
-const config = {
-  inputSelector: '.popup__input',
-  inputErrorClass: 'popup__input_type_error',
-  errorSelector: '.popup__error',
-  errorClass: 'popup__error_active',
-  submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_disabled',
-};
-
-const formValidate = new FormValidator(config, '.popup__form');
-formValidate.enableValidation();
 
 // exports
 
