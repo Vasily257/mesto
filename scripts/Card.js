@@ -4,7 +4,7 @@ export default class Card {
   constructor(data, cardSelector) {
     this._title = data.name;
     this._link = data.link;
-    this._alt = data.name;
+    this._alt = this._title;
     this._cardSelector = cardSelector;
   }
 
@@ -50,7 +50,8 @@ export default class Card {
   }
 
   _handleButtonToDelete() {
-    this._element.querySelector('.place__delete-button').closest('.place__item').remove();
+    this._element.remove();
+    this._element = null;
   }
 
   _handleButtonToEnlarge() {
