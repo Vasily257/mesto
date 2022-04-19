@@ -35,8 +35,11 @@ const config = {
   inactiveButtonClass: 'popup__submit-button_disabled',
 };
 
-const formValidate = new FormValidator(config, '.popup__form');
-formValidate.enableValidation();
+const validatorEditForm = new FormValidator(config, '.popup_type_edit');
+const validatorAddForm = new FormValidator(config, '.popup_type_add');
+
+validatorEditForm.enableValidation();
+validatorAddForm.enableValidation();
 
 // Popups
 
@@ -65,7 +68,7 @@ function handleButtonForEditingProfile() {
   namePopup.value = nameProfile.textContent;
   jobPopup.value = jobProfile.textContent;
 
-  formValidate.initialEnableButton(
+  validatorEditForm.initialEnableButton(
     buttonSubmitPopupEditing,
     'popup__submit-button_disabled',
     popupEditing
@@ -77,7 +80,7 @@ function handleButtonForEditingProfile() {
 function handleButtonForAddingCard() {
   formOfAddingPopup.reset();
 
-  formValidate.initialDisableButton(
+  validatorAddForm.initialDisableButton(
     buttonSubmitPopupAdding,
     'popup__submit-button_disabled',
     popupAdding
