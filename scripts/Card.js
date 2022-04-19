@@ -50,7 +50,7 @@ export default class Card {
   }
 
   _handleButtonToLike() {
-    this._getLikeButton().classList.toggle('place__like-button_active');
+    this._likeButton.classList.toggle('place__like-button_active');
   }
 
   _handleButtonToDelete() {
