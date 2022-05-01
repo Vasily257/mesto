@@ -1,30 +1,28 @@
 import './index.css';
+
+import {
+  nameProfile,
+  jobProfile,
+  buttonForEditingProfile,
+  buttonForAddingCard,
+  cardsContainer,
+  popups,
+  popupEditing,
+  formOfEditingPopup,
+  namePopup,
+  jobPopup,
+  buttonSubmitPopupEditing,
+  popupAdding,
+  formOfAddingPopup,
+  placePopup,
+  linkPopup,
+  buttonSubmitPopupAdding,
+} from '../../scripts/utils/constants.js';
 import { initialCards } from '../../scripts/utils/initialCards.js';
 import { openPopup, closePopup } from '../../scripts/utils/utils.js';
+
 import Card from '../../scripts/components/Card.js';
 import FormValidator from '../../scripts/components/FormValidator.js';
-
-const profile = document.querySelector('.profile');
-const nameProfile = profile.querySelector('.profile__name');
-const jobProfile = profile.querySelector('.profile__job');
-const buttonForEditingProfile = profile.querySelector('.profile__edit-button');
-const buttonForAddingCard = profile.querySelector('.profile__add-button');
-
-const cardsContainer = document.querySelector('.places__list');
-const popups = document.querySelectorAll('.popup');
-const forms = document.forms;
-
-const popupEditing = document.querySelector('.popup_type_edit');
-const formOfEditingPopup = forms.edit;
-const namePopup = formOfEditingPopup.elements.name;
-const jobPopup = formOfEditingPopup.elements.job;
-const buttonSubmitPopupEditing = popupEditing.querySelector('.popup__submit-button');
-
-const popupAdding = document.querySelector('.popup_type_add');
-const formOfAddingPopup = forms.add;
-const placePopup = formOfAddingPopup.elements.place;
-const linkPopup = formOfAddingPopup.elements.link;
-const buttonSubmitPopupAdding = popupAdding.querySelector('.popup__submit-button');
 
 // Start form validation
 
