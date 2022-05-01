@@ -1,8 +1,8 @@
-import './pages/index.css';
-import { initialCards } from '../src/scripts/initialCards.js';
-import { openPopup, closePopup } from '../src/scripts/utils.js';
-import Card from '../src/scripts/Card.js';
-import FormValidator from '../src/scripts/FormValidator.js';
+import './index.css';
+import { initialCards } from '../../scripts/initialCards.js';
+import { openPopup, closePopup } from '../../scripts/utils.js';
+import Card from '../../scripts/Card.js';
+import FormValidator from '../../scripts/FormValidator.js';
 
 const profile = document.querySelector('.profile');
 const nameProfile = profile.querySelector('.profile__name');

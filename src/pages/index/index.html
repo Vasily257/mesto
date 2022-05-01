@@ -10,16 +10,18 @@
       <header class="index-page__section header">
         <img
           class="header__logo"
-          src="<%=require('../src/images/header/logo.svg')%>"
+          src="<%=require('../../../src/images/header/logo.svg')%>"
           alt="Логотип сайта «Место»" />
       </header>
       <main class="index-page__section content">
         <section class="profile" aria-label="Описание профиля">
           <picture class="profile__photo-container">
-            <source srcset="<%=require('../src/images/profile/photo.webp')%>" type="image/webp" />
+            <source
+              srcset="<%=require('../../../src/images/profile/photo.webp')%>"
+              type="image/webp" />
             <img
               class="profile__photo"
-              src="<%=require('../src/images/profile/photo.jpg')%>"
+              src="<%=require('../../../src/images/profile/photo.jpg')%>"
               alt="Фото профиля" />
           </picture>
           <div class="profile__info">
