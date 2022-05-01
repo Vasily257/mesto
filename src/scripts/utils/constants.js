@@ -4,7 +4,7 @@ export const jobProfile = profile.querySelector('.profile__job');
 export const buttonForEditingProfile = profile.querySelector('.profile__edit-button');
 export const buttonForAddingCard = profile.querySelector('.profile__add-button');
 
-export const cardsContainer = document.querySelector('.places__list');
+export const cardsSelector = '.places__list';
 export const popups = document.querySelectorAll('.popup');
 export const forms = document.forms;
 

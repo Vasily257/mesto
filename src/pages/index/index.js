@@ -5,7 +5,7 @@ import {
   jobProfile,
   buttonForEditingProfile,
   buttonForAddingCard,
-  cardsContainer,
+  cardsSelector,
   popups,
   popupEditing,
   formOfEditingPopup,
@@ -21,6 +21,7 @@ import {
 import { initialCards } from '../../scripts/utils/initialCards.js';
 import { openPopup, closePopup } from '../../scripts/utils/utils.js';
 
+import Section from '../../scripts/components/Sections.js';
 import Card from '../../scripts/components/Card.js';
 import FormValidator from '../../scripts/components/FormValidator.js';
 
@@ -40,6 +41,22 @@ const validatorAddForm = new FormValidator(config, popupAdding);
 
 validatorEditForm.enableValidation();
 validatorAddForm.enableValidation();
+
+// Cards (places)
+
+const defaultCardList = new Section(
+  {
+    items: initialCards.reverse(),
+    render: (item) => {
+      const card = new Card(item, '.place-template');
+      const cardElement = card.generateCard();
+      defaultCardList.addItem(cardElement);
+    },
+  },
+  cardsSelector
+);
+
+defaultCardList.renderItems();
 
 // Popups
 
@@ -90,15 +107,6 @@ popups.forEach((popup) => {
 
 // Cards (places)
 
-function renderCard(data) {
-  const newCard = new Card(data, '.place-template');
-  const cardElement = newCard.generateCard();
-
-  cardsContainer.prepend(cardElement);
-}
-
-initialCards.reverse().forEach(renderCard);
-
 // Add a submit listener for forms
 
 function handleSubmitOfEditingForm(event) {
@@ -114,7 +122,20 @@ function handleSubmitOfAddingForm(event) {
     name: placePopup.value,
     link: linkPopup.value,
   };
-  renderCard(data);
+
+  const createdCardsList = new Section(
+    {
+      items: [data],
+      render: (item) => {
+        const card = new Card(item, '.place-template');
+        const cardElement = card.generateCard();
+        defaultCardList.addItem(cardElement);
+      },
+    },
+    cardsSelector
+  );
+  createdCardsList.renderItems();
+
   closePopup(popupAdding);
 }
 
