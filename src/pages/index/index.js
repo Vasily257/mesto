@@ -42,7 +42,7 @@ const validatorAddForm = new FormValidator(config, popupAdding);
 validatorEditForm.enableValidation();
 validatorAddForm.enableValidation();
 
-// Cards (places)
+// Cards (rewrite / delete old)
 
 const defaultCardList = new Section(
   {
@@ -90,7 +90,7 @@ function handleButtonForAddingCard() {
 buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile);
 buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
 
-// Listener for closing a popups with click
+// Listener for closing a popups with click (rewrite / don't delete old)
 
 function handleClosePopupClick(event) {
   if (
@@ -122,6 +122,8 @@ function handleSubmitOfAddingForm(event) {
     name: placePopup.value,
     link: linkPopup.value,
   };
+
+  // Add card (rewrite / delete old)
 
   const createdCardsList = new Section(
     {
