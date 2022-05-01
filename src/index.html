@@ -4,18 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Место</title>
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
     <div class="index-page">
       <header class="index-page__section header">
-        <img class="header__logo" src="./images/header/logo.svg" alt="Логотип сайта «Место»" />
+        <img
+          class="header__logo"
+          src="<%=require('../src/images/header/logo.svg')%>"
+          alt="Логотип сайта «Место»" />
       </header>
       <main class="index-page__section content">
         <section class="profile" aria-label="Описание профиля">
           <picture class="profile__photo-container">
-            <source srcset="./images/profile/photo.webp" type="image/webp" />
-            <img class="profile__photo" src="./images/profile/photo.jpg" alt="Фото профиля" />
+            <source srcset="<%=require('../src/images/profile/photo.webp')%>" type="image/webp" />
+            <img
+              class="profile__photo"
+              src="<%=require('../src/images/profile/photo.jpg')%>"
+              alt="Фото профиля" />
           </picture>
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -146,6 +151,5 @@
         </div>
       </li>
     </template>
-    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>

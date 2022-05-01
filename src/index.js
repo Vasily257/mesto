@@ -1,7 +1,8 @@
-import { initialCards } from './initialCards.js';
-import { openPopup, closePopup } from './utils.js';
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
+import './pages/index.css';
+import { initialCards } from '../src/scripts/initialCards.js';
+import { openPopup, closePopup } from '../src/scripts/utils.js';
+import Card from '../src/scripts/Card.js';
+import FormValidator from '../src/scripts/FormValidator.js';
 
 const profile = document.querySelector('.profile');
 const nameProfile = profile.querySelector('.profile__name');
@@ -121,7 +122,3 @@ function handleSubmitOfAddingForm(event) {
 
 formOfEditingPopup.addEventListener('submit', handleSubmitOfEditingForm);
 formOfAddingPopup.addEventListener('submit', handleSubmitOfAddingForm);
-
-// exports
-
-export { openPopup };
