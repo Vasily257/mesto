@@ -21,7 +21,7 @@ import {
 import { initialCards } from '../../scripts/utils/initialCards.js';
 import { openPopup, closePopup } from '../../scripts/utils/utils.js';
 
-import Section from '../../scripts/components/Sections.js';
+import Section from '../../scripts/components/Section.js';
 import Card from '../../scripts/components/Card.js';
 import FormValidator from '../../scripts/components/FormValidator.js';
 
