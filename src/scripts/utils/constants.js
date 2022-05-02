@@ -19,3 +19,7 @@ export const formOfAddingPopup = forms.add;
 export const placePopup = formOfAddingPopup.elements.place;
 export const linkPopup = formOfAddingPopup.elements.link;
 export const buttonSubmitPopupAdding = popupAdding.querySelector('.popup__submit-button');
+
+export const popupEnlarging = document.querySelector('.popup_type_enlarge');
+export const popupImage = popupEnlarging.querySelector('.popup__image');
+export const popupImageCaption = popupEnlarging.querySelector('.popup__image-caption');

@@ -1,5 +1,3 @@
-import { openPopup, popupEnlarging, popupImage, popupImageCaption } from '../utils/utils.js';
-
 export default class Card {
   constructor(data, cardSelector) {
     this._title = data.name;
@@ -58,11 +56,5 @@ export default class Card {
     this._element = null;
   }
 
-  _handleButtonToEnlarge() {
-    popupImageCaption.textContent = this._title;
-    popupImage.src = this._link;
-    popupImage.alt = this._alt;
-
-    openPopup(popupEnlarging);
-  }
+  _handleButtonToEnlarge() {}
 }
