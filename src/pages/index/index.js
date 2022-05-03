@@ -6,20 +6,14 @@ import {
   buttonForEditingProfile,
   buttonForAddingCard,
   cardsSelector,
-  popups,
-  // popupEditing,
-  formOfEditingPopup,
   namePopup,
   jobPopup,
   buttonSubmitPopupEditing,
-  // popupAdding,
   formOfAddingPopup,
-  placePopup,
-  linkPopup,
   buttonSubmitPopupAdding,
 } from '../../scripts/utils/constants.js';
 import { initialCards } from '../../scripts/utils/initialCards.js';
-import { openPopup, closePopup } from '../../scripts/utils/utils.js';
+import { openPopup } from '../../scripts/utils/utils.js';
 
 import Section from '../../scripts/components/Section.js';
 import Card from '../../scripts/components/Card.js';
@@ -91,21 +85,6 @@ function handleButtonForAddingCard() {
 
 buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile);
 buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
-
-// Listener for closing a popups with click (rewrite / don't delete old)
-
-function handleClosePopupClick(event) {
-  if (
-    event.target === event.currentTarget ||
-    event.target.classList.contains('popup__close-button')
-  ) {
-    closePopup(event.target.closest('.popup'));
-  }
-}
-
-popups.forEach((popup) => {
-  popup.addEventListener('click', handleClosePopupClick);
-});
 
 // Add a submit listener for forms
 
