@@ -18,23 +18,6 @@ import PopupWithForm from '../../scripts/components/PopupWithForm.js';
 import FormValidator from '../../scripts/components/FormValidator.js';
 import UserInfo from '../../scripts/components/UserInfo.js';
 
-// Start form validation
-
-const config = {
-  inputSelector: '.popup__input',
-  inputErrorClass: 'popup__input_type_error',
-  errorSelector: '.popup__error',
-  errorClass: 'popup__error_active',
-  submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_disabled',
-};
-
-const validatorEditForm = new FormValidator(config, popupEditing);
-const validatorAddForm = new FormValidator(config, popupAdding);
-
-validatorEditForm.enableValidation();
-validatorAddForm.enableValidation();
-
 // Cards (rewrite / delete old)
 
 const defaultCardList = new Section(
@@ -119,3 +102,20 @@ const popupAdding = new PopupWithForm('.popup_type_add', (inputValues) => {
 
 popupEditing.setEventListeners();
 popupAdding.setEventListeners();
+
+// Start form validation
+
+const config = {
+  inputSelector: '.popup__input',
+  inputErrorClass: 'popup__input_type_error',
+  errorSelector: '.popup__error',
+  errorClass: 'popup__error_active',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
+};
+
+const validatorEditForm = new FormValidator(config, popupEditing);
+const validatorAddForm = new FormValidator(config, popupAdding);
+
+validatorEditForm.enableValidation();
+validatorAddForm.enableValidation();
