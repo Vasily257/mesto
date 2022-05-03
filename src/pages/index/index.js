@@ -40,7 +40,7 @@ defaultCardList.renderItems();
 
 // Create the user info control object
 
-const userInfo = new UserInfo({ name: '.profile__name', job: '.profile__job' });
+const userInfo = new UserInfo({ nameSelector: '.profile__name', jobSelector: '.profile__job' });
 
 // Add listeners of opening popups with the form
 
