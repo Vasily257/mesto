@@ -18,7 +18,7 @@ import PopupWithForm from '../../scripts/components/PopupWithForm.js';
 import FormValidator from '../../scripts/components/FormValidator.js';
 import UserInfo from '../../scripts/components/UserInfo.js';
 
-// Cards (rewrite / delete old)
+// Render initial cards
 
 const defaultCardList = new Section(
   {
@@ -38,11 +38,11 @@ const defaultCardList = new Section(
 
 defaultCardList.renderItems();
 
-// Popups
-
-// Listeners for opening a popup with click to button
+// Create the user info control object
 
 const userInfo = new UserInfo({ name: '.profile__name', job: '.profile__job' });
+
+// Add listeners of opening popups with the form
 
 function handleButtonForEditingProfile() {
   userInfo.getUserInfo();
@@ -71,7 +71,7 @@ function handleButtonForAddingCard() {
 buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile);
 buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
 
-// Add a submit listener for forms
+// Create popups with the form
 
 const popupEditing = new PopupWithForm('.popup_type_edit', (inputValues) => {
   userInfo.setUserInfo(inputValues);
