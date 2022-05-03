@@ -44,7 +44,7 @@ export default class Card {
     });
 
     this._enlargeButton.addEventListener('click', () => {
-      this._handleCardClick();
+      this._handleButtonToEnlarge();
     });
   }
 
