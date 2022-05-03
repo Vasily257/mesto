@@ -3,10 +3,10 @@ import './index.css';
 import {
   buttonForEditingProfile,
   buttonForAddingCard,
-  cardsSelector,
   buttonSubmitPopupEditing,
-  formOfAddingPopup,
   buttonSubmitPopupAdding,
+  formOfAddingPopup,
+  cardsSelector,
 } from '../../scripts/utils/constants.js';
 import { initialCards } from '../../scripts/utils/initialCards.js';
 import { openPopup } from '../../scripts/utils/utils.js';
