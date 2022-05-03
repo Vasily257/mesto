@@ -71,6 +71,7 @@ buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
 
 const popupEditing = new PopupWithForm('.popup_type_edit', (inputValues) => {
   userInfo.setUserInfo(inputValues);
+  popupEditing.close();
 });
 
 const popupAdding = new PopupWithForm('.popup_type_add', (inputValues) => {
