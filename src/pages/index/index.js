@@ -7,12 +7,12 @@ import {
   buttonForAddingCard,
   cardsSelector,
   popups,
-  popupEditing,
+  // popupEditing,
   formOfEditingPopup,
   namePopup,
   jobPopup,
   buttonSubmitPopupEditing,
-  popupAdding,
+  // popupAdding,
   formOfAddingPopup,
   placePopup,
   linkPopup,
@@ -23,6 +23,8 @@ import { openPopup, closePopup } from '../../scripts/utils/utils.js';
 
 import Section from '../../scripts/components/Section.js';
 import Card from '../../scripts/components/Card.js';
+import PopupWithImage from '../../scripts/components/PopupWithImage.js';
+import PopupWithForm from '../../scripts/components/PopupWithForm.js';
 import FormValidator from '../../scripts/components/FormValidator.js';
 
 // Start form validation
@@ -105,25 +107,19 @@ popups.forEach((popup) => {
   popup.addEventListener('click', handleClosePopupClick);
 });
 
-// Cards (places)
-
 // Add a submit listener for forms
 
-function handleSubmitOfEditingForm(event) {
-  event.preventDefault();
-  nameProfile.textContent = namePopup.value;
-  jobProfile.textContent = jobPopup.value;
-  closePopup(popupEditing);
-}
+const popupEditing = new PopupWithForm('.popup_type_edit', (inputValues) => {
+  nameProfile.textContent = inputValues.name;
+  jobProfile.textContent = inputValues.job;
+  close();
+});
 
-function handleSubmitOfAddingForm(event) {
-  event.preventDefault();
+const popupAdding = new PopupWithForm('.popup_type_add', (inputValues) => {
   const data = {
-    name: placePopup.value,
-    link: linkPopup.value,
+    name: inputValues.place,
+    link: inputValues.link,
   };
-
-  // Add card (rewrite / delete old)
 
   const createdCardsList = new Section(
     {
@@ -138,8 +134,8 @@ function handleSubmitOfAddingForm(event) {
   );
   createdCardsList.renderItems();
 
-  closePopup(popupAdding);
-}
+  close();
+});
 
-formOfEditingPopup.addEventListener('submit', handleSubmitOfEditingForm);
-formOfAddingPopup.addEventListener('submit', handleSubmitOfAddingForm);
+popupEditing.setEventListeners();
+popupAdding.setEventListeners();
