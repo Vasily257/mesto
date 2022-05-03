@@ -3,10 +3,9 @@ import './index.css';
 import {
   buttonForEditingProfile,
   buttonForAddingCard,
-  buttonSubmitPopupEditing,
-  buttonSubmitPopupAdding,
   cardsSelector,
 } from '../../scripts/utils/constants.js';
+
 import { initialCards } from '../../scripts/utils/initialCards.js';
 
 import Section from '../../scripts/components/Section.js';
@@ -47,7 +46,7 @@ function handleButtonForEditingProfile() {
   popupEditing.setInputValues(userInfo.getUserInfo());
 
   validatorEditForm.initialEnableButton(
-    buttonSubmitPopupEditing,
+    popupEditing.getSubmitButton(),
     'popup__submit-button_disabled',
     popupEditing.getPopupElement()
   );
@@ -57,7 +56,7 @@ function handleButtonForEditingProfile() {
 
 function handleButtonForAddingCard() {
   validatorAddForm.initialDisableButton(
-    buttonSubmitPopupAdding,
+    popupAdding.getSubmitButton(),
     'popup__submit-button_disabled',
     popupAdding.getPopupElement()
   );

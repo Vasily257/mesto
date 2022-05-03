@@ -6,6 +6,7 @@ export default class PopupWithForm extends Popup {
     this._handleSubmitForm = handleFormSubmit;
     this._formElement = this._popup.querySelector('.popup__form');
     this._inputList = this._formElement.querySelectorAll('.popup__input');
+    this._submitButtonElement = this._popup.querySelector('.popup__submit-button');
   }
 
   close() {
@@ -33,6 +34,10 @@ export default class PopupWithForm extends Popup {
 
   getPopupForm() {
     return this._formElement;
+  }
+
+  getSubmitButton() {
+    return this._submitButtonElement;
   }
 
   setInputValues(profileData) {
