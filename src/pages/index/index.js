@@ -9,7 +9,6 @@ import {
   cardsSelector,
 } from '../../scripts/utils/constants.js';
 import { initialCards } from '../../scripts/utils/initialCards.js';
-import { openPopup } from '../../scripts/utils/utils.js';
 
 import Section from '../../scripts/components/Section.js';
 import Card from '../../scripts/components/Card.js';
@@ -53,7 +52,7 @@ function handleButtonForEditingProfile() {
     popupEditing
   );
 
-  openPopup(popupEditing);
+  popupEditing.open();
 }
 
 function handleButtonForAddingCard() {
@@ -65,7 +64,7 @@ function handleButtonForAddingCard() {
     popupAdding
   );
 
-  openPopup(popupAdding);
+  popupAdding.open();
 }
 
 buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile);
