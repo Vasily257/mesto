@@ -1,9 +1,10 @@
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleCardClick) {
     this._title = data.name;
     this._link = data.link;
     this._alt = this._title;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -43,7 +44,7 @@ export default class Card {
     });
 
     this._enlargeButton.addEventListener('click', () => {
-      this._handleButtonToEnlarge();
+      this._handleCardClick();
     });
   }
 
@@ -56,5 +57,7 @@ export default class Card {
     this._element = null;
   }
 
-  _handleButtonToEnlarge() {}
+  _handleButtonToEnlarge() {
+    this._handleCardClick();
+  }
 }

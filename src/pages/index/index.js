@@ -41,7 +41,11 @@ const defaultCardList = new Section(
   {
     items: initialCards.reverse(),
     render: (item) => {
-      const card = new Card(item, '.place-template');
+      const card = new Card(item, '.place-template', () => {
+        const popupEnlarging = new PopupWithImage(item, 'popup_type_enlarge');
+        popupEnlarging.open();
+      });
+
       const cardElement = card.generateCard();
       defaultCardList.addItem(cardElement);
     },
