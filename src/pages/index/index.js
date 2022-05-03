@@ -49,7 +49,7 @@ function handleButtonForEditingProfile() {
   validatorEditForm.initialEnableButton(
     buttonSubmitPopupEditing,
     'popup__submit-button_disabled',
-    popupEditing
+    popupEditing.getPopupElement()
   );
 
   popupEditing.open();
@@ -61,7 +61,7 @@ function handleButtonForAddingCard() {
   validatorAddForm.initialDisableButton(
     buttonSubmitPopupAdding,
     'popup__submit-button_disabled',
-    popupAdding
+    popupAdding.getPopupElement()
   );
 
   popupAdding.open();
