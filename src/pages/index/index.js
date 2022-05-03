@@ -5,7 +5,6 @@ import {
   buttonForAddingCard,
   buttonSubmitPopupEditing,
   buttonSubmitPopupAdding,
-  formOfAddingPopup,
   cardsSelector,
 } from '../../scripts/utils/constants.js';
 import { initialCards } from '../../scripts/utils/initialCards.js';
@@ -56,8 +55,6 @@ function handleButtonForEditingProfile() {
 }
 
 function handleButtonForAddingCard() {
-  formOfAddingPopup.reset();
-
   validatorAddForm.initialDisableButton(
     buttonSubmitPopupAdding,
     'popup__submit-button_disabled',
@@ -112,8 +109,8 @@ const config = {
   inactiveButtonClass: 'popup__submit-button_disabled',
 };
 
-const validatorEditForm = new FormValidator(config, popupEditing.getPopupForm());
-const validatorAddForm = new FormValidator(config, popupAdding.getPopupForm());
+const validatorEditForm = new FormValidator(config, popupEditing.getPopupElement());
+const validatorAddForm = new FormValidator(config, popupAdding.getPopupElement());
 
 validatorEditForm.enableValidation();
 validatorAddForm.enableValidation();

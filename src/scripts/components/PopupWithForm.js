@@ -10,7 +10,7 @@ export default class PopupWithForm extends Popup {
 
   close() {
     super.close();
-    this._formElement.reset;
+    this._formElement.reset();
   }
 
   _getInputValues() {
@@ -32,7 +32,7 @@ export default class PopupWithForm extends Popup {
   }
 
   getPopupForm() {
-    return this._popup;
+    return this._formElement;
   }
 
   setInputValues(profileData) {
