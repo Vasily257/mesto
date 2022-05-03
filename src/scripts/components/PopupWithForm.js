@@ -1,10 +1,12 @@
+import { profile } from '../utils/constants.js';
 import Popup from './Popup.js';
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
-    this._formElement = this._popup.querySelector('.popup__form');
     this._handleSubmitForm = handleFormSubmit;
+    this._formElement = this._popup.querySelector('.popup__form');
+    this._inputList = this._formElement.querySelectorAll('.popup__input');
   }
 
   close() {
@@ -13,9 +15,7 @@ export default class PopupWithForm extends Popup {
   }
 
   _getInputValues() {
-    this._inputList = this._formElement.querySelectorAll('.popup__input');
     this._formValues = {};
-
     this._inputList.forEach((input) => {
       this._formValues[input.name] = input.value;
     });
@@ -34,5 +34,11 @@ export default class PopupWithForm extends Popup {
 
   getPopupForm() {
     return this._popup;
+  }
+
+  setInputValues(profileData) {
+    this._inputList.forEach((input) => {
+      input.value = profileData[input.name];
+    });
   }
 }

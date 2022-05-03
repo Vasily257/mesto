@@ -44,7 +44,7 @@ const userInfo = new UserInfo({ nameSelector: '.profile__name', jobSelector: '.p
 // Add listeners of opening popups with the form
 
 function handleButtonForEditingProfile() {
-  userInfo.getUserInfo();
+  popupEditing.setInputValues(userInfo.getUserInfo());
 
   validatorEditForm.initialEnableButton(
     buttonSubmitPopupEditing,
@@ -74,7 +74,6 @@ buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
 
 const popupEditing = new PopupWithForm('.popup_type_edit', (inputValues) => {
   userInfo.setUserInfo(inputValues);
-  close();
 });
 
 const popupAdding = new PopupWithForm('.popup_type_add', (inputValues) => {
