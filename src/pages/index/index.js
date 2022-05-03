@@ -1,13 +1,9 @@
 import './index.css';
 
 import {
-  nameProfile,
-  jobProfile,
   buttonForEditingProfile,
   buttonForAddingCard,
   cardsSelector,
-  namePopup,
-  jobPopup,
   buttonSubmitPopupEditing,
   formOfAddingPopup,
   buttonSubmitPopupAdding,
@@ -20,6 +16,7 @@ import Card from '../../scripts/components/Card.js';
 import PopupWithImage from '../../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../../scripts/components/PopupWithForm.js';
 import FormValidator from '../../scripts/components/FormValidator.js';
+import UserInfo from '../../scripts/components/UserInfo.js';
 
 // Start form validation
 
@@ -58,9 +55,10 @@ defaultCardList.renderItems();
 
 // Listeners for opening a popup with click to button
 
+const userInfo = new UserInfo({ name: '.profile__name', job: '.profile__job' });
+
 function handleButtonForEditingProfile() {
-  namePopup.value = nameProfile.textContent;
-  jobPopup.value = jobProfile.textContent;
+  userInfo.getUserInfo();
 
   validatorEditForm.initialEnableButton(
     buttonSubmitPopupEditing,
@@ -89,8 +87,7 @@ buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
 // Add a submit listener for forms
 
 const popupEditing = new PopupWithForm('.popup_type_edit', (inputValues) => {
-  nameProfile.textContent = inputValues.name;
-  jobProfile.textContent = inputValues.job;
+  userInfo.setUserInfo(inputValues);
   close();
 });
 
