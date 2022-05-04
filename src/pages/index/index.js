@@ -21,11 +21,17 @@ const defaultCardList = new Section(
   {
     items: initialCards.reverse(),
     render: (item) => {
-      const card = new Card(item, '.place-template', () => {
-        const popupEnlarging = new PopupWithImage(item, '.popup_type_enlarge');
-        popupEnlarging.open();
-        popupEnlarging.setEventListeners();
-      });
+      const card = new Card(
+        {
+          data: item,
+          handleCardClick: () => {
+            const popupEnlarging = new PopupWithImage(item, '.popup_type_enlarge');
+            popupEnlarging.open();
+            popupEnlarging.setEventListeners();
+          },
+        },
+        '.place-template'
+      );
 
       const cardElement = card.generateCard();
       defaultCardList.addItem(cardElement);
@@ -101,11 +107,17 @@ const popupAdding = new PopupWithForm('.popup_type_add', (inputValues) => {
     {
       items: [data],
       render: (item) => {
-        const card = new Card(item, '.place-template', () => {
-          const popupEnlarging = new PopupWithImage(item, '.popup_type_enlarge');
-          popupEnlarging.open();
-          popupEnlarging.setEventListeners();
-        });
+        const card = new Card(
+          {
+            data: item,
+            handleCardClick: () => {
+              const popupEnlarging = new PopupWithImage(item, '.popup_type_enlarge');
+              popupEnlarging.open();
+              popupEnlarging.setEventListeners();
+            },
+          },
+          '.place-template'
+        );
 
         const cardElement = card.generateCard();
         defaultCardList.addItem(cardElement);
