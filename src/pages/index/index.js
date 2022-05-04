@@ -89,6 +89,23 @@ const popupAdding = new PopupWithForm('.popup_type_add', (inputValues) => {
 popupEditing.setEventListeners();
 popupAdding.setEventListeners();
 
+// Start form validation
+
+const config = {
+  inputSelector: '.popup__input',
+  inputErrorClass: 'popup__input_type_error',
+  errorSelector: '.popup__error',
+  errorClass: 'popup__error_active',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
+};
+
+const validatorEditForm = new FormValidator(config, popupEditing.getPopupElement());
+const validatorAddForm = new FormValidator(config, popupAdding.getPopupElement());
+
+validatorEditForm.enableValidation();
+validatorAddForm.enableValidation();
+
 // Add listeners of opening popups with the form
 
 function handleButtonForEditingProfile() {
@@ -115,20 +132,3 @@ function handleButtonForAddingCard() {
 
 buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile);
 buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
-
-// Start form validation
-
-const config = {
-  inputSelector: '.popup__input',
-  inputErrorClass: 'popup__input_type_error',
-  errorSelector: '.popup__error',
-  errorClass: 'popup__error_active',
-  submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_disabled',
-};
-
-const validatorEditForm = new FormValidator(config, popupEditing.getPopupElement());
-const validatorAddForm = new FormValidator(config, popupAdding.getPopupElement());
-
-validatorEditForm.enableValidation();
-validatorAddForm.enableValidation();
