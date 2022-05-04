@@ -46,50 +46,6 @@ defaultCardList.renderItems();
 
 const userInfo = new UserInfo({ nameSelector: '.profile__name', jobSelector: '.profile__job' });
 
-// Start form validation
-
-const config = {
-  inputSelector: '.popup__input',
-  inputErrorClass: 'popup__input_type_error',
-  errorSelector: '.popup__error',
-  errorClass: 'popup__error_active',
-  submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_disabled',
-};
-
-const validatorEditForm = new FormValidator(config, popupEditing.getPopupElement());
-const validatorAddForm = new FormValidator(config, popupAdding.getPopupElement());
-
-validatorEditForm.enableValidation();
-validatorAddForm.enableValidation();
-
-// Add listeners of opening popups with the form
-
-function handleButtonForEditingProfile() {
-  popupEditing.setInputValues(userInfo.getUserInfo());
-
-  validatorEditForm.initialEnableButton(
-    popupEditing.getSubmitButton(),
-    config.inactiveButtonClass,
-    popupEditing.getPopupElement()
-  );
-
-  popupEditing.open();
-}
-
-function handleButtonForAddingCard() {
-  validatorAddForm.initialDisableButton(
-    popupAdding.getSubmitButton(),
-    config.inactiveButtonClass,
-    popupAdding.getPopupElement()
-  );
-
-  popupAdding.open();
-}
-
-buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile);
-buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
-
 // Create popups with the form
 
 const popupEditing = new PopupWithForm('.popup_type_edit', (inputValues) => {
@@ -132,3 +88,47 @@ const popupAdding = new PopupWithForm('.popup_type_add', (inputValues) => {
 
 popupEditing.setEventListeners();
 popupAdding.setEventListeners();
+
+// Add listeners of opening popups with the form
+
+function handleButtonForEditingProfile() {
+  popupEditing.setInputValues(userInfo.getUserInfo());
+
+  validatorEditForm.initialEnableButton(
+    popupEditing.getSubmitButton(),
+    config.inactiveButtonClass,
+    popupEditing.getPopupElement()
+  );
+
+  popupEditing.open();
+}
+
+function handleButtonForAddingCard() {
+  validatorAddForm.initialDisableButton(
+    popupAdding.getSubmitButton(),
+    config.inactiveButtonClass,
+    popupAdding.getPopupElement()
+  );
+
+  popupAdding.open();
+}
+
+buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile);
+buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
+
+// Start form validation
+
+const config = {
+  inputSelector: '.popup__input',
+  inputErrorClass: 'popup__input_type_error',
+  errorSelector: '.popup__error',
+  errorClass: 'popup__error_active',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
+};
+
+const validatorEditForm = new FormValidator(config, popupEditing.getPopupElement());
+const validatorAddForm = new FormValidator(config, popupAdding.getPopupElement());
+
+validatorEditForm.enableValidation();
+validatorAddForm.enableValidation();
