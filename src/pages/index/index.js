@@ -15,6 +15,8 @@ import PopupWithForm from '../../scripts/components/PopupWithForm.js';
 import UserInfo from '../../scripts/components/UserInfo.js';
 import FormValidator from '../../scripts/components/FormValidator.js';
 
+// Create card
+
 function createCard(item) {
   const cardElement = new Card(
     {
@@ -63,19 +65,7 @@ const popupAdding = new PopupWithForm('.popup_type_add', (inputValues) => {
     link: inputValues.link,
   };
 
-  const cardList = new Section(
-    {
-      items: [data],
-      render: (item) => {
-        const cardElement = createCard(item).generateCard();
-        cardList.addItem(cardElement);
-      },
-    },
-    cardsSelector
-  );
-
-  cardList.renderItems();
-
+  cardList.renderOneItem(data);
   popupAdding.close();
 });
 
