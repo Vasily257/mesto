@@ -73,6 +73,13 @@ export default class FormValidator {
     this._buttonElement.classList.remove(this._inactiveButtonClass);
   }
 
+  resetValidation() {
+    this._toggleButtonState();
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
+  }
+
   _resetPopupErrors() {
     this._inputList.forEach((inputElement) => {
       inputElement.classList.remove(this._inputErrorClass);
@@ -82,15 +89,5 @@ export default class FormValidator {
       errorElement.classList.remove(this._errorClass);
       errorElement.textContent = '';
     });
-  }
-
-  initialDisableButton(buttonElement, inactiveButtonClass, popup) {
-    this._disableButton(buttonElement, inactiveButtonClass);
-    this._resetPopupErrors(popup);
-  }
-
-  initialEnableButton(buttonElement, inactiveButtonClass, popup) {
-    this._enableButton(buttonElement, inactiveButtonClass);
-    this._resetPopupErrors(popup);
   }
 }

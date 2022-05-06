@@ -87,23 +87,12 @@ validatorAddForm.enableValidation();
 
 function handleButtonForEditingProfile() {
   popupEditing.setInputValues(userInfo.getUserInfo());
-
-  validatorEditForm.initialEnableButton(
-    popupEditing.getSubmitButton(),
-    config.inactiveButtonClass,
-    popupEditing.getPopupElement()
-  );
-
+  validatorEditForm.resetValidation();
   popupEditing.open();
 }
 
 function handleButtonForAddingCard() {
-  validatorAddForm.initialDisableButton(
-    popupAdding.getSubmitButton(),
-    config.inactiveButtonClass,
-    popupAdding.getPopupElement()
-  );
-
+  validatorAddForm.resetValidation();
   popupAdding.open();
 }
 
