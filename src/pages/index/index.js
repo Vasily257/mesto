@@ -15,32 +15,36 @@ import PopupWithForm from '../../scripts/components/PopupWithForm.js';
 import UserInfo from '../../scripts/components/UserInfo.js';
 import FormValidator from '../../scripts/components/FormValidator.js';
 
+function createCard(item) {
+  const cardElement = new Card(
+    {
+      data: item,
+      handleCardClick: () => {
+        const popupEnlarging = new PopupWithImage(item, '.popup_type_enlarge');
+        popupEnlarging.open();
+        popupEnlarging.setEventListeners();
+      },
+    },
+    '.place-template'
+  );
+
+  return cardElement;
+}
+
 // Render initial cards
 
-const defaultCardList = new Section(
+const cardList = new Section(
   {
     items: initialCards.reverse(),
     render: (item) => {
-      const card = new Card(
-        {
-          data: item,
-          handleCardClick: () => {
-            const popupEnlarging = new PopupWithImage(item, '.popup_type_enlarge');
-            popupEnlarging.open();
-            popupEnlarging.setEventListeners();
-          },
-        },
-        '.place-template'
-      );
-
-      const cardElement = card.generateCard();
-      defaultCardList.addItem(cardElement);
+      const cardElement = createCard(item).generateCard();
+      cardList.addItem(cardElement);
     },
   },
   cardsSelector
 );
 
-defaultCardList.renderItems();
+cardList.renderItems();
 
 // Create the user info control object
 
@@ -59,29 +63,18 @@ const popupAdding = new PopupWithForm('.popup_type_add', (inputValues) => {
     link: inputValues.link,
   };
 
-  const createdCardsList = new Section(
+  const cardList = new Section(
     {
       items: [data],
       render: (item) => {
-        const card = new Card(
-          {
-            data: item,
-            handleCardClick: () => {
-              const popupEnlarging = new PopupWithImage(item, '.popup_type_enlarge');
-              popupEnlarging.open();
-              popupEnlarging.setEventListeners();
-            },
-          },
-          '.place-template'
-        );
-
-        const cardElement = card.generateCard();
-        defaultCardList.addItem(cardElement);
+        const cardElement = createCard(item).generateCard();
+        cardList.addItem(cardElement);
       },
     },
     cardsSelector
   );
-  createdCardsList.renderItems();
+
+  cardList.renderItems();
 
   popupAdding.close();
 });
