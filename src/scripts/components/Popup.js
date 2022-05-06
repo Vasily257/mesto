@@ -40,8 +40,4 @@ export default class Popup {
       this._handleClickClose(event);
     });
   }
-
-  getPopupElement() {
-    return this._popup;
-  }
 }

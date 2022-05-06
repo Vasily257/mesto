@@ -36,10 +36,6 @@ export default class PopupWithForm extends Popup {
     return this._formElement;
   }
 
-  getSubmitButton() {
-    return this._submitButtonElement;
-  }
-
   setInputValues(profileData) {
     this._inputList.forEach((input) => {
       input.value = profileData[input.name];
