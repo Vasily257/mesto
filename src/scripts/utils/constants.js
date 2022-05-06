@@ -13,6 +13,9 @@ export const config = {
   inactiveButtonClass: 'popup__submit-button_disabled',
 };
 
+export const formValidators = {};
+export const formList = Array.from(document.forms);
+
 export const initialCards = [
   {
     name: 'Архыз',

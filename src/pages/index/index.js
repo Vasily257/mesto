@@ -5,6 +5,8 @@ import {
   buttonForAddingCard,
   cardsSelector,
   config,
+  formValidators,
+  formList,
   initialCards,
 } from '../../scripts/utils/constants.js';
 
@@ -77,22 +79,29 @@ popupAdding.setEventListeners();
 
 // Start form validation
 
-const validatorEditForm = new FormValidator(config, popupEditing.getPopupForm());
-const validatorAddForm = new FormValidator(config, popupAdding.getPopupForm());
+function enableValidation(config) {
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement);
+    const formName = formElement.getAttribute('name');
 
-validatorEditForm.enableValidation();
-validatorAddForm.enableValidation();
+    formValidators[formName] = validator;
+
+    validator.enableValidation();
+  });
+}
+
+enableValidation(config);
 
 // Add listeners of opening popups with the form
 
 function handleButtonForEditingProfile() {
   popupEditing.setInputValues(userInfo.getUserInfo());
-  validatorEditForm.resetValidation();
+  formValidators['edit'].resetValidation();
   popupEditing.open();
 }
 
 function handleButtonForAddingCard() {
-  validatorAddForm.resetValidation();
+  formValidators['add'].resetValidation();
   popupAdding.open();
 }
 
