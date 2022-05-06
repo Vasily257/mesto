@@ -15,6 +15,11 @@ import PopupWithForm from '../../scripts/components/PopupWithForm.js';
 import UserInfo from '../../scripts/components/UserInfo.js';
 import FormValidator from '../../scripts/components/FormValidator.js';
 
+// Create popup with the image
+
+const popupEnlarging = new PopupWithImage('.popup_type_enlarge');
+popupEnlarging.setEventListeners();
+
 // Create card
 
 function createCard(item) {
@@ -22,9 +27,7 @@ function createCard(item) {
     {
       data: item,
       handleCardClick: () => {
-        const popupEnlarging = new PopupWithImage(item, '.popup_type_enlarge');
-        popupEnlarging.open();
-        popupEnlarging.setEventListeners();
+        popupEnlarging.open(item);
       },
     },
     '.place-template'
