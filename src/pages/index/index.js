@@ -77,8 +77,8 @@ popupAdding.setEventListeners();
 
 // Start form validation
 
-const validatorEditForm = new FormValidator(config, popupEditing.getPopupElement());
-const validatorAddForm = new FormValidator(config, popupAdding.getPopupElement());
+const validatorEditForm = new FormValidator(config, popupEditing.getPopupForm());
+const validatorAddForm = new FormValidator(config, popupAdding.getPopupForm());
 
 validatorEditForm.enableValidation();
 validatorAddForm.enableValidation();
