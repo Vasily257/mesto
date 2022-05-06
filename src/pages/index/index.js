@@ -24,6 +24,12 @@ popupEnlarging.setEventListeners();
 
 // Create card
 
+// Заметка для ревьюера
+// Я смог убрать функцию createCard, но как-то криво:
+// у меня пара "items: initialCards.reverse()" оказалась невостребована))
+// Если у меня получится исправить все остальные косяки, и останется время,
+// то попробую ещё раз разобраться в вашем совете)
+
 function createCard(item) {
   const cardElement = new Card(
     {
