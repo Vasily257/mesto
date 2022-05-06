@@ -4,9 +4,9 @@ import {
   buttonForEditingProfile,
   buttonForAddingCard,
   cardsSelector,
+  config,
+  initialCards,
 } from '../../scripts/utils/constants.js';
-
-import { initialCards } from '../../scripts/utils/initialCards.js';
 
 import Section from '../../scripts/components/Section.js';
 import Card from '../../scripts/components/Card.js';
@@ -73,15 +73,6 @@ popupEditing.setEventListeners();
 popupAdding.setEventListeners();
 
 // Start form validation
-
-const config = {
-  inputSelector: '.popup__input',
-  inputErrorClass: 'popup__input_type_error',
-  errorSelector: '.popup__error',
-  errorClass: 'popup__error_active',
-  submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_disabled',
-};
 
 const validatorEditForm = new FormValidator(config, popupEditing.getPopupElement());
 const validatorAddForm = new FormValidator(config, popupAdding.getPopupElement());
