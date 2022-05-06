@@ -8,7 +8,6 @@ export default class FormValidator {
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._formElement = formElement;
     this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-    this._errorList = Array.from(this._formElement.querySelectorAll(this._errorSelector));
     this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
   }
 
@@ -77,17 +76,6 @@ export default class FormValidator {
     this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
-    });
-  }
-
-  _resetPopupErrors() {
-    this._inputList.forEach((inputElement) => {
-      inputElement.classList.remove(this._inputErrorClass);
-    });
-
-    this._errorList.forEach((errorElement) => {
-      errorElement.classList.remove(this._errorClass);
-      errorElement.textContent = '';
     });
   }
 }
