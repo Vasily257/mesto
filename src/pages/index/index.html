@@ -44,7 +44,7 @@
       <footer class="index-page__section footer">
         <p class="footer__text">&copy; 2022 Mesto Russia</p>
       </footer>
-      <section class="popup popup_type_edit" aria-label="Всплывающее окно">
+      <div class="popup popup_type_edit">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="popup__form popup__form_type_edit" method="post" name="edit" novalidate>
@@ -79,8 +79,8 @@
             type="button"
             aria-label="Закрыть форму"></button>
         </div>
-      </section>
-      <section class="popup popup_type_add" aria-label="Всплывающее окно">
+      </div>
+      <div class="popup popup_type_add">
         <div class="popup__container">
           <h2 class="popup__title">Новое место</h2>
           <form class="popup__form popup__form_type_add" method="post" name="add" novalidate>
@@ -115,8 +115,8 @@
             type="button"
             aria-label="Закрыть форму"></button>
         </div>
-      </section>
-      <section class="popup popup_darker popup_type_enlarge" aria-label="Всплывающее окно">
+      </div>
+      <div class="popup popup_darker popup_type_enlarge">
         <figure class="popup__image-container">
           <button
             class="button popup__close-button"
@@ -125,7 +125,7 @@
           <img class="popup__image" src="https://placekitten.com/200/300" alt="Фотография места" />
           <figcaption class="popup__image-caption"></figcaption>
         </figure>
-      </section>
+      </div>
     </div>
     <template class="place-template">
       <li class="places__item place">
