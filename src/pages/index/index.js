@@ -16,6 +16,7 @@ import PopupWithImage from '../../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../../scripts/components/PopupWithForm.js';
 import UserInfo from '../../scripts/components/UserInfo.js';
 import FormValidator from '../../scripts/components/FormValidator.js';
+import Api from '../../scripts/components/Api.js';
 
 // Create popup with the image
 
@@ -117,3 +118,5 @@ const api = new Api({
     'Content-Type': 'application/json',
   },
 });
+
+api.getInitialCards();
