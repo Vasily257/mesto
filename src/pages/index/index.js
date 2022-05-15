@@ -107,3 +107,13 @@ function handleButtonForAddingCard() {
 
 buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile);
 buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
+
+// Configure Api
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-41',
+  headers: {
+    authorization: 'b6bde9be-8674-4eca-8179-302e0a4e2b6f',
+    'Content-Type': 'application/json',
+  },
+});
