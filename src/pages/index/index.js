@@ -7,7 +7,6 @@ import {
   config,
   formValidators,
   formList,
-  initialCards,
 } from '../../scripts/utils/constants.js';
 
 import Section from '../../scripts/components/Section.js';
@@ -17,6 +16,16 @@ import PopupWithForm from '../../scripts/components/PopupWithForm.js';
 import UserInfo from '../../scripts/components/UserInfo.js';
 import FormValidator from '../../scripts/components/FormValidator.js';
 import Api from '../../scripts/components/Api.js';
+
+// Configure Api
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-41',
+  headers: {
+    authorization: 'b6bde9be-8674-4eca-8179-302e0a4e2b6f',
+    'Content-Type': 'application/json',
+  },
+});
 
 // Create popup with the image
 
@@ -41,18 +50,25 @@ function createCard(item) {
 
 // Render initial cards
 
-const cardList = new Section(
-  {
-    items: initialCards.reverse(),
-    render: (item) => {
-      const cardElement = createCard(item).generateCard();
-      cardList.addItem(cardElement);
-    },
-  },
-  cardsSelector
-);
+const apiInitialCards = api.getInitialCards();
+apiInitialCards
+  .then((data) => {
+    const cardList = new Section(
+      {
+        items: data,
+        render: (item) => {
+          const cardElement = createCard(item).generateCard();
+          cardList.addItem(cardElement);
+        },
+      },
+      cardsSelector
+    );
 
-cardList.renderItems();
+    cardList.renderItems();
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 // Create the user info control object
 
@@ -108,15 +124,3 @@ function handleButtonForAddingCard() {
 
 buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile);
 buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
-
-// Configure Api
-
-const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-41',
-  headers: {
-    authorization: 'b6bde9be-8674-4eca-8179-302e0a4e2b6f',
-    'Content-Type': 'application/json',
-  },
-});
-
-api.getInitialCards();

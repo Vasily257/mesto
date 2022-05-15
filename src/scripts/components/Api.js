@@ -8,6 +8,12 @@ export default class Api {
     return fetch(`${this._url}/cards`, {
       method: 'GET',
       headers: this._headers,
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+
+      return Promise.reject('Произошла ошибка');
     });
   }
 }
