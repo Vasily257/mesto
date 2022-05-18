@@ -72,13 +72,17 @@ apiInitialCards
 
 // Create the user info control object
 
-const userInfo = new UserInfo({ nameSelector: '.profile__name', aboutSelector: '.profile__about' });
+const userInfo = new UserInfo({
+  nameSelector: '.profile__name',
+  aboutSelector: '.profile__about',
+  avatarSelector: '.profile__photo',
+});
 
 // Get and set user info from server (Api)
 
 const apiUserInfo = api.getUserInfo();
-apiUserInfo.then(({ name, about }) => {
-  userInfo.setUserInfo({ name, about });
+apiUserInfo.then(({ name, about, avatar }) => {
+  userInfo.setUserInfo({ name, about, avatar });
 });
 
 // Create popups with the form
