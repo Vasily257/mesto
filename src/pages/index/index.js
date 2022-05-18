@@ -81,17 +81,16 @@ const userInfo = new UserInfo({
 // Get and set user info from server (Api)
 
 const apiUserInfo = api.getUserInfo();
-apiUserInfo.then(({ name, about, avatar }) => {
-  userInfo.setUserInfo({ name, about, avatar });
+apiUserInfo.then((userData) => {
+  userInfo.setUserInfo(userData);
 });
 
 // Create popups with the form
 
 const popupEditing = new PopupWithForm('.popup_type_edit', (inputValues) => {
-
   const apiNewUserInfo = api.editUserInfo(inputValues);
-  apiNewUserInfo.then(({ name, about, avatar }) => {
-    userInfo.setUserInfo({ name, about, avatar });
+  apiNewUserInfo.then((userData) => {
+    userInfo.setUserInfo(userData);
   });
 
   popupEditing.close();
