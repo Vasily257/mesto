@@ -4,16 +4,19 @@ export default class Api {
     this._headers = options.headers;
   }
 
+  _handleResponse(res, errorText) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(errorText);
+  }
+
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
       headers: this._headers,
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject('Данные пользователя не получены');
+      return this._handleResponse(res, 'Данные пользователя не получены');
     });
   }
 
@@ -22,11 +25,7 @@ export default class Api {
       method: 'GET',
       headers: this._headers,
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject('Произошла ошибка');
+      return this._handleResponse(res, 'Список карточек не получен');
     });
   }
 
@@ -39,11 +38,7 @@ export default class Api {
         about: data.about,
       }),
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject('Данные пользователя не изменены');
+      return this._handleResponse(res, 'Данные пользователя не изменены');
     });
   }
 }
