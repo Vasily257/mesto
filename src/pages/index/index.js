@@ -72,7 +72,7 @@ apiInitialCards
 
 // Create the user info control object
 
-const userInfo = new UserInfo({ nameSelector: '.profile__name', aboutSelector: '.profile__job' });
+const userInfo = new UserInfo({ nameSelector: '.profile__name', aboutSelector: '.profile__about' });
 
 // Get and set user info from server (Api)
 

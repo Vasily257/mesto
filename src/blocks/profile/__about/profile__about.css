@@ -1,4 +1,4 @@
-.profile__job {
+.profile__about {
   overflow: hidden;
 
   margin: 0 auto;
@@ -14,7 +14,7 @@
 }
 
 @media screen and (min-width: 600px) {
-  .profile__job {
+  .profile__about {
     margin: 0;
     margin-top: 10px;
 
