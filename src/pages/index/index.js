@@ -88,7 +88,12 @@ apiUserInfo.then(({ name, about, avatar }) => {
 // Create popups with the form
 
 const popupEditing = new PopupWithForm('.popup_type_edit', (inputValues) => {
-  userInfo.setUserInfo(inputValues);
+  
+  const apiNewUserInfo = api.editUserInfo(inputValues);
+  apiNewUserInfo.then(({ name, about, avatar }) => {
+    userInfo.setUserInfo({ name, about, avatar });
+  });
+
   popupEditing.close();
 });
 
