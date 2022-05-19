@@ -18,6 +18,8 @@ module.exports = {
 
     open: true,
   },
+
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
