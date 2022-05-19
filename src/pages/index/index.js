@@ -81,17 +81,25 @@ const userInfo = new UserInfo({
 // Get and set user info from server (Api)
 
 const apiUserInfo = api.getUserInfo();
-apiUserInfo.then((userData) => {
-  userInfo.setUserInfo(userData);
-});
+apiUserInfo
+  .then((userData) => {
+    userInfo.setUserInfo(userData);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 // Create popups with the form
 
 const popupEditing = new PopupWithForm('.popup_type_edit', (inputValues) => {
   const apiNewUserInfo = api.editUserInfo(inputValues);
-  apiNewUserInfo.then((userData) => {
-    userInfo.setUserInfo(userData);
-  });
+  apiNewUserInfo
+    .then((userData) => {
+      userInfo.setUserInfo(userData);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 
   popupEditing.close();
 });
