@@ -38,4 +38,14 @@ export default class Api {
       return this._handleResponse(res, 'Данные пользователя не изменены');
     });
   }
+
+  addNewCard(data) {
+    return fetch(`${this._url}/cards`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify(data),
+    }).then((res) => {
+      return this._handleResponse(res, 'Карточка не добавлена');
+    });
+  }
 }

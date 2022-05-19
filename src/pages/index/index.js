@@ -110,8 +110,17 @@ const popupAdding = new PopupWithForm('.popup_type_add', (inputValues) => {
     link: inputValues.link,
   };
 
-  cardList.renderOneItem(data);
-  popupAdding.close();
+  const apiAddNewCard = api.addNewCard(data);
+  apiAddNewCard
+    .then((cardData) => {
+      // TODO: Исправить код, чтобы сразу отрисовывалась карточка (добавить связь с Api.js)
+      cardList.renderOneItem({ name: cardData.name, link: cardData.link });
+      popupAdding.close();
+    })
+
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
 popupEditing.setEventListeners();
