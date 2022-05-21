@@ -42,11 +42,11 @@ function createCard(item) {
         popupEnlarging.open(item);
       },
       handleLikeClick: () => {
-        cardElement.likeButton.classList.toggle('place__like-button_active');
+        cardElement._likeButton.classList.toggle('place__like-button_active');
       },
       handleDeleteIconClick: () => {
-        cardElement.element.remove();
-        cardElement.element = null;
+        cardElement._element.remove();
+        cardElement._element = null;
       },
     },
     '.place-template'
