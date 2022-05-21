@@ -55,4 +55,13 @@ export default class Card {
       this._handleDeleteIconClick();
     });
   }
+
+  toLike() {
+    this._likeButton.classList.toggle('place__like-button_active');
+  }
+
+  toDelete() {
+    this._element.remove();
+    this._element = null;
+  }
 }
