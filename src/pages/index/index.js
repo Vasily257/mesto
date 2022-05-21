@@ -13,6 +13,7 @@ import Section from '../../scripts/components/Section.js';
 import Card from '../../scripts/components/Card.js';
 import PopupWithImage from '../../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../../scripts/components/PopupWithForm.js';
+import PopupWithSubmit from '../../scripts/components/PopupWithSubmit';
 import UserInfo from '../../scripts/components/UserInfo.js';
 import FormValidator from '../../scripts/components/FormValidator.js';
 import Api from '../../scripts/components/Api.js';
@@ -32,6 +33,11 @@ const api = new Api({
 const popupEnlarging = new PopupWithImage('.popup_type_enlarge');
 popupEnlarging.setEventListeners();
 
+// Create popup with the submit
+
+const popupSubmiting = new PopupWithSubmit('.popup_type_submit', () => {});
+popupSubmiting.setEventListeners();
+
 // Create card
 
 function createCard(item) {
@@ -45,7 +51,9 @@ function createCard(item) {
         cardElement.toLike();
       },
       handleDeleteIconClick: () => {
-        cardElement.toDelete();
+        //TODO: Отправить запрос на удаление карточки (промис)
+        popupSubmiting.open();
+        popupSubmiting.changeHandler(cardElement.toDelete());
       },
     },
     '.place-template'
