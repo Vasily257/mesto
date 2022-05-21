@@ -1,5 +1,5 @@
 export default class Card {
-  constructor({ data, handleCardClick }, cardSelector) {
+  constructor({ data, handleCardClick, handleLikeClick, handleDeleteIconClick }, cardSelector) {
     this._data = data;
     this._title = this._data.name;
     this._link = this._data.link;
@@ -9,6 +9,8 @@ export default class Card {
     this._alt = this._title;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
+    this._handleLikeClick = handleLikeClick;
+    this._handleDeleteIconClick = handleDeleteIconClick;
   }
 
   _getTemplate() {
@@ -21,14 +23,14 @@ export default class Card {
   }
 
   generateCard() {
-    this._element = this._getTemplate();
-    this._likeButton = this._element.querySelector('.place__like-button');
-    this._deleteButton = this._element.querySelector('.place__delete-button');
-    this._enlargeButton = this._element.querySelector('.place__enlarge-button');
+    this.element = this._getTemplate();
+    this.likeButton = this.element.querySelector('.place__like-button');
+    this.deleteButton = this.element.querySelector('.place__delete-button');
+    this.enlargeButton = this.element.querySelector('.place__enlarge-button');
 
-    const cardTitle = this._element.querySelector('.place__title');
-    const cardImage = this._element.querySelector('.place__image');
-    const cardLikes = this._element.querySelector('.place__like-counter');
+    const cardTitle = this.element.querySelector('.place__title');
+    const cardImage = this.element.querySelector('.place__image');
+    const cardLikes = this.element.querySelector('.place__like-counter');
 
     cardTitle.textContent = this._title;
     cardImage.src = this._link;
@@ -37,33 +39,20 @@ export default class Card {
 
     this._setEventListeners();
 
-    return this._element;
+    return this.element;
   }
 
   _setEventListeners() {
-    this._likeButton.addEventListener('click', () => {
-      this._handleButtonToLike();
+    this.enlargeButton.addEventListener('click', () => {
+      this._handleCardClick();
     });
 
-    this._deleteButton.addEventListener('click', () => {
-      this._handleButtonToDelete();
+    this.likeButton.addEventListener('click', () => {
+      this._handleLikeClick();
     });
 
-    this._enlargeButton.addEventListener('click', () => {
-      this._handleButtonToEnlarge();
+    this.deleteButton.addEventListener('click', () => {
+      this._handleDeleteIconClick();
     });
-  }
-
-  _handleButtonToLike() {
-    this._likeButton.classList.toggle('place__like-button_active');
-  }
-
-  _handleButtonToDelete() {
-    this._element.remove();
-    this._element = null;
-  }
-
-  _handleButtonToEnlarge() {
-    this._handleCardClick();
   }
 }

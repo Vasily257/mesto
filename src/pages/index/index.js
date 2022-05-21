@@ -41,6 +41,13 @@ function createCard(item) {
       handleCardClick: () => {
         popupEnlarging.open(item);
       },
+      handleLikeClick: () => {
+        cardElement.likeButton.classList.toggle('place__like-button_active');
+      },
+      handleDeleteIconClick: () => {
+        cardElement.element.remove();
+        cardElement.element = null;
+      },
     },
     '.place-template'
   );
