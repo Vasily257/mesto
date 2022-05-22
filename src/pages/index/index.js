@@ -79,30 +79,6 @@ const api = new Api({
   },
 });
 
-// Create card
-
-function createCard(item) {
-  const cardElement = new Card(
-    {
-      data: item,
-      handleCardClick: () => {
-        popupEnlarging.open(item);
-      },
-      handleLikeClick: () => {
-        cardElement.toLike();
-      },
-      handleDeleteIconClick: () => {
-        //TODO: Отправить запрос на удаление карточки (промис)
-        popupSubmiting.open();
-        popupSubmiting.changeHandler(cardElement.toDelete());
-      },
-    },
-    '.place-template'
-  );
-
-  return cardElement;
-}
-
 // Get user info and render initial cards
 
 api
@@ -111,6 +87,28 @@ api
     const [userData, initialCardsDate] = initialData;
 
     userInfo.setUserInfo(userData);
+
+    function createCard(item) {
+      const cardElement = new Card(
+        {
+          data: item,
+          handleCardClick: () => {
+            popupEnlarging.open(item);
+          },
+          handleLikeClick: () => {
+            cardElement.toLike();
+          },
+          handleDeleteIconClick: () => {
+            //TODO: Отправить запрос на удаление карточки (промис)
+            popupSubmiting.open();
+            popupSubmiting.changeHandler(cardElement.toDelete());
+          },
+        },
+        '.place-template'
+      );
+
+      return cardElement;
+    }
 
     const cardList = new Section(
       {
