@@ -112,14 +112,15 @@ api
     );
     cardList.renderItems();
 
-    return [userData, initialCardsDate];
+    return { userData, initialCardsDate, cardList };
   })
 
-  .then((initialDate) => {
-
+  .then((dateObject) => {
     // Create a popup for editing
 
     const popupEditing = new PopupWithForm('.popup_type_edit', (inputValues) => {
+      // Edit user info
+
       api
         .editUserInfo(inputValues)
         .then((userData) => {
@@ -145,11 +146,10 @@ api
 
     buttonForEditingProfile.addEventListener('click', handleEditButton);
 
-    return initialDate;
+    return dateObject;
   })
 
-  .then((initialDate) => {
-
+  .then((dateObject) => {
     // Create a popup for adding
 
     const popupAdding = new PopupWithForm('.popup_type_add', (inputValues) => {
@@ -158,12 +158,10 @@ api
         link: inputValues.link,
       };
 
+      // Add a new card
+
       api
         .addNewCard(data)
-        .then((cardData) => {
-          // TODO: Исправить код, чтобы сразу отрисовывалась карточка (добавить связь с Api.js)
-          cardList.renderOneItem({ name: cardData.name, link: cardData.link });
-        })
         .then(() => {
           popupAdding.close();
         })
@@ -183,7 +181,7 @@ api
 
     buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
 
-    return initialDate;
+    return dateObject;
   })
 
   .catch((error) => {
