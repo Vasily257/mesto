@@ -29,6 +29,10 @@ export default class Api {
     });
   }
 
+  getInitialData() {
+    return Promise.all([this.getUserInfo(), this.getInitialCards()]);
+  }
+
   editUserInfo(data) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',

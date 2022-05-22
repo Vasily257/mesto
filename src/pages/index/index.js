@@ -79,18 +79,6 @@ const api = new Api({
   },
 });
 
-// Get and set user info from server
-
-api
-  .getUserInfo()
-  .then((userData) => {
-    userInfo.setUserInfo(userData);
-    return userData;
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-
 // Create card
 
 function createCard(item) {
@@ -115,14 +103,18 @@ function createCard(item) {
   return cardElement;
 }
 
-// Render initial cards
+// Get user info and render initial cards
 
 api
-  .getInitialCards()
-  .then((data) => {
+  .getInitialData()
+  .then((initialData) => {
+    const [userData, initialCardsDate] = initialData;
+
+    userInfo.setUserInfo(userData);
+
     const cardList = new Section(
       {
-        items: data,
+        items: initialCardsDate,
         render: (item) => {
           const cardElement = createCard(item).generateCard();
           cardList.addItem(cardElement);
@@ -130,8 +122,9 @@ api
       },
       cardsSelector
     );
-
     cardList.renderItems();
+
+    return [userData, initialCardsDate];
   })
   .catch((error) => {
     console.log(error);
