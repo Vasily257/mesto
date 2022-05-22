@@ -5,6 +5,7 @@ export default class Card {
     this._link = this._data.link;
     this._likes = this._data.likes.length;
     this._id = this._data._id;
+    this._ownerId = this._data.owner._id;
 
     this._alt = this._title;
     this._cardSelector = cardSelector;
