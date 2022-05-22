@@ -101,7 +101,7 @@ api
 
     const cardList = new Section(
       {
-        items: initialCardsDate,
+        items: initialCardsDate.reverse(),
         render: (item) => {
           const cardElement = createCard(item).generateCard();
           cardList.addItem(cardElement);
@@ -182,6 +182,9 @@ api
 
       api
         .addNewCard(data)
+        .then((data) => {
+          dateObject.cardList.renderOneItem(data);
+        })
         .then(() => {
           popupAdding.close();
         })
