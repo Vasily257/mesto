@@ -75,7 +75,7 @@ api
           handleLikeClick: () => {
             cardElement.toLike();
           },
-          handleDeleteIconClick: () => {
+          handleDeleteButtonClick: () => {
             popupSubmiting.setHandler(() => {
               api
                 .deleteCard(item._id)
@@ -103,8 +103,13 @@ api
       {
         items: initialCardsDate.reverse(),
         render: (item) => {
-          const cardElement = createCard(item).generateCard();
-          cardList.addItem(cardElement);
+          if (item.owner._id !== userData._id) {
+            const cardElement = createCard(item).generateCard(true);
+            cardList.addItem(cardElement);
+          } else {
+            const cardElement = createCard(item).generateCard(false);
+            cardList.addItem(cardElement);
+          }
         },
       },
       cardsSelector
