@@ -1,21 +1,21 @@
 import Popup from './Popup.js';
 
 export default class PopupWithSubmit extends Popup {
-  constructor(popupSelector, handleClickSubmit) {
+  constructor(popupSelector) {
     super(popupSelector);
-    this._handleClickSubmit = handleClickSubmit;
+    this._handleClickSubmit = {};
     this._submitButtonElement = this._popup.querySelector('.popup__submit-button');
+  }
+
+  setHandler(handler) {
+    this._handleClickSubmit = handler;
   }
 
   setEventListeners() {
     super.setEventListeners();
 
     this._submitButtonElement.addEventListener('click', () => {
-      this.changeHandler();
+      this._handleClickSubmit();
     });
-  }
-
-  changeHandler(handler) {
-    return handler;
   }
 }

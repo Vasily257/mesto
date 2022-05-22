@@ -23,11 +23,13 @@ import Api from '../../scripts/components/Api.js';
 // Create popup with the image
 
 const popupEnlarging = new PopupWithImage('.popup_type_enlarge');
+
 popupEnlarging.setEventListeners();
 
 // Create popup with the submit
 
-const popupSubmiting = new PopupWithSubmit('.popup_type_submit', () => {});
+const popupSubmiting = new PopupWithSubmit('.popup_type_submit');
+
 popupSubmiting.setEventListeners();
 
 // Create the user info control object
@@ -74,9 +76,19 @@ api
             cardElement.toLike();
           },
           handleDeleteIconClick: () => {
-            //TODO: Отправить запрос на удаление карточки (промис)
+            popupSubmiting.setHandler(() => {
+              api
+                .deleteCard(item._id)
+                .then(() => {
+                  cardElement.toDelete();
+                  popupSubmiting.close();
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+            });
+
             popupSubmiting.open();
-            popupSubmiting.changeHandler(cardElement.toDelete());
           },
         },
         '.place-template'
