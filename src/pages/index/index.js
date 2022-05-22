@@ -18,7 +18,7 @@ import UserInfo from '../../scripts/components/UserInfo.js';
 import FormValidator from '../../scripts/components/FormValidator.js';
 import Api from '../../scripts/components/Api.js';
 
-// Synchronous code
+// Sync
 
 // Create popup with the image
 
@@ -38,21 +38,6 @@ const userInfo = new UserInfo({
   avatarSelector: '.profile__photo',
 });
 
-// Function to start validation
-
-function enableValidation(config) {
-  formList.forEach((formElement) => {
-    const validator = new FormValidator(config, formElement);
-    const formName = formElement.getAttribute('name');
-
-    formValidators[formName] = validator;
-
-    validator.enableValidation();
-  });
-}
-
-// Asynchronous code
-
 // Configure Api
 
 const api = new Api({
@@ -62,6 +47,8 @@ const api = new Api({
     'Content-Type': 'application/json',
   },
 });
+
+// Asynch
 
 // Get initial date from the server
 
@@ -113,6 +100,27 @@ api
     cardList.renderItems();
 
     return { userData, initialCardsDate, cardList };
+  })
+
+  .then((dateObject) => {
+    // Function to start validation
+
+    function enableValidation(config) {
+      formList.forEach((formElement) => {
+        const validator = new FormValidator(config, formElement);
+        const formName = formElement.getAttribute('name');
+
+        formValidators[formName] = validator;
+
+        validator.enableValidation();
+      });
+    }
+
+    // Start form validation
+
+    enableValidation(config);
+
+    return dateObject;
   })
 
   .then((dateObject) => {
@@ -187,7 +195,3 @@ api
   .catch((error) => {
     console.log(error);
   });
-
-// Start form validation
-
-enableValidation(config);
