@@ -38,22 +38,6 @@ const userInfo = new UserInfo({
   avatarSelector: '.profile__photo',
 });
 
-// Add listeners of opening popups with the form
-
-function handleButtonForEditingProfile() {
-  popupEditing.setInputValues(userInfo.getUserInfo());
-  formValidators['edit'].resetValidation();
-  popupEditing.open();
-}
-
-function handleButtonForAddingCard() {
-  formValidators['add'].resetValidation();
-  popupAdding.open();
-}
-
-buttonForEditingProfile.addEventListener('click', handleButtonForEditingProfile);
-buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
-
 // Function to start validation
 
 function enableValidation(config) {
@@ -79,14 +63,18 @@ const api = new Api({
   },
 });
 
-// Get user info and render initial cards
+// Get initial date from the server
 
 api
   .getInitialData()
   .then((initialData) => {
     const [userData, initialCardsDate] = initialData;
 
+    // Set user info
+
     userInfo.setUserInfo(userData);
+
+    // Function for creating a card
 
     function createCard(item) {
       const cardElement = new Card(
@@ -110,6 +98,8 @@ api
       return cardElement;
     }
 
+    // Render initial cards
+
     const cardList = new Section(
       {
         items: initialCardsDate,
@@ -124,46 +114,81 @@ api
 
     return [userData, initialCardsDate];
   })
+
+  .then((initialDate) => {
+
+    // Create a popup for editing
+
+    const popupEditing = new PopupWithForm('.popup_type_edit', (inputValues) => {
+      api
+        .editUserInfo(inputValues)
+        .then((userData) => {
+          userInfo.setUserInfo(userData);
+        })
+        .then(() => {
+          popupEditing.close();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    });
+
+    popupEditing.setEventListeners();
+
+    // Add listeners to open the popup for editing
+
+    function handleEditButton() {
+      popupEditing.setInputValues(userInfo.getUserInfo());
+      formValidators['edit'].resetValidation();
+      popupEditing.open();
+    }
+
+    buttonForEditingProfile.addEventListener('click', handleEditButton);
+
+    return initialDate;
+  })
+
+  .then((initialDate) => {
+
+    // Create a popup for adding
+
+    const popupAdding = new PopupWithForm('.popup_type_add', (inputValues) => {
+      const data = {
+        name: inputValues.place,
+        link: inputValues.link,
+      };
+
+      api
+        .addNewCard(data)
+        .then((cardData) => {
+          // TODO: Исправить код, чтобы сразу отрисовывалась карточка (добавить связь с Api.js)
+          cardList.renderOneItem({ name: cardData.name, link: cardData.link });
+        })
+        .then(() => {
+          popupAdding.close();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    });
+
+    popupAdding.setEventListeners();
+
+    // Add listeners to open the popup for adding
+
+    function handleButtonForAddingCard() {
+      formValidators['add'].resetValidation();
+      popupAdding.open();
+    }
+
+    buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
+
+    return initialDate;
+  })
+
   .catch((error) => {
     console.log(error);
   });
-
-// Create popups with the form
-
-const popupEditing = new PopupWithForm('.popup_type_edit', (inputValues) => {
-  api
-    .editUserInfo(inputValues)
-    .then((userData) => {
-      userInfo.setUserInfo(userData);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-
-  popupEditing.close();
-});
-
-const popupAdding = new PopupWithForm('.popup_type_add', (inputValues) => {
-  const data = {
-    name: inputValues.place,
-    link: inputValues.link,
-  };
-
-  api
-    .addNewCard(data)
-    .then((cardData) => {
-      // TODO: Исправить код, чтобы сразу отрисовывалась карточка (добавить связь с Api.js)
-      cardList.renderOneItem({ name: cardData.name, link: cardData.link });
-      popupAdding.close();
-    })
-
-    .catch((error) => {
-      console.log(error);
-    });
-});
-
-popupEditing.setEventListeners();
-popupAdding.setEventListeners();
 
 // Start form validation
 
