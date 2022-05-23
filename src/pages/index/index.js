@@ -73,14 +73,16 @@ api
             popupEnlarging.open(item);
           },
           handleLikeClick: () => {
-            cardElement.toLike();
+            api.putLike(item._id).then(() => {
+              cardElement.putLike();
+            });
           },
           handleDeleteButtonClick: () => {
             popupSubmiting.setHandler(() => {
               api
                 .deleteCard(item._id)
                 .then(() => {
-                  cardElement.toDelete();
+                  cardElement.deleteCard();
                   popupSubmiting.close();
                 })
                 .catch((error) => {
@@ -103,13 +105,11 @@ api
       {
         items: initialCardsDate.reverse(),
         render: (item) => {
-          if (item.owner._id !== userData._id) {
-            const cardElement = createCard(item).generateCard(true);
-            cardList.addItem(cardElement);
-          } else {
-            const cardElement = createCard(item).generateCard(false);
-            cardList.addItem(cardElement);
-          }
+          const isNotUserCard = item.owner._id === userData._id ? false : true;
+          const isLikedByUser = item.likes.some((like) => like._id === userData._id);
+
+          const cardElement = createCard(item).generateCard({ isNotUserCard, isLikedByUser });
+          cardList.addItem(cardElement);
         },
       },
       cardsSelector

@@ -23,7 +23,19 @@ export default class Card {
     return cardElement;
   }
 
-  generateCard(isMyCard) {
+  _checkCard(isNotUserCard) {
+    if (isNotUserCard) {
+      this._deleteButton.remove();
+    }
+  }
+
+  _checkLike(isLikedByUser) {
+    if (isLikedByUser) {
+      this.putLike();
+    }
+  }
+
+  generateCard(cheсks) {
     this._element = this._getTemplate();
     this._likeButton = this._element.querySelector('.place__like-button');
     this._deleteButton = this._element.querySelector('.place__delete-button');
@@ -40,39 +52,38 @@ export default class Card {
 
     this._setEventListeners();
 
-    if (isMyCard) {
-      this._deleteButton.remove();
-    }
+    this._checkCard(cheсks.isNotUserCard);
+    this._checkLike(cheсks.isLikedByUser);
 
     return this._element;
   }
 
   _setEventListeners() {
-    this._enlargeButton.addEventListener('click', () => {
-      this._handleCardClick();
-    });
-
     this._likeButton.addEventListener('click', () => {
       this._handleLikeClick();
     });
 
-    this._deleteButton.addEventListener('click', () => {
-      this._handleDeleteButtonClick();
+    if (this._deleteButton) {
+      this._deleteButton.addEventListener('click', () => {
+        this._handleDeleteButtonClick();
+      });
+    }
+
+    this._enlargeButton.addEventListener('click', () => {
+      this._handleCardClick();
     });
   }
 
-  toLike() {
-    this._likeButton.classList.toggle('place__like-button_active');
+  putLike() {
+    this._likeButton.classList.add('place__like-button_active');
   }
 
-  toDelete() {
+  deleteLike() {
+    this._likeButton.classList.remove('place__like-button_active');
+  }
+
+  deleteCard() {
     this._element.remove();
     this._element = null;
   }
-
-  showMessage() {
-    console.log('Ураа!');
-  }
-
-  removeDeleteButton() {}
 }
