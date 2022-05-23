@@ -79,29 +79,38 @@ api
             popupEnlarging.open(item);
           },
           handleLikeClick: () => {
+            // Function for updating counter after changing the like
+
+            function updateСounter(cardData) {
+              if (cardData) {
+                cardElement.updateСounter(cardData.likes.length);
+                item.likes = cardData.likes;
+              } else {
+                return Promise.reject('Счетчик лайков не обновлен');
+              }
+            }
+
             // Delete a like, if there is one, otherwise put the like
 
             if (checkLikeCard(item)) {
               api
                 .deleteLike(item._id)
-                .then((cardDate) => {
+                .then((cardData) => {
                   cardElement.deleteLike();
-                  cardElement.updateСounter(cardDate.likes.length);
-                  item.likes = cardDate.likes;
+                  return cardData;
                 })
-                .catch((error) => {
-                  console.log(error);
+                .then((cardData) => {
+                  return updateСounter(cardData);
                 });
             } else {
               api
                 .putLike(item._id)
-                .then((cardDate) => {
+                .then((cardData) => {
                   cardElement.putLike();
-                  cardElement.updateСounter(cardDate.likes.length);
-                  item.likes = cardDate.likes;
+                  return cardData;
                 })
-                .catch((error) => {
-                  console.log(error);
+                .then((res) => {
+                  return updateСounter(res);
                 });
             }
           },
