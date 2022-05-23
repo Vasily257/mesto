@@ -8,10 +8,11 @@ export default class Card {
     this._ownerId = this._data.owner._id;
 
     this._alt = this._title;
-    this._cardSelector = cardSelector;
+
     this._handleCardClick = handleCardClick;
     this._handleLikeClick = handleLikeClick;
     this._handleDeleteButtonClick = handleDeleteButtonClick;
+    this._cardSelector = cardSelector;
   }
 
   _getTemplate() {
@@ -40,15 +41,16 @@ export default class Card {
     this._likeButton = this._element.querySelector('.place__like-button');
     this._deleteButton = this._element.querySelector('.place__delete-button');
     this._enlargeButton = this._element.querySelector('.place__enlarge-button');
+    this._cardLikes = this._element.querySelector('.place__like-counter');
 
     const cardTitle = this._element.querySelector('.place__title');
     const cardImage = this._element.querySelector('.place__image');
-    const cardLikes = this._element.querySelector('.place__like-counter');
 
     cardTitle.textContent = this._title;
     cardImage.src = this._link;
     cardImage.alt = this._alt;
-    cardLikes.textContent = this._likes;
+
+    this._cardLikes.textContent = this._likes;
 
     this._setEventListeners();
 
@@ -74,6 +76,11 @@ export default class Card {
     });
   }
 
+  deleteCard() {
+    this._element.remove();
+    this._element = null;
+  }
+
   putLike() {
     this._likeButton.classList.add('place__like-button_active');
   }
@@ -82,8 +89,7 @@ export default class Card {
     this._likeButton.classList.remove('place__like-button_active');
   }
 
-  deleteCard() {
-    this._element.remove();
-    this._element = null;
+  updateСounter(likes) {
+    this._cardLikes.textContent = likes;
   }
 }

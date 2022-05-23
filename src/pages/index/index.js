@@ -63,6 +63,12 @@ api
 
     userInfo.setUserInfo(userData);
 
+    // function for checking the card for likes
+
+    function checkLikeCard(item) {
+      return item.likes.some((like) => like._id === userData._id);
+    }
+
     // Function for creating a card
 
     function createCard(item) {
@@ -73,9 +79,31 @@ api
             popupEnlarging.open(item);
           },
           handleLikeClick: () => {
-            api.putLike(item._id).then(() => {
-              cardElement.putLike();
-            });
+            // Delete a like, if there is one, otherwise put the like
+
+            if (checkLikeCard(item)) {
+              api
+                .deleteLike(item._id)
+                .then((cardDate) => {
+                  cardElement.deleteLike();
+                  cardElement.updateСounter(cardDate.likes.length);
+                  item.likes = cardDate.likes;
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+            } else {
+              api
+                .putLike(item._id)
+                .then((cardDate) => {
+                  cardElement.putLike();
+                  cardElement.updateСounter(cardDate.likes.length);
+                  item.likes = cardDate.likes;
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+            }
           },
           handleDeleteButtonClick: () => {
             popupSubmiting.setHandler(() => {
@@ -105,8 +133,10 @@ api
       {
         items: initialCardsDate.reverse(),
         render: (item) => {
+          // check a card owner and user's like
+
           const isNotUserCard = item.owner._id === userData._id ? false : true;
-          const isLikedByUser = item.likes.some((like) => like._id === userData._id);
+          const isLikedByUser = checkLikeCard(item);
 
           const cardElement = createCard(item).generateCard({ isNotUserCard, isLikedByUser });
           cardList.addItem(cardElement);
