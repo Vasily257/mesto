@@ -23,13 +23,11 @@ import Api from '../../scripts/components/Api.js';
 // Create popup with the image
 
 const popupEnlarging = new PopupWithImage('.popup_type_enlarge');
-
 popupEnlarging.setEventListeners();
 
 // Create popup with the submit
 
 const popupSubmiting = new PopupWithSubmit('.popup_type_submit');
-
 popupSubmiting.setEventListeners();
 
 // Create the user info control object
@@ -52,18 +50,18 @@ const api = new Api({
 
 // Asynch
 
-// Get initial date from the server
+// Get initial data from the server
 
 api
   .getInitialData()
   .then((initialData) => {
-    const [userData, initialCardsDate] = initialData;
+    const [userData, initialCardsData] = initialData;
 
     // Set user info
 
     userInfo.setUserInfo(userData);
 
-    // function for checking the card for likes
+    // Function for checking the card for likes
 
     function checkLikeCard(item) {
       return item.likes.some((like) => like._id === userData._id);
@@ -140,7 +138,7 @@ api
 
     const cardList = new Section(
       {
-        items: initialCardsDate.reverse(),
+        items: initialCardsData.reverse(),
         render: (item) => {
           // check a card owner and user's like
 
@@ -155,10 +153,10 @@ api
     );
     cardList.renderItems();
 
-    return { userData, initialCardsDate, cardList };
+    return { userData, initialCardsData, cardList };
   })
 
-  .then((dateObject) => {
+  .then((dataObject) => {
     // Function to start validation
 
     function enableValidation(config) {
@@ -176,10 +174,10 @@ api
 
     enableValidation(config);
 
-    return dateObject;
+    return dataObject;
   })
 
-  .then((dateObject) => {
+  .then((dataObject) => {
     // Create a popup for editing
 
     const popupEditing = new PopupWithForm('.popup_type_edit', (inputValues) => {
@@ -210,10 +208,10 @@ api
 
     buttonForEditingProfile.addEventListener('click', handleEditButton);
 
-    return dateObject;
+    return dataObject;
   })
 
-  .then((dateObject) => {
+  .then((dataObject) => {
     // Create a popup for adding
 
     const popupAdding = new PopupWithForm('.popup_type_add', (inputValues) => {
@@ -227,7 +225,7 @@ api
       api
         .addNewCard(data)
         .then((data) => {
-          dateObject.cardList.renderOneItem(data);
+          dataObject.cardList.renderOneItem(data);
         })
         .then(() => {
           popupAdding.close();
@@ -248,7 +246,7 @@ api
 
     buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
 
-    return dateObject;
+    return dataObject;
   })
 
   .catch((error) => {
