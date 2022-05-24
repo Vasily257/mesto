@@ -3,6 +3,7 @@ import './index.css';
 import {
   buttonForEditingProfile,
   buttonForAddingCard,
+  buttonForUpdatingAvatar,
   cardsSelector,
   config,
   formValidators,
@@ -245,6 +246,43 @@ api
     }
 
     buttonForAddingCard.addEventListener('click', handleButtonForAddingCard);
+
+    return dataObject;
+  })
+
+  .then((dataObject) => {
+    // Create a popup to update avatar
+
+    const popupUpdatingAvatar = new PopupWithForm('.popup_type_update-avatar', (inputValues) => {
+      const data = {
+        avatar: inputValues['avatar-link'],
+      };
+
+      // Update avatar
+
+      api
+        .updateAvatar(data)
+        .then((userData) => {
+          userInfo.setUserInfo(userData);
+        })
+        .then(() => {
+          popupUpdatingAvatar.close();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    });
+
+    popupUpdatingAvatar.setEventListeners();
+
+    // Add listeners to open the popup for adding
+
+    function handleButtonForUpdatingAvatar() {
+      formValidators['update-avatar'].resetValidation();
+      popupUpdatingAvatar.open();
+    }
+
+    buttonForUpdatingAvatar.addEventListener('click', handleButtonForUpdatingAvatar);
 
     return dataObject;
   })
