@@ -79,4 +79,14 @@ export default class Api {
       return this._handleResponse(res, 'Лайк не убран');
     });
   }
+
+  changeAvatar(data) {
+    return fetch(`${this._url}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify(data),
+    }).then((res) => {
+      return this._handleResponse(res, 'Аватар пользователя не изменен');
+    });
+  }
 }
