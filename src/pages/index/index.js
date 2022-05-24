@@ -117,7 +117,8 @@ api
                 })
                 .then((cardData) => {
                   return updateСounter(cardData);
-                });
+                })
+                .catch((error) => console.log(`Ошибка: ${error}`));
             } else {
               api
                 .putLike(item._id)
@@ -127,7 +128,8 @@ api
                 })
                 .then((res) => {
                   return updateСounter(res);
-                });
+                })
+                .catch((error) => console.log(`Ошибка: ${error}`));
             }
           },
           handleDeleteButtonClick: () => {
@@ -138,9 +140,7 @@ api
                   cardElement.deleteCard();
                   popupSubmiting.close();
                 })
-                .catch((error) => {
-                  console.log(error);
-                });
+                .catch((error) => console.log(`Ошибка: ${error}`));
             });
 
             popupSubmiting.open();
@@ -214,9 +214,7 @@ api
         .then(() => {
           popupEditing.close();
         })
-        .catch((error) => {
-          console.log(error);
-        })
+        .catch((error) => console.log(`Ошибка: ${error}`))
         .finally(() => {
           changeSubmitButtonText(false, initialText);
         });
@@ -263,9 +261,7 @@ api
         .then(() => {
           popupAdding.close();
         })
-        .catch((error) => {
-          console.log(error);
-        })
+        .catch((error) => console.log(`Ошибка: ${error}`))
         .finally(() => {
           changeSubmitButtonText(false, initialText);
         });
@@ -308,9 +304,7 @@ api
         .then(() => {
           popupUpdatingAvatar.close();
         })
-        .catch((error) => {
-          console.log(error);
-        })
+        .catch((error) => console.log(`Ошибка: ${error}`))
         .finally(() => {
           changeSubmitButtonText(false, initialText);
         });
@@ -330,6 +324,4 @@ api
     return dataObject;
   })
 
-  .catch((error) => {
-    console.log(error);
-  });
+  .catch((error) => console.log(`Ошибка: ${error}`));
