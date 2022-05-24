@@ -14,7 +14,7 @@ import Section from '../../scripts/components/Section.js';
 import Card from '../../scripts/components/Card.js';
 import PopupWithImage from '../../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../../scripts/components/PopupWithForm.js';
-import PopupWithSubmit from '../../scripts/components/PopupWithSubmit';
+import PopupWithConfirmation from '../../scripts/components/PopupWithConfirmation.js';
 import UserInfo from '../../scripts/components/UserInfo.js';
 import FormValidator from '../../scripts/components/FormValidator.js';
 import Api from '../../scripts/components/Api.js';
@@ -28,7 +28,7 @@ popupEnlarging.setEventListeners();
 
 // Create popup with the submit
 
-const popupSubmiting = new PopupWithSubmit('.popup_type_submit');
+const popupSubmiting = new PopupWithConfirmation('.popup_type_submit');
 popupSubmiting.setEventListeners();
 
 // Function to change the submit button text when to request to the server
