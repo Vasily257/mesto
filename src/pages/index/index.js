@@ -31,6 +31,23 @@ popupEnlarging.setEventListeners();
 const popupSubmiting = new PopupWithSubmit('.popup_type_submit');
 popupSubmiting.setEventListeners();
 
+// Function to change the submit button text when to request to the server
+
+function getSubmitButtonInitialText(popup) {
+  const submitButton = popup.getSubmitButton();
+  const initialText = submitButton.textContent;
+
+  return { submitButton, initialText };
+}
+
+function changeSubmitButtonText(startDownload, { submitButton, initialText }) {
+  if (startDownload) {
+    submitButton.textContent = 'Загрузка...';
+  } else {
+    submitButton.textContent = initialText;
+  }
+}
+
 // Create the user info control object
 
 const userInfo = new UserInfo({
@@ -182,6 +199,11 @@ api
     // Create a popup for editing
 
     const popupEditing = new PopupWithForm('.popup_type_edit', (inputValues) => {
+      // Manage submit button text
+
+      const initialText = getSubmitButtonInitialText(popupEditing);
+      changeSubmitButtonText(true, initialText);
+
       // Edit user info
 
       api
@@ -194,6 +216,9 @@ api
         })
         .catch((error) => {
           console.log(error);
+        })
+        .finally(() => {
+          changeSubmitButtonText(false, initialText);
         });
     });
 
@@ -216,6 +241,13 @@ api
     // Create a popup for adding
 
     const popupAdding = new PopupWithForm('.popup_type_add', (inputValues) => {
+      // Manage submit button text
+
+      const initialText = getSubmitButtonInitialText(popupAdding);
+      changeSubmitButtonText(true, initialText);
+
+      // Get data from popup adding
+
       const data = {
         name: inputValues.place,
         link: inputValues.link,
@@ -233,6 +265,9 @@ api
         })
         .catch((error) => {
           console.log(error);
+        })
+        .finally(() => {
+          changeSubmitButtonText(false, initialText);
         });
     });
 
@@ -254,6 +289,11 @@ api
     // Create a popup to update avatar
 
     const popupUpdatingAvatar = new PopupWithForm('.popup_type_update-avatar', (inputValues) => {
+      // Manage submit button text
+
+      const initialText = getSubmitButtonInitialText(popupUpdatingAvatar);
+      changeSubmitButtonText(true, initialText);
+
       const data = {
         avatar: inputValues['avatar-link'],
       };
@@ -270,6 +310,9 @@ api
         })
         .catch((error) => {
           console.log(error);
+        })
+        .finally(() => {
+          changeSubmitButtonText(false, initialText);
         });
     });
 

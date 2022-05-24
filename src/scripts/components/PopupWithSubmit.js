@@ -18,4 +18,8 @@ export default class PopupWithSubmit extends Popup {
       this._handleClickSubmit();
     });
   }
+
+  getSubmitButton() {
+    return this._submitButtonElement;
+  }
 }
