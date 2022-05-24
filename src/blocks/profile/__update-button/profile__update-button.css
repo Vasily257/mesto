@@ -1,0 +1,44 @@
+.profile__update-button {
+  position: relative;
+
+  display: flex;
+  grid-column: 1 / span 4;
+  grid-row: 1 / 2;
+
+  opacity: 1;
+}
+
+.profile__update-button:hover {
+  opacity: 1;
+}
+
+.profile__update-button::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  content: '';
+  transition: opacity 0.5s;
+
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-image: url(../../../images/profile/update-button.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 26px 26px;
+}
+
+.profile__update-button:hover::before {
+  transition: opacity 0.1s;
+
+  opacity: 1;
+}
+
+@media screen and (min-width: 600px) {
+  .profile__update-button {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+}

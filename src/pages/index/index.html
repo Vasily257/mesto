@@ -15,15 +15,12 @@
       </header>
       <main class="index-page__section content">
         <section class="profile" aria-label="Описание профиля">
-          <picture class="profile__photo-container">
-            <img
-              class="profile__photo"
-              src="<%=require('../../../src/images/profile/photo.jpg')%>"
-              alt="Фото профиля" />
-          </picture>
+          <button class="button profile__update-button" type="button" aria-label="Обновить фото профиля">
+            <img class="profile__photo" src="https://dummyimage.com/120" alt="Фото профиля" />
+          </button>
           <div class="profile__info">
-            <h1 class="profile__name"></h1>
-            <p class="profile__about"></p>
+            <h1 class="profile__name">Загрузка...</h1>
+            <p class="profile__about">Загрузка...</p>
           </div>
           <button
             class="button profile__edit-button"
