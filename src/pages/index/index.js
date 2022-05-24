@@ -42,7 +42,7 @@ function getSubmitButtonInitialText(popup) {
 
 function changeSubmitButtonText(startDownload, { submitButton, initialText }) {
   if (startDownload) {
-    submitButton.textContent = 'Загрузка...';
+    submitButton.textContent = 'Сохранение...';
   } else {
     submitButton.textContent = initialText;
   }
