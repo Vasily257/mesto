@@ -8,6 +8,8 @@ import {
   config,
   formValidators,
   formList,
+  saveText,
+  deleteText,
 } from '../../scripts/utils/constants.js';
 
 import Section from '../../scripts/components/Section.js';
@@ -33,16 +35,16 @@ popupSubmiting.setEventListeners();
 
 // Function to change the submit button text when to request to the server
 
-function getSubmitButtonInitialText(popup) {
-  const submitButton = popup.getSubmitButton();
-  const initialText = submitButton.textContent;
-
-  return { submitButton, initialText };
+function getSubmitInitialText(popup) {
+  const initialText = popup.getSubmitButton().textContent;
+  return initialText;
 }
 
-function changeSubmitButtonText(startDownload, { submitButton, initialText }) {
+function changeSubmitText(startDownload, popup, initialText, uploadText) {
+  const submitButton = popup.getSubmitButton();
+
   if (startDownload) {
-    submitButton.textContent = 'Сохранение...';
+    submitButton.textContent = uploadText;
   } else {
     submitButton.textContent = initialText;
   }
@@ -124,13 +126,21 @@ api
           },
           handleDeleteButtonClick: () => {
             popupSubmiting.setHandler(() => {
+              // Manage submit button text
+
+              const initialText = getSubmitInitialText(popupSubmiting);
+              changeSubmitText(true, popupSubmiting, initialText, deleteText);
+
               api
                 .deleteCard(item._id)
                 .then(() => {
                   cardElement.deleteCard();
                   popupSubmiting.close();
                 })
-                .catch((error) => console.log(`Ошибка: ${error}`));
+                .catch((error) => console.log(`Ошибка: ${error}`))
+                .finally(() => {
+                  changeSubmitText(false, popupSubmiting, initialText, deleteText);
+                });
             });
 
             popupSubmiting.open();
@@ -191,8 +201,8 @@ api
     const popupEditing = new PopupWithForm('.popup_type_edit', (inputValues) => {
       // Manage submit button text
 
-      const initialText = getSubmitButtonInitialText(popupEditing);
-      changeSubmitButtonText(true, initialText);
+      const initialText = getSubmitInitialText(popupEditing);
+      changeSubmitText(true, popupEditing, initialText, saveText);
 
       // Edit user info
 
@@ -204,7 +214,7 @@ api
         })
         .catch((error) => console.log(`Ошибка: ${error}`))
         .finally(() => {
-          changeSubmitButtonText(false, initialText);
+          changeSubmitText(false, popupEditing, initialText, saveText);
         });
     });
 
@@ -229,8 +239,8 @@ api
     const popupAdding = new PopupWithForm('.popup_type_add', (inputValues) => {
       // Manage submit button text
 
-      const initialText = getSubmitButtonInitialText(popupAdding);
-      changeSubmitButtonText(true, initialText);
+      const initialText = getSubmitInitialText(popupAdding);
+      changeSubmitText(true, popupAdding, initialText, saveText);
 
       // Get data from popup adding
 
@@ -249,7 +259,7 @@ api
         })
         .catch((error) => console.log(`Ошибка: ${error}`))
         .finally(() => {
-          changeSubmitButtonText(false, initialText);
+          changeSubmitText(false, popupAdding, initialText, saveText);
         });
     });
 
@@ -273,8 +283,8 @@ api
     const popupUpdatingAvatar = new PopupWithForm('.popup_type_update-avatar', (inputValues) => {
       // Manage submit button text
 
-      const initialText = getSubmitButtonInitialText(popupUpdatingAvatar);
-      changeSubmitButtonText(true, initialText);
+      const initialText = getSubmitInitialText(popupUpdatingAvatar);
+      changeSubmitText(true, popupUpdatingAvatar, initialText, saveText);
 
       const data = {
         avatar: inputValues['avatar-link'],
@@ -290,7 +300,7 @@ api
         })
         .catch((error) => console.log(`Ошибка: ${error}`))
         .finally(() => {
-          changeSubmitButtonText(false, initialText);
+          changeSubmitText(false, popupUpdatingAvatar, initialText, saveText);
         });
     });
 

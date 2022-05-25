@@ -16,3 +16,6 @@ export const config = {
 
 export const formValidators = {};
 export const formList = Array.from(document.forms);
+
+export const saveText = 'Сохранение...';
+export const deleteText = 'Удаление...';
