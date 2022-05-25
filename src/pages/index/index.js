@@ -98,12 +98,8 @@ api
             // Function for updating counter after changing the like
 
             function updateСounter(cardData) {
-              if (cardData) {
-                cardElement.updateСounter(cardData.likes.length);
-                item.likes = cardData.likes;
-              } else {
-                return Promise.reject('Счетчик лайков не обновлен');
-              }
+              cardElement.updateСounter(cardData.likes.length);
+              item.likes = cardData.likes;
             }
 
             // Delete a like, if there is one, otherwise put the like
@@ -113,10 +109,7 @@ api
                 .deleteLike(item._id)
                 .then((cardData) => {
                   cardElement.deleteLike();
-                  return cardData;
-                })
-                .then((cardData) => {
-                  return updateСounter(cardData);
+                  updateСounter(cardData);
                 })
                 .catch((error) => console.log(`Ошибка: ${error}`));
             } else {
@@ -124,10 +117,7 @@ api
                 .putLike(item._id)
                 .then((cardData) => {
                   cardElement.putLike();
-                  return cardData;
-                })
-                .then((res) => {
-                  return updateСounter(res);
+                  updateСounter(cardData);
                 })
                 .catch((error) => console.log(`Ошибка: ${error}`));
             }
