@@ -200,8 +200,6 @@ api
         .editUserInfo(inputValues)
         .then((userData) => {
           userInfo.setUserInfo(userData);
-        })
-        .then(() => {
           popupEditing.close();
         })
         .catch((error) => console.log(`Ошибка: ${error}`))
@@ -247,8 +245,6 @@ api
         .addNewCard(data)
         .then((data) => {
           dataObject.cardList.renderOneItem(data);
-        })
-        .then(() => {
           popupAdding.close();
         })
         .catch((error) => console.log(`Ошибка: ${error}`))
@@ -290,8 +286,6 @@ api
         .updateAvatar(data)
         .then((userData) => {
           userInfo.setUserInfo(userData);
-        })
-        .then(() => {
           popupUpdatingAvatar.close();
         })
         .catch((error) => console.log(`Ошибка: ${error}`))
