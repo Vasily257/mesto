@@ -1,5 +1,16 @@
 import './index.css';
 
+import Section from '../../scripts/components/Section.js';
+import Card from '../../scripts/components/Card.js';
+import PopupWithImage from '../../scripts/components/PopupWithImage.js';
+import PopupWithForm from '../../scripts/components/PopupWithForm.js';
+import PopupWithConfirmation from '../../scripts/components/PopupWithConfirmation.js';
+import UserInfo from '../../scripts/components/UserInfo.js';
+import FormValidator from '../../scripts/components/FormValidator.js';
+import Api from '../../scripts/components/Api.js';
+
+import { getSubmitInitialText, changeSubmitText } from '../../scripts/utils/utils.js';
+
 import {
   buttonForEditingProfile,
   buttonForAddingCard,
@@ -12,15 +23,6 @@ import {
   deleteText,
 } from '../../scripts/utils/constants.js';
 
-import Section from '../../scripts/components/Section.js';
-import Card from '../../scripts/components/Card.js';
-import PopupWithImage from '../../scripts/components/PopupWithImage.js';
-import PopupWithForm from '../../scripts/components/PopupWithForm.js';
-import PopupWithConfirmation from '../../scripts/components/PopupWithConfirmation.js';
-import UserInfo from '../../scripts/components/UserInfo.js';
-import FormValidator from '../../scripts/components/FormValidator.js';
-import Api from '../../scripts/components/Api.js';
-
 // Sync
 
 // Create popup with the image
@@ -32,23 +34,6 @@ popupEnlarging.setEventListeners();
 
 const popupSubmiting = new PopupWithConfirmation('.popup_type_submit');
 popupSubmiting.setEventListeners();
-
-// Function to change the submit button text when to request to the server
-
-function getSubmitInitialText(popup) {
-  const initialText = popup.getSubmitButton().textContent;
-  return initialText;
-}
-
-function changeSubmitText(startDownload, popup, initialText, uploadText) {
-  const submitButton = popup.getSubmitButton();
-
-  if (startDownload) {
-    submitButton.textContent = uploadText;
-  } else {
-    submitButton.textContent = initialText;
-  }
-}
 
 // Create the user info control object
 
