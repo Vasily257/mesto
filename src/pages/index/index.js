@@ -141,7 +141,16 @@ api
 
     const cardList = new Section(
       {
-        items: initialCardsData.reverse(),
+        items: initialCardsData.sort((a, b) => {
+          if (a.createdAt > b.createdAt) {
+            return 1;
+          }
+          if (a.createdAt < b.createdAt) {
+            return -1;
+          }
+
+          return 0;
+        }),
         render: (item) => {
           // check a card owner and user's like
 
